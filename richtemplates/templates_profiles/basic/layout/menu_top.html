@@ -1,0 +1,26 @@
+{% extends "richtemplates/layout/menu_top.html" %}
+
+{% block menu_top_left %}
+<li><a href="#home">Home</a></li>
+<li><a href="#menu_item_1">Menu item 1</a></li>
+<li><a href="#menu_item_2">Menu item 2</a></li>
+<li><a href="#menu_item_3">Menu item 3</a></li>
+{% endblock %}
+
+{% block menu_top_right %}
+    <li>User: {{ user }}</li>
+    {# Uncomment list item below in order to show login/logout links #}
+    {% comment %}
+    <li>
+        {% if user.is_authenticated %}
+        <a href="{% url auth_logout %}">Log out</a>
+        {% else %}
+        <a href="{% url auth_login %}">Log in</a>
+        {% endif %}
+    </li>
+    {% endcomment %}
+    {% if user.is_staff %}
+        <li><a href="/admin/">Admin</a> |</li>
+    {% endif %}
+{% endblock %}
+

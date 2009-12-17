@@ -1,0 +1,32 @@
+{% extends "richtemplates/examples/base.html" %}
+
+{% block col_main_title %}Colors in tables examples{% endblock %}
+{% block col_main_content %}
+
+<h1></h1>
+
+<h2>Messages as unordered list</h2>
+
+
+<table class="datatable">
+    <thead class="datatabe-thead">
+        <tr>
+            <th>Color</th>
+            <th>Code</th>
+            <th>Show</th>
+        </tr>
+    </thead>
+    <tbody class="datatable-tbody">
+        {% for key, val in colors.items %}
+        <tr>
+            <td style="width: 100px">{{ key }}</td>
+            <td style="width: 100px;">{{ val }}</td>
+            <td style="background-color: {{ val }}">&nbsp;x</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+
+{% endblock %}
+

@@ -1,0 +1,12 @@
+<tr class="field{% if field.errors %} errors{% endif %}">
+    <th>
+        {{ field.label_tag }}
+        
+    </th>
+    <td>
+    	{% if field.errors %}<span>{% for error in field.errors %}{{ error }}{% endfor %}</span><br/>{% endif %}
+        {{ field }}
+        {% if field.field.required and not field.data%}<span class="required">*</span>{% endif %}
+		{% if field.help_text %}<br/><span class="help_text">{{ field.help_text }}{% endif %}
+    </td>
+</tr>

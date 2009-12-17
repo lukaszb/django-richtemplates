@@ -1,0 +1,15 @@
+.msg {
+	border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px;
+	border: 1px solid; margin: 0 0 15px 0; padding: 8px 10px 0 10px;
+}
+.msg p {margin: 0 0 8px 0; padding-left: 25px; padding-bottom: 3px;}
+.msg-ok {border-color: #a6d877; background: #d2ecba url("img/icons/accept.png") repeat-x; color: #336801;}
+.msg-error {border-color: #f3abab; background: #f9c9c9 url("img/msg-error.png") repeat-x; color: #8d0d0d;}
+.msg-warn {border-color: #d7e059; background: #f3f7aa url("img/msg-warn.png") repeat-x; color: #6c6600;}
+.msg-info {border-color: #9fd1f5; background: #c3e6ff url("img/msg-info.png") repeat-x; color: #005898;}
+
+.msg-ok p {background: url("/static/richtemplates/img/icons/accept.png") top 0% no-repeat;}
+.msg-error p {background: url("/static/richtemplates/img/icons/exclamation.png") 0 50% no-repeat;}
+.msg-warn p {background: url("/static/richtemplates/img/icons/error.png") 0 50% no-repeat;}
+.msg-info p {background: url("/static/richtemplates/img/icons/information.png") 0 50% no-repeat;}
+

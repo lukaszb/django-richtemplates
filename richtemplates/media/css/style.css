@@ -1,0 +1,349 @@
+/* BASIC */
+body, div, span, dd, dt, dl, img, ul, ol, li, p,h0, h1, h2, h3, h4, legend, form, hr, fieldset {
+    margin: 0;
+    padding: 0;
+}
+html { height: 100%; background-color: #DBD4C6; }
+
+body { font-size: 11px; font-family: Arial, sans-serif, Verdana;}
+h1, h2, h3, h3 { margin-top: 10px; padding-bottom: 10px; }
+
+a:active,a:link,a:visited { color: #0D5798; }
+a:hover { color: #8CAFCD; }
+
+a.block-link { display: block; }
+a.addlink {
+	background:transparent url(/static/img/icon_addlink.gif) no-repeat scroll 0 50%;
+	padding-left:14px;
+}
+a.deletelink {
+	background:transparent url(/static/img/icon_deletelink.gif) no-repeat scroll 0 50%;
+	padding-left:14px;
+}
+a.button-link {
+    background: #4477AA url(/static/richtemplates/img/button-link.gif) repeat-x;
+    color: #FFF;
+    border: 1px solid #153E7E;
+    border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px;
+    margin: 2px;
+    padding: 2px 10px 2px 10px;
+    text-decoration: none;
+}
+a.button-link:hover {
+    background: #008894 url(/static/richtemplates/img/button-link-hovered.gif) repeat-x;;
+    border-color: #153E7E;
+    border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px;
+}
+
+label {font-weight: bold;}
+hr { color: #008894; }
+
+input {
+	border: 1px solid #4477AA;
+	background: #F0F8FF;
+	color: black;
+}
+textarea { background: #F0F8FF; }
+
+input[type='submit'],input[type='button'] {
+    background: #4477AA url(/static/richtemplates/img/button-link.gif) repeat-x;
+	color: white;
+	margin: 5px;
+	border-color: #153E7E;
+    border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px;
+}
+input[type='submit']:hover,input[type='button']:hover {
+    background: #008894 url(/static/richtemplates/img/button-link-hovered.gif) repeat-x;;
+    cursor: pointer;
+    border-color: #153E7E;
+    border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px;
+}
+
+input.disabled { background: #E8E8E8; }
+
+/* Simple classes */
+.centered { text-align: center; }
+.lefted { text-align: left; }
+.righted { text-align: right; }
+
+
+/* BODY-LAYOUT */
+
+#body-content { width: 99%; margin: 0 auto; margin-top: 10px; }
+
+#message_box {width: 400px; margin-bottom: 20px;}
+
+#col_single { width: 90%; min-height: 500px; margin: 0 auto; }
+#col_single p { margin-bottom: 5px; }
+
+#col_left { width: 20%; max-width: 250px; float: left; }
+#col_main {width: 78%; min-width: 75%; min-height: 500px; float: right; }
+
+#top {
+    background-color: #FFF;
+    border-bottom: 1px solid #000;
+}
+
+/* MENU-TOP */
+.menu-top {
+    width: 100%;
+    height: 22px;
+    background: #008894 url(/static/richtemplates/img/gradient_big_aqua.png) repeat-x top left;
+    font: bold 11px Arial, Verdana, sans-serif;
+    color: #fff;
+    white-space: nowrap;
+    clear: both;
+    padding: 0;
+    margin: 0 0 0px 0;
+}
+.menu-top a:hover { color: #FFF; }
+.menu-top-submenu {
+    width: 100%;
+    height: 22px;
+    background-color: #67BFC7;
+    border-bottom: 1px solid #000;
+    font: bold 11px Arial, Verdana, sans-serif;
+    color: #fff;
+    white-space: nowrap;
+    clear: both;
+    padding: 0;
+    margin: 0 0 10px 0;
+}
+.menu-top-submenu a:hover { color: #FFF; }
+ul.menu-top-left { margin: 0; list-style: none; padding: 2px 10px 2px 10px; }
+ul.menu-top-left li { float: left; padding: 0; margin: 0 10px 0 0; }
+ul.menu-top-right { margin: 0; list-style: none; padding: 2px 10px 2px 10px; }
+ul.menu-top-right li { float: right; padding: 0; margin: 0 10px 0 0; }
+
+/* FOOTER */
+#footer {
+	clear: both;
+	text-align: center;
+	font-size: 9px;
+	padding: 10px 5px 5px 5px;
+    border-top: 1px solid #666;
+	color: #666;
+	margin: 20px auto 50px;
+	width: 50%;
+}
+
+
+/* NAVIGATION LISTs */
+.nav-vertical { list-style: none; margin: 10px 0 10px; }
+.nav-vertical li { padding-bottom: 5px; }
+.nav-inline { list-style: none; margin: 10px 0 10px 5px; }
+.nav-inline li { display: inline; margin-right: 10px; }
+/* RICHTEMPLATES PANELS */
+    
+.richtemplates-panel {
+	margin: 0 0 20px 0;
+	border: 1px solid #008894;
+	background-color: #FFF;
+	padding: 1px;
+	color: rgb(97, 97, 97);
+	vertical-align: top;
+}
+.richtemplates-panel table { vertical-align: top; }
+.richtemplates-panel div { vertical-align: top; }
+
+div.richtemplates-panel h5{
+	font: bold 1em Arial, Verdana, sans-serif;
+	border: 1px solid #008894;
+	height: 20px;
+	background: #008894 url(/static/richtemplates/img/gradient_big_aqua.png) repeat-x top left;
+	color: #FFF;
+	font: bold 11px Arial, Verdana, sans-serif;
+	padding: 3px 5px 1px 5px;
+	margin: 0;
+}
+.richtemplates-panel-content {
+	padding: 5px;
+	margin: 0;
+}
+
+.form-block {
+	border: 1px solid #999;
+	border-bottom: none;
+	padding: 5px;
+}
+.form-block-last {
+	border-bottom: 1px solid #999;
+}
+
+/* TABLES-FORMS */
+
+table { font-size: 11px; border-collapse: collapse; border-spacing: 0; }
+
+table.formset { border: 1px solid #999; margin-bottom: 5px; padding: 5px; }
+
+table.form-table .shorter { min-width: 150px; max-width: 250px; }
+table.form-table input[type=text] { max-width: 250px; min-width: 250px; }
+table.form-table input { float: left; margin-left: 20px; }
+table.form-table select { float: left; margin-left: 20px; max-width: 250px; min-width: 250px; }
+table.form-table textarea { float: left; margin-left: 20px; max-width: 350px; min-width: 250px; }
+table.form-table label { float: right; margin-right: 5px; }
+table.form-table input { float: left; margin-right: 5px; }
+table.form-table span.help-text { float: left; margin-right: 5px; }
+table.form-table tbody tr td input[disabled=disabled] { background-color: #DDD; }
+
+table.filterform-table { font-size: 11px; white-space: nowrap; }
+table.filterform-table th { font-weight: bold; text-align: right;}
+table.filterform-table td { padding: 5px; text-align: left; }
+table.filterform-table span{ margin-left: 20px; }
+table.filterform-table span.help-text{ font-size: 9px; }
+table.filterform-table input { float: left; margin-left: 20px; max-width: 100px; min-width: 100px; }
+table.filterform-table select { float: left; margin-left: 20px; max-width: 100px; min-width: 100px; }
+table.filterform-table textarea { float: left; margin-left: 20px; max-width: 100px; min-width: 100px; }
+
+table.datatable { border: 1px solid #999; width: 100%; white-space: nowrap; }
+table.datatable a:active, table.datatable a:link, table.datatable a:visited { color: #002b6e; }
+table.datatable a:hover { color: #0d5798; }
+table.datatable input { float: left; margin-left: 20px; max-width: 75px; min-width: 75px; }
+table.datatable th, table.datatable td { border: 1px solid #999; padding: 3px 5px; }
+tr.datatable-thead-header {
+	color: #FFF;
+	font-weight: bold;
+	background: #C2EBEE url(/static/richtemplates/img/gradient_big_aqua.png) repeat-x top left;
+}
+table.datatable th { background-color: #C2EBEE; }
+tbody.datatable-tbody td { background-color: #FFF; }
+table.datatable tbody tr:hover { color: #000; background: #eed !important }
+table.datatable tbody tr:hover td { color: #000; background: #eed !important }
+ 
+tr.odd td { background-color: #FFF; }
+tr.even td { background-color: #EFE; }
+tr.highlight td { background-color: #C2EBEE; color: #000;}
+tr.inactive td { background-color: #FFB2AA; }
+
+
+/* Adds */
+td.messages-field { text-align: left; }
+
+/* MESSAGES & ERRORS */
+ul.messages {
+    list-style: none;
+}
+ul.messages li.message, .message p {
+    padding: 6px 10px 8px 10px;
+    padding-left: 25px;
+}
+.message {
+    margin: 5px 0 5px 0;
+    border: 1px solid;
+	border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px;
+}
+.message-debug {
+    color: #005898;
+    border-color: #9fd1f5;
+    background: #c3e6ff url("/static/richtemplates/img/icons/debug.png") 4px 5px no-repeat;
+}
+.message-info {
+    color: #005898;
+    border-color: #9fd1f5;
+    background: #c3e6ff url("/static/richtemplates/img/icons/info.png") 4px 5px no-repeat;
+}
+.message-success {
+    color: #336801;
+    border-color: #a6d877;
+    background: #d2ecba url("/static/richtemplates/img/icons/success.png") 5px 5px no-repeat;
+}
+.message-warning {
+    color: #6c6600;
+    border-color: #d7e059;
+    background: #f3f7aa url("/static/richtemplates/img/icons/warning.png") 5px 5px no-repeat;
+}
+.message-error {
+    color: #8d0d0d;
+    border-color: #f3abab;
+    background: #f9c9c9 url("/static/richtemplates/img/icons/error.png") 5px 5px no-repeat;
+}
+
+ul.errorlist { list-style: none; color: #b51818; float: left; padding: 0; }
+ul.errorlist li { float: left; padding: 0; }
+
+.errors input { border: 1px solid #b51818; }
+.errors textarea { border: 1px solid #b51818; }
+.errors { font-size: 11px; font-weight: bold; color: #b51818; padding: 0px 30px; }
+.required { float: left; color: #b51818; padding: 0 5px 0 2px; }
+
+
+/* PAGINATOR  */
+.pagination {font-size:9px; padding-top:10px; padding-bottom:10px; line-height:22px; margin:0; border-top:1px solid #ddd; }
+.pagination a:link, .pagination a:visited {padding:2px 6px; border:solid 1px #ccc; background:white; text-decoration:none; margin: 0 1px;}
+.pagination a.showall { padding:0 !important; border:none !important; }
+.pagination a.showall:hover { color:#036 !important; background:transparent !important; }
+.pagination .end { border-width:2px !important; margin-right:6px; }
+.pagination a.this-page {padding:2px 6px; font-weight:bold; font-size:11px; vertical-align:top; border:solid 2px #aaa;}
+.pagination a:hover {color:white; background:#333; color:#fff;}
+.pagination a:active {background-color: #C2EBEE;}
+.pagination .current {padding:2px 6px; border:solid 2px #0D5798; background-color:#C2EBEE; color:#999;}
+.pagination .disabled {padding:2px 6px; border:solid 1px #ccc; background:white; text-decoration:none; color: #ccc;}
+
+
+/* BREADCRUMBS */
+
+.richtemplates-breadcrumbs {
+	/* background:white url(/media/img/admin/nav-bg-reverse.gif) 0 0px repeat-x; */ 
+	font-size: 11px;
+	text-align: left;
+	color: #0D5798;
+	border: 1px solid #C2EBEE;
+	background-color: #EFE;
+	margin: 5px 0 10px 0;
+	padding: 3px 0px 3px 8px;
+	height: 18px;
+}
+.richtemplates-breadcrumbs a, .richtemplates-breadcrumbs a:visited, .richtemplates-breadcrumbs a:link {
+	color: #333;
+	text-decoration: none;
+	margin: 0 3px 0 3px;
+}
+.richtemplates-breadcrumbs a:hover {
+	color: #0D5798;
+	text-decoration: underline;
+}
+
+/* TOOLTIPS */
+.show-tooltip {display: block;}
+.tooltip{
+    position:absolute;
+    z-index:999;
+    left:-9999px;
+    background-color:#dedede;
+    padding:5px;
+    border:1px solid #fff;
+    width:250px;
+}
+
+.tooltip p{
+    margin:0;
+    padding:0;
+    color:#fff;
+    background-color:#222;
+    padding:2px 7px;
+}
+
+.sql_block { margin: 10px; padding: 5px; border: 1px solid red; }
+.sql_block span { color: red; }
+.sql_block ul { list-style: none; }
+.sql_block ul li { font-weight: bold; }
+
+/* Input highligh */
+input:focus, textarea:focus {
+    background:#ffc;
+    border: 1px solid #00CDCD;
+}
+
+/* Flipper classes */
+.flip-horizontal {
+    -moz-transform: scaleX(-1);
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+    filter: fliph; /*IE*/
+}
+.flip-vertical {
+    -moz-transform: scaleY(-1);
+    -webkit-transform: scaleY(-1);
+    transform: scaleY(-1);
+    filter: flipv; /*IE*/
+}

@@ -1,0 +1,16 @@
+{% comment %}
+	Should be used only once per page as it tries
+	to set id attribute for row/cell/span tags.
+{% endcomment %}
+
+<tr id="{{ field.auto_id }}_tr" class="field{% if field.errors %} errors{% endif %}">
+	<th id="{{ field.auto_id }}_th">
+		{{ field.label_tag }}
+	</th>
+	<td id="{{ field.auto_id }}_td">
+		{{ field }}
+		{% if field.field.required and not field.data%}<span class="required">*</span>{% endif %}
+		{% if field.help_text %}<span class="help_text">{{ field.help_text }}{% endif %}
+		{% if field.errors %}<span>{% for error in field.errors %}{{ error }}{% endfor %}</span>{% endif %}
+	</td>
+</tr>

@@ -1,0 +1,21 @@
+{% extends "richtemplates/base.html" %}
+
+{% block title %}Richtemplates examples{% endblock %}
+
+{% block col_left_title %}Left column title{% endblock %}
+{% block col_left_content %}
+    <ul class="nav-vertical">
+        <li><a href="{% url richtemplates_examples_home %}">Home</a></li>
+        <li><a href="{% url richtemplates_examples_messages %}">Messages</a></li>
+        <li><a href="{% url richtemplates_examples_links %}">Links</a></li>
+        <li><a href="{% url richtemplates_examples_colors %}">Colors</a></li>
+    </ul>
+{% endblock %}
+
+{% block col_main_title %}Main column title{% endblock %}
+{% block col_main_content %}
+<h1>Home</h1>
+<p>
+    Lorem ispum dolor.
+</p>
+{% endblock %}

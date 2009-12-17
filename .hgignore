@@ -1,0 +1,10 @@
+syntax: glob
+*.pyc
+*.log
+*.egg
+*.egg-info
+*.swp
+*.bak
+build
+dist
+.DS_Store

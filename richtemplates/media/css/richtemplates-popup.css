@@ -1,0 +1,13 @@
+.richtemplates-popup{
+    position:absolute;
+    z-index:10;
+    width:172px;
+    height:102px;
+    text-align:center;
+    color:#FF0000;
+    font: 14px Verdana, Arial, Helvetica, sans-serif;
+    background:url(bg_image.gif) bottom right no-repeat;
+    display:none;
+}
+
+

@@ -1,0 +1,111 @@
+{% load i18n %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<head>
+    <title>{% block title %}{% endblock %}</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    
+    {% block head_css %}
+    <link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}richtemplates/css/style.css" />
+    {% endblock %}
+
+    {% block head_js %}
+    <script src="{{ MEDIA_URL }}richtemplates/js/jquery.min.js" type="text/javascript"></script>
+    <script src="{{ MEDIA_URL }}richtemplates/js/common.js" type="text/javascript"></script>
+    {% endblock %}
+
+    {% block extra_head %}{% endblock %}
+</head>
+
+
+<body>
+{% block body %}
+    <div id="top">
+        {% block top %}
+        {% endblock %}
+    </div>
+    {% block menu_top %}
+        {% include "richtemplates/layout/menu_top.html" %}
+    {% endblock %}
+    <div id="body-content">
+        
+        {# Message Box #}
+        {# For new message framework, available since Django 1.2 #}
+        {% block messages_block %}
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li class="message message-{% if message.tags %}{{ message.tags }}{% else %}info{% endif %}">{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endblock %}
+        {% comment %}
+        {# Old messages mechanism, pre 1.2 Django #}
+		{% if messages %}
+			<div class="message_box">
+				<ul>
+					{% for message in messages %}
+					<li class="message">{{ message }}</li>
+					{% endfor %}
+				</ul>
+            </div>
+        {% endif %}
+		{% if message or error_message %}
+            <div class="message_box{% if error_message %} errors{% endif %}">
+                <p class="message">
+                	{% if message %}
+						{{ message }}
+					{% else %}
+                    	{{ error_message }}
+                	{% endif %}
+				</p>
+            </div>
+        {% endif %}
+        {% endcomment %}
+		<!-- Content -->
+        {% block content %}
+        
+		    <!-- Column Left -->
+	        <div id="col_left">
+	        {% block col_left %}
+				<div class="richtemplates-panel">
+                    <h5>{% block col_left_title %}Left panel title{% endblock %}</h5>
+		            <div class="richtemplates-panel-content">
+		                {% block col_left_content %}{% endblock %}
+		            </div>
+		        </div>
+				<!-- Add extra things if needed -->
+		        {% block col_left_extra %}{% endblock %}
+		    {% endblock col_left %}
+	        </div>
+	        
+			<!-- Column Main -->
+			<div id="col_main">
+			{% block col_main %}
+		        <div class="richtemplates-panel">
+		            <h5>{% block col_main_title %}Left panel title{% endblock %}</h5>
+		            <div class="richtemplates-panel-content">
+		                {% block col_main_content %}{% endblock %}
+		            </div>
+		        
+				</div>
+				<!-- Add extra things if needed -->
+                {% block col_main_extra %}{% endblock %}
+			{% endblock col_main %}
+			</div>
+        
+        {% endblock content %}
+		
+    </div>
+	<!-- Footer -->
+    <div id="footer">
+        <p>by Łukasz Balcerzak</p>
+    </div>
+{% endblock body %}
+
+{% block extra_body %}{% endblock %}
+
+</body>
+</html>

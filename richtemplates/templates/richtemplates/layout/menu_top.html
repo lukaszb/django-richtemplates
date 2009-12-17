@@ -1,0 +1,22 @@
+{% load i18n %}
+<div class="menu-top">
+	<ul class="menu-top-left">
+        {% block menu_top_left %}
+            <li><a href="/">Home</a></li>
+        {% endblock %}
+	</ul>
+	<ul class="menu-top-right">
+        {% comment %}
+		<li>Logged as <span>{{ user }}</span></li>
+		<li>
+        {% if not user.is_authenticated %}
+            <a href="#login_url">{% trans "Login" %}</a>
+		{% else %}
+            <a href="#logout_url">{% trans "Logout" %}</a>
+		{% endif %}
+        </li>
+        {% endcomment %}
+        {% block menu_top_right %}
+		{% endblock %}
+	</ul>
+</div>
