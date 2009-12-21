@@ -23,6 +23,6 @@ Thir part tools
 1. `jQuery` - jquery_
 2. `famfamfam icons` - famfamfam_
 
-.. _jquery: http://docs.jquery.com/Main_Page
+.. _jquery: http://docs.jquery.com/
 .. _famfamfam: http://www.famfamfam.com/archive/silk-icons-thats-your-lot/
 

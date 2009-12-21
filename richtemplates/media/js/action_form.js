@@ -32,29 +32,4 @@ $(document).ready(function(){
     var firstAction = $('form.action-form :input:not(:radio):first');
     processActionForm(firstAction);
 
-    /*
-    $('form.action-form input:radio').change(function(){
-
-        var selected = $(this);
-
-        // Disable not selected fields
-        $('form.action-form input:radio').each(function(){
-            if ( selected != $(this) ){
-                var wrapper = $(this).parent();
-                $(':input:not(:radio)', wrapper).each(function(){
-                    $(this).addClass('disabled').enable(false);
-                });
-                wrapper.addClass('disabled');
-            }
-        });
-        // Enable selected field
-        var wrapper = selected.parent();
-        $(':input:not(:radio)', wrapper).each(function(){
-            $(this).removeClass('disabled').enable(true);
-        });
-        wrapper.removeClass('disabled');
-
-    });
-    */
-
 });
