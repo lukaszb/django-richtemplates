@@ -7,7 +7,7 @@ VERSION = richtemplates.__version__
 
 def find_package_data():
     import os
-    data_extensions = ['html', 'js', 'png', 'css']
+    data_extensions = ['html', 'js', 'png', 'css', 'gif']
     data = {'richtemplates': []}
     topdir = 'richtemplates'
     for dir, subdirs, files in os.walk(topdir):
