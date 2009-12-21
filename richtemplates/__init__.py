@@ -6,7 +6,7 @@ Richfaces library offers for J2EE developers - not
 outstanding but still nice looking and elegant.
 """
 
-__version__ = '0.1.5.alpha'
+__version__ = '0.1.6.alpha'
 
 def get_version():
     return __version__
