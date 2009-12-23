@@ -72,7 +72,8 @@ class Command(LabelCommand):
         app_media_dir = os.path.abspath(os.path.join(app_path, 'media'))
         if not os.path.isdir(app_media_dir) and \
             options['fail_siltently'] is False:
-            raise CommandError("Specified app has no 'media' directory!")
+            raise CommandError("Specified app '%s' has no 'media' directory!"
+                % app)
         copy_dir_helper(app_media_dir, dst)
         make_writeable(MEDIA_ROOT)
 

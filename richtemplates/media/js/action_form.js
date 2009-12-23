@@ -1,8 +1,8 @@
 $(document).ready(function(){
     // Simple function enabling/disabling object(s)
     $.fn.enable = function(enabled) {
-    return this.each(function() {
-        this.disabled = !enabled;
+        return this.each(function() {
+            this.disabled = !enabled;
     });
   }
 
@@ -29,7 +29,8 @@ $(document).ready(function(){
         processActionForm($(this));
     });
 
-    var firstAction = $('form.action-form :input:not(:radio):first');
-    processActionForm(firstAction);
+    $('form.action-form input:radio:checked').each(function(){
+        processActionForm($(this));
+    });
 
 });
