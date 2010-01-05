@@ -5,7 +5,7 @@ import inspect
 
 from django.core.management.base import _make_writeable, CommandError
 
-def copy_dir_helper(src, dst):
+def copy_dir_helper(src, dst, force=False):
     """
     Convenience method to copy directory from source
     to defined destination. You have to change permissions
@@ -14,7 +14,11 @@ def copy_dir_helper(src, dst):
     if not os.path.isdir(src):
         raise CommandError("Source directory %s does not exists" % src)
     if os.path.exists(dst):
-        raise CommandError("Target %s already exists" % dst)
+        if force:
+            logging.debug('Force mode was turned on. Removing %s' % dst)
+            shutil.rmtree(dst)
+        else:
+            raise CommandError("Target %s already exists" % dst)
     shutil.copytree(src, dst)
     logging.info("Copied %s into %s" % (src, dst))
     make_writeable(dst)

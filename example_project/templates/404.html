@@ -1,0 +1,15 @@
+{% extends "richtemplates/base_1col.html" %}
+
+{% block content %}
+<div id="col_single">
+    <div class="panel">
+        <h5>Error message</h5>
+        <div class="panel-content">
+            <h1>Page unavailable</h1>
+            <p>Sorry, but the requested page at</p>
+            <pre>{{ request.path }}</pre>
+            <p>is unavailable.</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

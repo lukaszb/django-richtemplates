@@ -7,6 +7,7 @@ html { height: 100%; background-color: #DBD4C6; }
 
 body { font-size: 11px; font-family: Arial, sans-serif, Verdana;}
 h1, h2, h3, h3 { margin-top: 10px; padding-bottom: 10px; }
+p { margin-bottom: 1.5em; }
 
 a:active,a:link,a:visited { color: #0D5798; }
 a:hover { color: #8CAFCD; }
