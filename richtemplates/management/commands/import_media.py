@@ -50,7 +50,6 @@ class Command(LabelCommand):
         if os.path.exists(MEDIA_ROOT):
             if not os.path.isdir(MEDIA_ROOT):
                 raise CommandError("%s is not a directory" % MEDIA_ROOT)
-            print options['force']
             if os.path.exists(dst) and options['force'] is False:
                 raise CommandError("%s already exists" % dst)
         else:
