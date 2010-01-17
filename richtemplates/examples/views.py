@@ -1,11 +1,44 @@
+import logging
+
 from django.views.generic import simple
 from django.utils.datastructures import SortedDict
+from django.shortcuts import render_to_response
+from django.http import HttpResponseRedirect
+from django.template import RequestContext
+
+from richtemplates.examples.forms import ContactForm
+
+try:
+    from django.contrib import messages
+except ImportError:
+    messages = None
 
 def colors(request, template_name='richtemplates/examples/color_tables.html'):
 
     extra_context = {'colors': SortedDict(COLORS)}
 
     return simple.direct_to_template(request, template_name, extra_context)
+
+def form1(request, template_name='richtemplates/examples/form1.html'):
+
+    form = ContactForm(request.POST or None)
+    if request.method == 'POST':
+        msg = u"Form submitted."
+        messages and messages.info(request, msg)
+        logging.info(msg)
+        if form.is_valid():
+            success_msg = u"Submission successfully completed"
+            messages and messages.success(request, success_msg)
+            logging.info(success_msg)
+        else:
+            error_msg = u"Submission failed"
+            messages and messages.error(request, error_msg)
+            logging.error(error_msg)
+
+    context = {
+        'form': form,
+    }
+    return render_to_response(template_name, context, RequestContext(request))
 
 """
 Colors dict taken from http://www.computerhope.com/htmcolor.htm

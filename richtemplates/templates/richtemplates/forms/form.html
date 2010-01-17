@@ -1,7 +1,9 @@
 {% if form.non_field_errors %}
-    <div id="id_non_field_errors" class="non_field_errors">
-        {{ form.non_field_errors }}
-    </div>
+    <ul class="messages">
+        {% for error in form.non_field_errors %}
+        <li class="message message-error">{{ error }}</li>
+        {% endfor %}
+    </ul>
 {% endif %}
 
 {% for field in form %}

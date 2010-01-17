@@ -1,0 +1,17 @@
+{% extends "richtemplates/examples/base.html" %}
+
+{% block col_main_title %}Form 1 example{% endblock %}
+{% block col_main_content %}
+
+<form action="." method="post">
+    <table class="form-table">
+        {% include "richtemplates/forms/form.html" %}
+    </table>
+    <div>
+        <input id="id_submit" type="submit" name="submit" value="Submit"/>
+    </div>
+</form>
+
+{% endblock %}
+
+

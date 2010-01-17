@@ -269,7 +269,7 @@ ul.messages li.message, .message p {
     background: #f9c9c9 url("/media/richtemplates/img/icons/error.png") 5px 5px no-repeat;
 }
 
-ul.errorlist { list-style: none; color: #b51818; float: left; padding: 0; }
+ul.errorlist { list-style: none; color: #b51818; float: left; padding: 0;}
 ul.errorlist li { float: left; padding: 0; }
 
 .errors input { border: 1px solid #b51818; }
