@@ -1,5 +1,6 @@
-`Richtemplates` -- Templates, media, tags for django based on Java Richfaces.
-===============================================================================
+==========================================================================
+Richtemplates -- Templates, media, tags for django based on Java Richfaces
+==========================================================================
 
 `Richtemplates` is a set of templates (surprise!), template tags, media files
 providing presentation layer similar to what Richfaces library offers for J2EE
@@ -17,8 +18,8 @@ License should be included in LICENSE file.
 Remember that `Richtemplates` make use of some third part tools. Those tools
 have their own licenses.
 
-Thir part tools
----------------
+Third part tools
+----------------
 
 1. `jQuery` - jquery_
 2. `famfamfam icons` - famfamfam_
