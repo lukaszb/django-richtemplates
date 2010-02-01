@@ -5,6 +5,7 @@ from django.db import models
 from django.forms.util import ErrorList
 from django.utils.safestring import mark_safe
 from django.template import Template, Context
+from django.utils.translation import ugettext as _
 
 from richtemplates.utils import get_fk_fields
 
@@ -59,7 +60,10 @@ def DynamicActionFormFactory(available_choices, selected = None):
 
     def clean(self):
         cleaned_data = self.cleaned_data
-        chosen_action = cleaned_data['action_type']
+        chosen_action = cleaned_data.get('action_type')
+        if chosen_action is None or chosen_action == u'':
+            logging.debug("Cleaned data:\n%s" % cleaned_data)
+            raise forms.ValidationError(_("Choose one action first"))
         self.chosen_action = chosen_action
         logging.debug("Chosen action: %s" % chosen_action)
         for choice in enabled_choices:
