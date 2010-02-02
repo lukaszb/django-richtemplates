@@ -69,5 +69,6 @@ class Command(LabelCommand):
         
         # Replaces django template variables with 
         # ones founded in your settings file
-        submedia.submedia_files(dst)
+        # submedia.submedia_files(dst)
+        # Turning off as implementation was bad design decision
 
