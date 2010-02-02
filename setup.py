@@ -17,6 +17,8 @@ def find_package_data():
                 fpath = os.path.join(dir, file)[len('richtemplates/'):]
                 data['richtemplates'].append(fpath)
     return data
+import pprint
+print pprint.pformat(find_package_data())
 
 setup(
     name = 'django-richtemplates',
@@ -27,7 +29,6 @@ setup(
     description = 'Templates, media, tags for django based on Java Richfaces.',
     long_description = richtemplates.__doc__,
     packages = find_packages(),
-    include_package_data = True,
     zip_safe = False,
     package_data = find_package_data(),
     scripts = [],
