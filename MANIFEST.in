@@ -2,7 +2,6 @@ include LICENSE
 include MANIFEST.in
 include README
 include INSTALL.rst
-include ez_setup.py
 recursive-include richtemplates/templates *.html
 recursive-include richtemplates/templates_profiles *.html
 recursive-include richtemplates/media/css *.css
