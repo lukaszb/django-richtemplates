@@ -99,12 +99,14 @@
         {% endblock content %}
 		
     </div>
-	<!-- Footer -->
+    {# Footer #}
+    {% block footer_wrapper %}
     <div id="footer">
         {% block footer %}
         <p>by Łukasz Balcerzak</p>
         {% endblock %}
     </div>
+    {% endblock footer_wrapper %}
 {% endblock body %}
 
 {% block extra_body %}{% endblock %}

@@ -1,15 +1,17 @@
 {% extends "richtemplates/base_1col.html" %}
 
+{% load i18n %}
+
+{% block title %}404 - {% trans "Page unavailable" %}{% endblock %}
 {% block content %}
 <div id="col_single">
-    <div class="panel">
-        <h5>Page unavailable</h5>
-        <div class="panel-content">
-            <h1>Page unavailable</h1>
-            <h2>Server status code was 404</h2>
-            <p>Sorry, but the requested page at</p>
-            <pre>{{ request.path }}</pre>
-            <p>is unavailable.</p>
+    <div class="richtemplates-panel">
+        <h5>{% trans "Page unavailable" %}</h5>
+        <div class="richtemplates-panel-content">
+            <h1>{% trans "Page unavailable" %}</h1>
+            <ul class="messages">
+                <li class="message message-error">{% trans "We are sorry, but this page does not exist" %}</li>
+            </ul>
         </div>
     </div>
 </div>
