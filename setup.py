@@ -16,7 +16,6 @@ def find_package_data():
                 data['richtemplates'].append(fpath)
     return data
 import pprint
-print pprint.pformat(find_package_data())
 
 setup(
     name = 'django-richtemplates',
