@@ -7,4 +7,5 @@ syntax: glob
 *.bak
 build
 dist
+_build
 .DS_Store
