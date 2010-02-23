@@ -6,9 +6,16 @@
 Welcome to django-richtemplates's documentation!
 ================================================
 
-`Richtemplates` is a set of templates (surprise!), template tags, media files
-providing presentation layer similar to what Richfaces library offers for J2EE
-developers - not outstanding but still nice looking and elegant.
+`django-richtemplates`_ is a set of templates (surprise!), template tags,
+media files providing presentation layer similar to what Richfaces library
+offers for J2EE developers - not outstanding but still nice looking and
+elegant.
+
+We wanted to have ability to prototype Django_ projects/applications
+with some basic set of templates and thats why `django-richtemplates`_
+was created. We use it for our company's intranet applications but it
+can be also easily used for example projects in other Django_ pluggable
+applications.
 
 .. image:: _static/richtemplates-examples-home.png
    :width: 500px
@@ -31,6 +38,7 @@ Documentation
 
    forms
    middleware
+   templates
 
 **Included utilities:**
 
@@ -52,3 +60,6 @@ Other topics
 
    screenshots
    documentation_guidelines
+
+.. _django: http://www.djangoproject.com
+.. _django-richtemplates: http://bitbucket.org/lukaszb/django-richtemplates/

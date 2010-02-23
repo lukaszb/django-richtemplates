@@ -7,7 +7,7 @@ Forms
 `django-richtemplates`_ comes with some custom forms which are designed
 to be reusable and easily extensible. Here is a list of available forms:
 
-1. :ref:`limiting_model_form`
+* :ref:`limiting_model_form`
 
 .. _limiting_model_form:
 
@@ -38,6 +38,10 @@ assume we have one model which is *heart* of our scheme, and we have also
        project = models.ForeignKey(Project)
        status = models.ForeignKey('Status')
        priority = models.ForeignKey('Priority')
+       created_at = models.DateTimeField(auto_now_add=True)
+       author = models.ForeignKey(User)
+       edited_at = models.DateTimeField(auto_now=True)
+       editor = models.ForeignKey(User)
    
    class Status(models.Model):
        name = models.CharField(max_length=16)
