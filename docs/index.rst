@@ -30,6 +30,7 @@ Documentation
    :maxdepth: 2
 
    forms
+   middleware
 
 **Included utilities:**
 
