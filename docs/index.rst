@@ -11,6 +11,7 @@ providing presentation layer similar to what Richfaces library offers for J2EE
 developers - not outstanding but still nice looking and elegant.
 
 .. image:: _static/richtemplates-examples-home.png
+   :width: 500px
 
 Documentation
 =============
@@ -22,6 +23,13 @@ Documentation
    
    installation
    configuration
+
+**Richtemplates**
+
+.. toctree::
+   :maxdepth: 2
+
+   forms
 
 **Included utilities:**
 

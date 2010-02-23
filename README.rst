@@ -1,15 +1,34 @@
-==========================================================================
-Richtemplates -- Templates, media, tags for django based on Java Richfaces
-==========================================================================
+================================================================
+django-richtemplates -- basic Richfaces port for Django projects
+================================================================
 
-`Richtemplates` is a set of templates (surprise!), template tags, media files
-providing presentation layer similar to what Richfaces library offers for J2EE
-developers - not outstanding but still nice looking and elegant.
+`django-richtemplates`_ is a set of templates (surprise!), template tags,
+media files providing presentation layer similar to what Richfaces library
+offers for J2EE developers - not outstanding but still nice looking and
+elegant.
 
 Installation
 ------------
 
 Refer to INSTALL.rst file.
+
+Documentation
+-------------
+
+Documentation is available online at
+http://packages.python.org/django-richtemplates/.
+
+Plain restructuredText
+documents are located at ``docs/`` directory. You may also build *html*
+version by running ``make html`` at ``docs/`` directory or ``python
+setup.py build_sphinx``.
+
+Bugs and issues
+---------------
+
+Bug and issue tracker is located at bitbucket's project page
+http://bitbucket.org/lukaszb/django-richtemplates/. You may find sources
+there as well.
 
 License
 -------
@@ -26,4 +45,5 @@ Third part tools
 
 .. _jquery: http://docs.jquery.com/
 .. _famfamfam: http://www.famfamfam.com/archive/silk-icons-thats-your-lot/
+.. _django-richtemplates: http://bitbucket.org/lukaszb/django-richtemplates/
 
