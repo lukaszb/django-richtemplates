@@ -9,8 +9,6 @@
 
 {% block menu_top_right %}
     <li>User: {{ user }}</li>
-    {# Uncomment list item below in order to show login/logout links #}
-    {% comment %}
     <li>
         {% if user.is_authenticated %}
         <a href="{% url auth_logout %}">Log out</a>
@@ -18,7 +16,6 @@
         <a href="{% url auth_login %}">Log in</a>
         {% endif %}
     </li>
-    {% endcomment %}
     {% if user.is_staff %}
         <li><a href="/admin/">Admin</a> |</li>
     {% endif %}

@@ -85,16 +85,16 @@ Top menus
 Tables
 ~~~~~~
 
-Generally we use one table layout to present data. By design decision we
+Generally we use one table layout to present data. We
 decided not to use ``templatetags`` (provided by, for instance, django-tables_)
 as in many situations we would like to have more flexible way to change
-the way how data is shown witin a table. This may still change in future
+the looks & feel of the table. This may still change in future
 as it seems is the *right* way.
 
 After a few words of introduction here is an example of how you can use
 provided set of styles in your template (we assume that ``task_list``
-queryset is passed and available in the context and it is a queryset
-of model ``Task`` defined at :ref:`templates-example-models`):
+queryset is passed into the context and it is a queryset
+of model ``Task`` defined at :ref:`templates-example-models` above):
 
 .. code-block:: django 
 
@@ -156,13 +156,13 @@ Sorted tables
 In order to use django-sorting_ (which, again, we all do :)) before we present
 our table we need to:
 
-1. Load django-sorting_ templatetags::
+1. Load django-sorting_ templatetags:
 
    .. code-block:: django
 
       {% load sorting_tags %}
 
-2. Sort given queryset::
+2. Sort given queryset:
 
    .. code-block:: django
 

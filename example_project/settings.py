@@ -56,8 +56,12 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.webdesign',
 
-    'djalog',
+    'pagination',
+    'django_sorting',
+    'registration',
+
     'richtemplates',
+    'richtemplates.examples',
     'example_project',
 )
 
@@ -68,7 +72,9 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.transaction.TransactionMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
 
-    'djalog.middleware.SQLLoggingMiddleware',
+    'richtemplates.middleware.Http403Middleware',
+    'django_sorting.middleware.SortingMiddleware',
+    'pagination.middleware.PaginationMiddleware',
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
@@ -103,4 +109,14 @@ DJALOG_FORMAT = '[%(levelname)s] %(message)s'
 if DEBUG:
     DJALOG_SQL = True
     DJALOG_LEVEL = 5
+
+try:
+    import djalog
+    INSTALLED_APPS += ('djalog',)
+    if DJALOG_SQL:
+        MIDDLEWARE_CLASSES += (
+            'djalog.middleware.SQLLoggingMiddleware',
+        )
+except ImportError:
+    pass
 

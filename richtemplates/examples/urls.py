@@ -29,5 +29,6 @@ urlpatterns = patterns('django.views.generic.simple',
 urlpatterns += patterns('richtemplates.examples.views',
     url(r'^colors/$', 'colors', name='richtemplates_examples_colors'),
     url(r'^forms/form1/$', 'form1', name='richtemplates_examples_form1'),
+    url(r'^tasks/$', 'task_list', name='richtemplates_examples_task_list'),
 )
 

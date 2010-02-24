@@ -37,7 +37,7 @@ a.button-link:hover {
 }
 
 label {font-weight: bold;}
-hr { color: #008894; }
+hr { color: #008894; margin-bottom: 10px; }
 
 input {
 	border: 1px solid #4477AA;

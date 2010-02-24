@@ -39,6 +39,7 @@ Documentation
    forms
    middleware
    templates
+   example_project
 
 **Included utilities:**
 

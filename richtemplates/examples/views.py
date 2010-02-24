@@ -1,12 +1,14 @@
 import logging
 
 from django.views.generic import simple
+from django.views.generic import list_detail 
 from django.utils.datastructures import SortedDict
 from django.shortcuts import render_to_response
 from django.http import HttpResponseRedirect
 from django.template import RequestContext
 
 from richtemplates.examples.forms import ContactForm
+from richtemplates.examples.models import Task
 
 try:
     from django.contrib import messages
@@ -39,6 +41,19 @@ def form1(request, template_name='richtemplates/examples/form1.html'):
         'form': form,
     }
     return render_to_response(template_name, context, RequestContext(request))
+
+def task_list(request, template_name='richtemplates/examples/tasks/list.html'):
+    """
+    Returns ``Task`` objects list.
+    """
+    task_list_info = {
+        'queryset': Task.objects\
+            .select_related('status', 'project', 'priority'),
+        'template_object_name': 'task',
+        'template_name': template_name,
+    }
+    return list_detail.object_list(request, **task_list_info)
+
 
 """
 Colors dict taken from http://www.computerhope.com/htmcolor.htm

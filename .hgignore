@@ -9,3 +9,5 @@ build
 dist
 _build
 .DS_Store
+example_project/media
+example_project/.hidden.db

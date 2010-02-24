@@ -1,0 +1,15 @@
+{% extends "richtemplates/examples/base.html" %}
+
+{% block col_left_extra %}
+<div class="richtemplates-panel">
+    <h5>Tasks</h5>
+    <div class="richtemplates-panel-content">
+        
+        <ul class="nav-vertical">
+            <li><a href="{% url richtemplates_examples_task_list %}">Task list</a></li>
+        </ul>
+
+    </div>
+</div>
+{% endblock %}
+
