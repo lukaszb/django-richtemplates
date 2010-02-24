@@ -1,0 +1,48 @@
+{% extends "richtemplates/examples/projects/base.html" %}
+
+{% load pagination_tags %}
+{% load sorting_tags %}
+
+{% block col_main_title %}Task list{% endblock %}
+{% block col_main %}
+
+<div class="richtemplates-panel">
+    <h5>Tasks</h5>
+    <div class="richtemplates-panel-content">
+        <h1>Task List</h1>
+
+        {% autosort task_list %}
+        {% autopaginate task_list %}
+
+        <table class="datatable">
+            <thead class="datatable-thead">
+                <tr class="datatable-thead-subheader">
+                    <th>ID</th>
+                    <th>{% anchor summary "Summary" %}</th>
+                    <th>{% anchor created_at "Created at" %}</th>
+                    <th>{% anchor project "Project" %}</th>
+                    <th>Reported by</th>
+                    <th>Modified at</th>
+                    <th>Last editor</th>
+                    <th>{% anchor status "Status" %}</th>
+                </tr>
+            </thead>
+            <tbody class="datatable-tbody">
+                {% for task in task_list %}
+                <tr class="{% cycle "odd" "even" %} hoverable">
+                    <td>{{ task.id }}</td>
+                    <td><a href="{% url richtemplates_examples_task_detail task.id %}">{{ task.summary }}</a></td>
+                    <td>{{ task.created_at }}</td>
+                    <td>{{ task.project }}</td>
+                    <td>{{ task.author }}</td>
+                    <td>{{ task.edited_at }}</td>
+                    <td>{{ task.editor }}</td>
+                    <td>{{ task.status }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        {% paginate %}
+                
+{% endblock %}

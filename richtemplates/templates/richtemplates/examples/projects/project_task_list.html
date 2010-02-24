@@ -1,22 +1,14 @@
-{% extends "richtemplates/examples/tasks/base.html" %}
+{% extends "richtemplates/examples/projects/project_detail.html" %}
 
+{% load markup %}
+{% load i18n %}
 {% load pagination_tags %}
 {% load sorting_tags %}
 
-{% block col_main_title %}Task list{% endblock %}
-{% block col_main %}
-
-<div class="richtemplates-panel">
-    <h5>Tasks</h5>
+{% block col_main_extra %}
+<div class="richtemplates-panel">    
+    <h5>{% trans "Project details" %}</h5>
     <div class="richtemplates-panel-content">
-        <h1>Task List</h1>
-        <ul class="nav-inline">
-            <li><a class="button-link" href="#">Link 1</a></li>
-            <li><a class="button-link" href="#">Link 2</a></li>
-        </ul>
-
-        <hr/>
-
         {% autosort task_list %}
         {% autopaginate task_list %}
 
@@ -26,7 +18,6 @@
                     <th>ID</th>
                     <th>{% anchor summary "Summary" %}</th>
                     <th>{% anchor created_at "Created at" %}</th>
-                    <th>{% anchor project "Project" %}</th>
                     <th>Reported by</th>
                     <th>Modified at</th>
                     <th>Last editor</th>
@@ -37,9 +28,8 @@
                 {% for task in task_list %}
                 <tr class="{% cycle "odd" "even" %} hoverable">
                     <td>{{ task.id }}</td>
-                    <td>{{ task.summary }}</td>
+                    <td><a href="{% url richtemplates_examples_task_detail task.id %}">{{ task.summary }}</a></td>
                     <td>{{ task.created_at }}</td>
-                    <td>{{ task.project }}</td>
                     <td>{{ task.author }}</td>
                     <td>{{ task.edited_at }}</td>
                     <td>{{ task.editor }}</td>
@@ -50,5 +40,6 @@
         </table>
 
         {% paginate %}
-                
-{% endblock %}
+    </div>
+</div>
+{% endblock col_main_extra %}

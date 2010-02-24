@@ -11,3 +11,4 @@ __version__ = '0.2.0.alpha'
 def get_version():
     return __version__
 
+import richtemplates.settings

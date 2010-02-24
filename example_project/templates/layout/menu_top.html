@@ -1,10 +1,8 @@
 {% extends "richtemplates/layout/menu_top.html" %}
 
 {% block menu_top_left %}
-<li><a href="#home">Home</a></li>
-<li><a href="#menu_item_1">Menu item 1</a></li>
-<li><a href="#menu_item_2">Menu item 2</a></li>
-<li><a href="#menu_item_3">Menu item 3</a></li>
+<li><a href="{% url richtemplates_examples_home %}">Home</a></li>
+<li><a href="{% url richtemplates_examples_task_list %}">Project management</a></li>
 {% endblock %}
 
 {% block menu_top_right %}

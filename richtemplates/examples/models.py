@@ -11,9 +11,19 @@ class Project(models.Model):
     def __unicode__(self):
         return self.name
 
+    @models.permalink
+    def get_absolute_url(self):
+        return ('richtemplates_examples_project_detail', (),
+            {'project_id': self.id})
+
+    @models.permalink
+    def get_task_list_url(self):
+        return ('richtemplates_examples_project_task_list', (),
+            {'project_id': self.id})
+
 class Task(models.Model):
     summary = models.CharField(max_length=64)
-    content = models.TextField()
+    content = models.TextField(help_text="Uses restructuredText")
     project = models.ForeignKey(Project)
     status = models.ForeignKey('Status')
     priority = models.ForeignKey('Priority')
@@ -24,6 +34,16 @@ class Task(models.Model):
 
     def __unicode__(self):
         return u'#%s %s' % (self.id, self.summary)
+
+    @models.permalink
+    def get_absolute_url(self):
+        return ('richtemplates_examples_task_detail', (),
+            {'task_id': self.id})
+
+    @models.permalink
+    def get_edit_url(self):
+        return ('richtemplates_examples_task_edit', (),
+            {'task_id': self.id})
 
     def get_duration(self):
         """

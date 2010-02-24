@@ -1,0 +1,78 @@
+{% extends "richtemplates/examples/projects/base.html" %}
+
+{% load markup %}
+{% load i18n %}
+
+{% block extra_head %}{{ block.super }}
+<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}richtemplates/css/pygments.css" />
+{% endblock %}
+
+{% block col_main_title %}{{ project.name }}{% endblock %}
+
+{% block col_main %}
+<div class="richtemplates-panel">
+    <h5>{{ task.summary }}</h5>
+    <div class="richtemplates-panel-content">
+        <h1>{{ task.summary|capfirst }}</h1>
+        <h2>Project: {{ task.project }}</h2>
+        <ul class="nav-inline">
+            <li><a class="button-link" href="{{ task.get_absolute_url }}">Details</a></li>
+            <li><a class="button-link" href="{{ task.get_edit_url }}">Edit</a></li>
+        </ul>
+
+    </div>
+</div>
+
+{% block col_main_extra %}
+<div class="richtemplates-panel">    
+    <h5>{% trans "Project details" %}</h5>
+    <div class="richtemplates-panel-content">
+        <div class="richblock">
+            <table class="richblock-properties">
+                <tbody>
+                    <tr>
+                        <th>Id</th>
+                        <td>{{ task.id }}</td>
+                    </tr>
+                    <tr>
+                        <th>Project</th>
+                        <td><a href="{% url richtemplates_examples_project_detail task.project.id %}">{{ task.project }}</a></td>
+                    </tr>
+                    <tr>
+                        <th>Status</th>
+                        <td>{{ task.status }}</td>
+                    </tr>
+                    <tr>
+                        <th>Priority</th>
+                        <td>{{ task.priority }}</td>
+                    </tr>
+                    <tr>
+                        <th>Reported by</th>
+                        <td>{{ task.author }}</td>
+                    </tr>
+                    <tr>
+                        <th>Reported at</th>
+                        <td>{{ task.created_at }}</td>
+                    </tr>
+                    <tr>
+                        <th>Last updated at</th>
+                        <td>{{ task.edited_at }}</td>
+                    </tr>
+                    <tr>
+                        <th>Last updated by</th>
+                        <td>{{ task.editor }}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <h2>{% trans "Description" %}:</h2>
+            <div class="richblock-description">
+                {{ task.content|safe|restructuredtext }}
+            </div>
+        </div>
+    </div>
+</div>
+    {% endblock col_main_extra %}
+
+{% endblock col_main %}
+
+

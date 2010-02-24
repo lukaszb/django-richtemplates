@@ -1,14 +1,18 @@
 import logging
 
 from django.views.generic import simple
-from django.views.generic import list_detail 
+from django.views.generic import list_detail
 from django.utils.datastructures import SortedDict
-from django.shortcuts import render_to_response
+from django.shortcuts import render_to_response, get_object_or_404
 from django.http import HttpResponseRedirect
+from django.http import HttpResponseForbidden
 from django.template import RequestContext
+from django.db.models import Count
+from django.contrib import messages
 
 from richtemplates.examples.forms import ContactForm
-from richtemplates.examples.models import Task
+from richtemplates.examples.forms import TaskForm
+from richtemplates.examples.models import Task, Project
 
 try:
     from django.contrib import messages
@@ -42,7 +46,7 @@ def form1(request, template_name='richtemplates/examples/form1.html'):
     }
     return render_to_response(template_name, context, RequestContext(request))
 
-def task_list(request, template_name='richtemplates/examples/tasks/list.html'):
+def task_list(request, template_name='richtemplates/examples/projects/task_list.html'):
     """
     Returns ``Task`` objects list.
     """
@@ -54,10 +58,88 @@ def task_list(request, template_name='richtemplates/examples/tasks/list.html'):
     }
     return list_detail.object_list(request, **task_list_info)
 
+def task_detail(request, task_id,
+        template_name='richtemplates/examples/projects/task_detail.html'):
+    """
+    Returns single ``Task`` details.
+    """
+    task_detail_info = {
+        'queryset': Task.objects\
+            .select_related('status', 'project', 'priority'),
+        'object_id': task_id,
+        'template_name': template_name,
+        'template_object_name': 'task',
+    }
+    return list_detail.object_detail(request, **task_detail_info)
 
-"""
-Colors dict taken from http://www.computerhope.com/htmcolor.htm
-"""
+def project_list(request,
+    template_name='richtemplates/examples/projects/project_list.html'):
+    """
+    Returns ``Project`` objects list.
+    """
+    project_list_info = {
+        'queryset': Project.objects.all().annotate(Count('task')),
+        'template_name': template_name,
+        'template_object_name': 'project',
+    }
+    return list_detail.object_list(request, **project_list_info)
+
+def project_detail(request, project_id,
+    template_name='richtemplates/examples/projects/project_detail.html'):
+    """
+    Returns single ``Project`` details.
+    """
+    project_info = {
+        'queryset': Project.objects.all(),
+        'template_name': template_name,
+        'template_object_name': 'project',
+        'object_id': project_id,
+    }
+    return list_detail.object_detail(request, **project_info)
+
+def project_task_list(request, project_id,
+    template_name='richtemplates/examples/projects/project_task_list.html'):
+    """
+    Returns ``Task`` objects list for chosen ``Project``.
+    """
+    project = get_object_or_404(Project, id=project_id)
+    context = {
+        'project': project,
+        'task_list': project.task_set\
+            .select_related('project', 'status', 'priority'),
+    }
+    return render_to_response(template_name, context, RequestContext(request))
+
+def task_edit(request, task_id,
+    template_name='richtemplates/examples/projects/task_form.html'):
+    """
+    Edits ``Task`` object.
+    """
+    task = get_object_or_404(Task, id=task_id)
+
+    if request.method == 'POST':
+        form = TaskForm(request.POST, instance=task)
+        if form.is_valid():
+            task = form.save()
+            messages.success(request, "Task updated successfully.")
+            return HttpResponseRedirect(task.get_absolute_url())
+    else:
+        form = TaskForm(instance=task)
+
+    context = {
+        'form' : form,
+    }
+
+    return render_to_response(template_name, context, RequestContext(request))
+
+def forbidden(request):
+    """
+    Always returns HttpResponseForbidden, even for superuser.
+    """
+    return HttpResponseForbidden()
+
+
+# Colors dict taken from http://www.computerhope.com/htmcolor.htm
 
 COLORS = {
     'Black': '#000000',

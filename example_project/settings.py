@@ -42,6 +42,7 @@ TEMPLATE_DEBUG = DEBUG
 SITE_ID = 1
 TIME_ZONE = "America/Chicago"
 USE_I18N = True
+USE_I10N = True
 LOGIN_REDIRECT_URL = '/'
 SECRET_KEY = 'g==ps7az_^^5vn-bty+&o231kh)ei(xzvrikp6i#&7=q9htof1'
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
@@ -56,6 +57,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.webdesign',
 
+    'djalog',
     'pagination',
     'django_sorting',
     'registration',
@@ -120,3 +122,10 @@ try:
 except ImportError:
     pass
 
+# ====================== #
+# RICHTEMPLATES SETTINGS #
+# ====================== #
+
+RICHTEMPLATES_RESTRUCTUREDTEXT_DIRECTIVES = {
+    'code-block': 'richtemplates.rstdirectives.pygments_directive',
+}
