@@ -7,7 +7,10 @@ html { height: 100%; background-color: #DBD4C6; }
 
 body { font-size: 11px; font-family: Arial, sans-serif, Verdana;}
 h1, h2, h3, h3 { margin-top: 10px; padding-bottom: 10px; }
-p { margin-bottom: 1.5em; }
+p { 
+    margin-bottom: 1.5em;
+    margin-top: 1em;
+}
 
 a:active,a:link,a:visited { color: #0D5798; }
 a:hover { color: #8CAFCD; }
@@ -22,7 +25,7 @@ a.deletelink {
 	padding-left:14px;
 }
 a.button-link {
-    background: #4477AA url(../img/button-link.gif) repeat-x;
+    background: #4477AA url(/media/richtemplates/img/button-link.gif) repeat-x;
     color: #FFF;
     border: 1px solid #153E7E;
     border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px;
@@ -31,7 +34,7 @@ a.button-link {
     text-decoration: none;
 }
 a.button-link:hover {
-    background: #008894 url(../img/button-link-hovered.gif) repeat-x;;
+    background: #008894 url(/media/richtemplates/img/button-link-hovered.gif) repeat-x;;
     border-color: #153E7E;
     border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px;
 }
@@ -47,14 +50,14 @@ input {
 textarea { background: #F0F8FF; }
 
 input[type='submit'],input[type='button'] {
-    background: #4477AA url(../img/button-link.gif) repeat-x;
+    background: #4477AA url(/media/richtemplates/img/button-link.gif) repeat-x;
 	color: white;
 	margin: 5px;
 	border-color: #153E7E;
     border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px;
 }
 input[type='submit']:hover,input[type='button']:hover {
-    background: #008894 url(../img/button-link-hovered.gif) repeat-x;;
+    background: #008894 url(/media/richtemplates/img/button-link-hovered.gif) repeat-x;;
     cursor: pointer;
     border-color: #153E7E;
     border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px;
@@ -89,7 +92,7 @@ input.disabled { background: #E8E8E8; }
 .menu-top {
     width: 100%;
     height: 22px;
-    background: #008894 url(../img/gradient_big_aqua.png) repeat-x top left;
+    background: #008894 url(/media/richtemplates/img/gradient_big_aqua.png) repeat-x top left;
     font: bold 11px Arial, Verdana, sans-serif;
     color: #fff;
     white-space: nowrap;
@@ -151,7 +154,7 @@ div.richtemplates-panel h5{
 	font: bold 1em Arial, Verdana, sans-serif;
 	border: 1px solid #008894;
 	height: 20px;
-	background: #008894 url(../img/gradient_big_aqua.png) repeat-x top left;
+	background: #008894 url(/media/richtemplates/img/gradient_big_aqua.png) repeat-x top left;
 	color: #FFF;
 	font: bold 11px Arial, Verdana, sans-serif;
 	padding: 3px 5px 1px 5px;
@@ -214,7 +217,7 @@ table.datatable th, table.datatable td { border: 1px solid #999; padding: 3px 5p
 tr.datatable-thead-header {
 	color: #FFF;
 	font-weight: bold;
-	background: #C2EBEE url(../img/gradient_big_aqua.png) repeat-x top left;
+	background: #C2EBEE url(/media/richtemplates/img/gradient_big_aqua.png) repeat-x top left;
 }
 table.datatable th { background-color: #C2EBEE; }
 tbody.datatable-tbody td { background-color: #FFF; }
@@ -246,27 +249,27 @@ ul.messages li.message, .message p {
 .message-debug {
     color: #005898;
     border-color: #9fd1f5;
-    background: #c3e6ff url("../img/icons/debug.png") 4px 5px no-repeat;
+    background: #c3e6ff url("/media/richtemplates/img/icons/debug.png") 4px 5px no-repeat;
 }
 .message-info {
     color: #005898;
     border-color: #9fd1f5;
-    background: #c3e6ff url("../img/icons/info.png") 4px 5px no-repeat;
+    background: #c3e6ff url("/media/richtemplates/img/icons/info.png") 4px 5px no-repeat;
 }
 .message-success {
     color: #336801;
     border-color: #a6d877;
-    background: #d2ecba url("../img/icons/success.png") 5px 5px no-repeat;
+    background: #d2ecba url("/media/richtemplates/img/icons/success.png") 5px 5px no-repeat;
 }
 .message-warning {
     color: #6c6600;
     border-color: #d7e059;
-    background: #f3f7aa url("../img/icons/warning.png") 5px 5px no-repeat;
+    background: #f3f7aa url("/media/richtemplates/img/icons/warning.png") 5px 5px no-repeat;
 }
 .message-error {
     color: #8d0d0d;
     border-color: #f3abab;
-    background: #f9c9c9 url("../img/icons/error.png") 5px 5px no-repeat;
+    background: #f9c9c9 url("/media/richtemplates/img/icons/error.png") 5px 5px no-repeat;
 }
 
 ul.errorlist { list-style: none; color: #b51818; float: left; padding: 0;}
@@ -343,6 +346,43 @@ ul.errorlist li { float: left; padding: 0; }
 input:focus, textarea:focus {
     background:#ffc;
     border: 1px solid #00CDCD;
+}
+
+
+/**************
+ * Richblocks *
+ **************/
+
+.richblock {
+    background-color: #FAF8CC;
+    border: 1px solid #996;
+    border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px;
+    margin: 10px 5px;
+}
+.richblock h2, .richblock h3 {
+    margin: 10px 5px;
+    border-bottom: 1px solid #DDDD99;
+}
+.richblock-description {
+    margin: 10px 5px;
+    padding: 5px;
+}
+.richblock ul, .richblock ol {
+    padding-left: 30px;
+}
+
+table.richblock-properties {
+    /*width: 100%;*/
+    margin: 5px;
+}
+table.richblock-properties th {
+    text-align: right;
+    float: right;
+    margin-right: 10px;
+}
+table.richblock-properties td, table.richblock-properties th {
+    height: 1.5em;
+    vertical-align: top;
 }
 
 /* Flipper classes */

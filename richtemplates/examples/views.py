@@ -1,4 +1,5 @@
 import logging
+import django_filters
 
 from django.views.generic import simple
 from django.views.generic import list_detail
@@ -12,6 +13,8 @@ from django.contrib import messages
 
 from richtemplates.examples.forms import ContactForm
 from richtemplates.examples.forms import TaskForm
+from richtemplates.examples.forms import TaskFilterForm
+from richtemplates.examples.forms import TaskFilter
 from richtemplates.examples.models import Task, Project
 
 try:
@@ -103,10 +106,17 @@ def project_task_list(request, project_id,
     Returns ``Task`` objects list for chosen ``Project``.
     """
     project = get_object_or_404(Project, id=project_id)
+    task_list = project.task_set\
+        .select_related('status', 'priority')\
+        .defer('content')
+    filter = TaskFilter(request.GET,
+        queryset = task_list)
+
     context = {
         'project': project,
-        'task_list': project.task_set\
-            .select_related('project', 'status', 'priority'),
+        #'task_list': task_list,
+        #'filter_form': filter_form,
+        'filter': filter,
     }
     return render_to_response(template_name, context, RequestContext(request))
 

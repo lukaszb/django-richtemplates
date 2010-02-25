@@ -1,6 +1,6 @@
 div.codeblock {
     overflow: auto;
-    padding: 2px;
+    padding: 0px;
     border: 1px solid #ccc;
     background: #f8f8f8;
     font-size: 100%;
@@ -10,11 +10,12 @@ div.codeblock {
 }
 
 .code-highlight {
-    padding: 5px 2px 5px 2px;
-    border-left: 2px solid #008000;
+    padding: 0px;
+    border-left: 2px solid #ccc;
 }
-.code-highlight pre, .linenos { 
-	padding-top: 0;
+.code-highlight pre, .linenodiv pre { 
+	padding: 5px;
+    margin: 0;
 }
 .linenos a { text-decoration: none; }
 

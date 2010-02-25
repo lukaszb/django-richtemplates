@@ -5,15 +5,36 @@
 {% load pagination_tags %}
 {% load sorting_tags %}
 
+{% block col_left %}
+
+<div class="richtemplates-panel">
+    <h5>Task search</h5>
+    <div class="richtemplates-panel-content">
+        <form action="." method="get">
+            {% csrf_token %}
+            <table class="filterform-table">
+                {% for field in filter.form %}
+                    {% include "richtemplates/forms/filter-field.html" %}
+                {% endfor %}
+            </table>
+            <p>
+                <input id="id_filter_task" type="submit" value="Search" />
+            </p>
+        </form>
+    </div>
+</div>
+{% endblock %}
+
 {% block col_main_extra %}
 <div class="richtemplates-panel">    
     <h5>{% trans "Project details" %}</h5>
     <div class="richtemplates-panel-content">
-        {% autosort task_list %}
-        {% autopaginate task_list %}
+        {% autosort filter.qs as task_list %}
+        {% autopaginate task_list 10 %}
 
         <table class="datatable">
             <thead class="datatable-thead">
+                <tr class="datatable-thead-header"><th colspan="7">Tasks</th></tr>
                 <tr class="datatable-thead-subheader">
                     <th>ID</th>
                     <th>{% anchor summary "Summary" %}</th>
