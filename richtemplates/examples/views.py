@@ -13,7 +13,6 @@ from django.contrib import messages
 
 from richtemplates.examples.forms import ContactForm
 from richtemplates.examples.forms import TaskForm
-from richtemplates.examples.forms import TaskFilterForm
 from richtemplates.examples.forms import TaskFilter
 from richtemplates.examples.models import Task, Project
 
@@ -110,12 +109,10 @@ def project_task_list(request, project_id,
         .select_related('status', 'priority')\
         .defer('content')
     filter = TaskFilter(request.GET,
-        queryset = task_list)
+        queryset=task_list, project=project)
 
     context = {
         'project': project,
-        #'task_list': task_list,
-        #'filter_form': filter_form,
         'filter': filter,
     }
     return render_to_response(template_name, context, RequestContext(request))

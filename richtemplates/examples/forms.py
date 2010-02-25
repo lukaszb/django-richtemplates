@@ -26,45 +26,22 @@ class TaskForm(LimitingModelForm):
     class Media:
         css = {'all': ['richtemplates/css/monoarea.css']}
 
-class TaskFilterForm(LimitingModelForm):
-    task_id = forms.IntegerField("#", min_value=1)
-    created_from = forms.DateTimeField(label="Created from",
-        widget=forms.DateTimeInput(attrs={'class': 'datepicker'}),
-        help_text='YYYY-MM-DD')
-    created_to = forms.DateTimeField(label="Created to",
-        widget=forms.DateTimeInput(attrs={'class': 'datepicker'}),
-        help_text='YYYY-MM-DD')
-    
-    def __init__(self, *args, **kwargs):
-        ret = super(TaskFilterForm, self).__init__(*args, **kwargs)
-        for field in self.base_fields.values():
-            field.required = False
-        return ret
+def TaskFilter(data=None, queryset=Task.objects.all(), project=None):
+    """
+    Factory method which returns ``FilterSet`` for given project.
+    """
+    class TaskFilter(django_filters.FilterSet):
+        class Meta:
+            model = Task
+            fields = ['id', 'status', 'priority']
 
-    class Meta:
-        model = Task
-        choices_limiting_fields = ['project']
-        fields = ['status', 'priority', 'summary', 'project']
-
-    def get_filters(self):
-        """
-        Returns ``Q`` object representing combined filters.
-        """
-        qset = Q()
-
-        if self.is_valid():
-            data = self.cleaned_data
-            if data['task_id']:
-                qset = qset & Q(id=data['task_id'])
-        else:
-            logging.error("TaskFilterForm contains errors: %s"
-                % self.erros)
-        return qset
-
-class TaskFilter(django_filters.FilterSet):
-    class Meta:
-        model = Task
-        fields = ['id', 'status', 'priority']
-
-    
+        def __init__(self, *args, **kwargs):
+            super(TaskFilter, self).__init__(*args, **kwargs)
+            if project:
+                self.filters['status'].extra.update(
+                    {'queryset': project.status_set.all()})
+                self.filters['priority'].extra.update(
+                    {'queryset': project.priority_set.all()})
+    filterset = TaskFilter(data, queryset)
+    return filterset
 

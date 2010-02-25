@@ -34,7 +34,7 @@
 
         <table class="datatable">
             <thead class="datatable-thead">
-                <tr class="datatable-thead-header"><th colspan="7">Tasks</th></tr>
+                <tr class="datatable-thead-header"><th colspan="8">Tasks</th></tr>
                 <tr class="datatable-thead-subheader">
                     <th>ID</th>
                     <th>{% anchor summary "Summary" %}</th>
@@ -43,6 +43,7 @@
                     <th>Modified at</th>
                     <th>Last editor</th>
                     <th>{% anchor status "Status" %}</th>
+                    <th>{% anchor priority "Priority" %}</th>
                 </tr>
             </thead>
             <tbody class="datatable-tbody">
@@ -55,6 +56,7 @@
                     <td>{{ task.edited_at }}</td>
                     <td>{{ task.editor }}</td>
                     <td>{{ task.status }}</td>
+                    <td>{{ task.priority }}</td>
                 </tr>
                 {% endfor %}
             </tbody>
