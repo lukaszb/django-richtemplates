@@ -40,31 +40,8 @@
             {% endfor %}
         </ul>
         {% endif %}
-        {% endblock %}
-        {% comment %}
-        {# Old messages mechanism, pre 1.2 Django #}
-		{% if messages %}
-			<div class="message_box">
-				<ul>
-					{% for message in messages %}
-					<li class="message">{{ message }}</li>
-					{% endfor %}
-				</ul>
-            </div>
-        {% endif %}
-		{% if message or error_message %}
-            <div class="message_box{% if error_message %} errors{% endif %}">
-                <p class="message">
-                	{% if message %}
-						{{ message }}
-					{% else %}
-                    	{{ error_message }}
-                	{% endif %}
-				</p>
-            </div>
-        {% endif %}
-        {% endcomment %}
-		<!-- Content -->
+        {% endblock messages_block %}
+
         {% block content %}
         
 		    <!-- Column Left -->
