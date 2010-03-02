@@ -92,7 +92,7 @@ foreign key to the model we specify in ``choices_limiting_fields`` iterable.
    ``Task`` objects but if you'd try to create new one from admin a
    ``LimitingModelFormError`` would be risen as ``LimitingModelForm``
    requires that field specified in ``chocies_limiting_fields`` option
-   is already set on the object. In future it is probably that some ajax
-   would be added and this *check* would be called only after field is filled.
+   is already set on the object. In future it some ajax could be added
+   and this *check* would be called only after field is filled.
 
 .. _django-richtemplates: http://bitbucket.org/lukaszb/django-richtemplates/

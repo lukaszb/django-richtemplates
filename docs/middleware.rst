@@ -6,6 +6,8 @@ Middleware
 
 This section covers middleware classes available with `django-richtemplates`_.
 
+.. _middleware-403:
+
 HTTP 403 Middleware
 -------------------
 
