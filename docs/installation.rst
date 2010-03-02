@@ -6,10 +6,9 @@ Installation
 ``Richtemplates``, as most Python packages, can be installed in many ways,
 including:
 
-- Automatically from `pypi <http://pypi.python.org/pypi>`_, using package
-  manager
-- Manually from `pypi <http://pypi.python.org/pypi>`_ (source distribution)
-- Manually from `bitbucket <http://bitbucket.org/>`_ (development version)
+- :ref:`installation-automatic-package-manager`
+- :ref:`installation-manual-pypi`
+- :ref:`installation-manual-bitbucket`
 
 Requirements
 ------------
@@ -24,6 +23,8 @@ although it is possible to run it on version 1.1 too [1]_.
    using ``logging.basicConfig`` method to be able to see logs during
    development.
 
+.. _installation-automatic-package-manager:
+
 Automatic installation using package manager
 --------------------------------------------
 
@@ -34,6 +35,8 @@ Simply run::
 or::
 
     pip install django-richtemplates
+
+.. _installation-manual-pypi:
 
 Manual installation from source distribution
 --------------------------------------------
@@ -46,6 +49,8 @@ downloaded the archive, unpack it, go into newly created directory and type::
 
 .. note::
    You will need superuser privileges in order to install the package.
+
+.. _installation-manual-bitbucket:
 
 Manual installation from Mercurial repository
 ---------------------------------------------

@@ -28,6 +28,7 @@ Documentation
 .. toctree::
    :maxdepth: 1
    
+   quickstart
    installation
    configuration
 
@@ -39,7 +40,6 @@ Documentation
    forms
    middleware
    templates
-   example_project
 
 **Included utilities:**
 

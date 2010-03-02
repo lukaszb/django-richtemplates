@@ -1,8 +1,12 @@
 from docutils import nodes
+from django.core.exceptions import ImproperlyConfigured
 
-from pygments import highlight
-from pygments.formatters import HtmlFormatter
-from pygments.lexers import get_lexer_by_name, TextLexer
+try:
+    from pygments import highlight
+    from pygments.formatters import HtmlFormatter
+    from pygments.lexers import get_lexer_by_name, TextLexer
+except ImportError:
+    raise ImproperlyConfigured("Install pygments first")
 
 def pygments_directive(name, arguments, options, content, lineno,
         content_offset, block_text, state, state_machine):
