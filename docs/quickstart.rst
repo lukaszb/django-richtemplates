@@ -12,7 +12,10 @@ Remember that `django-richtemplates`_ needs Django_ >=1.2 (see
 :ref:`installation` and :ref:`configuration` sections for more information).
 
 .. note::
-   Example project would try to use Djalog_ for better logging (sql + colored). 
+   We strongly recommend to use virtualenv_, virtualenvwrapper_ and pip_
+   combo. You could simply create virtual environment::
+
+      mkvirtualenv --no-site-packages richtemplates_test
 
 Simply follow those steps in order to get ``example_project`` running:
 
@@ -24,6 +27,7 @@ Simply follow those steps in order to get ``example_project`` running:
 5. Run development server ``python manage.py runserver``
 6. Visit ``http://127.0.0.1:8000``
 
+.. _pip: http://pypi.python.org/pypi/pip
 .. _django: http://www.djangoproject.com
 .. _djalog: http://pypi.python.org/pypi/Djalog/
 .. _django-richtemplates: http://bitbucket.org/lukaszb/django-richtemplates/

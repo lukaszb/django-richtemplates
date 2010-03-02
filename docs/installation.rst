@@ -56,10 +56,10 @@ Manual installation from Mercurial repository
 ---------------------------------------------
 
 Package is maintained at `bitbucket
-<http://bitbucket.org/lukaszb/richtemplates/>`_ and if you'd like to
+<http://bitbucket.org/lukaszb/django-richtemplates/>`_ and if you'd like to
 you may clone the repository using following command::
 
-    hg clone http://bitbucket.org/lukaszb/richtemplates/
+    hg clone http://bitbucket.org/lukaszb/django-richtemplates/
 
 .. note::
    You'd need to have `Mercurial <http://www.selenic.com/mercurial/>`_
@@ -76,3 +76,4 @@ and run::
 .. [1] You need to provide ``django.contrib.messages`` for your Django
    installation and change some templates to work without CSRF security
    support.
+
