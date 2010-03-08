@@ -46,7 +46,7 @@ Documentation
 .. toctree::
    :maxdepth: 2
 
-   custom_management_commands
+   management
 
 
 Other topics

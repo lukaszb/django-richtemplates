@@ -14,12 +14,16 @@ from richtemplates.management.helpers import copy_dir_helper, make_writeable,\
     get_settings_as_dict
 
 class Command(LabelCommand):
-    help =  '\n'.join(["Copies 'media' directory from django pluggable app into this",
-            "project. Will use used settings module, transform it into dict "
-            "and try to render media files (css/js) using this dict as a context."
-            "Files would be placed at ",
-            os.path.join(settings.MEDIA_ROOT, '<app>'),
-        ])
+    help =\
+    """
+    Copies 'media' directory from django pluggable app into this
+    project. Will use used settings module, transform it into dict
+    and try to render media files (css/js) using this dict as a context.
+    Files would be placed at %s (default, may be overriden by ``--media-root``
+    option).
+    """ % (os.path.join(settings.MEDIA_ROOT, '<app>'),)
+    __doc__ = help
+
     args = '[apps]'
     requires_model_validation = False
     option_list = LabelCommand.option_list + (

@@ -6,4 +6,6 @@ def handle403(request, template_name='403.html'):
     Default error 403 (Permission denied) handler.
     """
 
-    return direct_to_template(request, template=template_name)
+    response = direct_to_template(request, template=template_name)
+    response.status_code = 403
+    return response
