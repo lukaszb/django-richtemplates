@@ -1,3 +1,14 @@
+"""
+In order to use those directives add RICHTEMPLATES_RESTRUCTUREDTEXT_DIRECTIVES
+dictionary in your settings module.
+
+For example, put following dict in settings.py:
+
+RICHTEMPLATES_RESTRUCTUREDTEXT_DIRECTIVES = {
+    'code-block': 'richtemlates.rstdirectives.pygments_directive',
+}
+
+"""
 from docutils import nodes
 from django.core.exceptions import ImproperlyConfigured
 
