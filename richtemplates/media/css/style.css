@@ -359,6 +359,7 @@ input:focus, textarea:focus {
     border: 1px solid #996;
     border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px;
     margin: 10px 5px;
+    padding-bottom: 10px;
 }
 .richblock h2, .richblock h3 {
     margin: 10px 5px;
