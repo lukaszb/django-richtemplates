@@ -1,0 +1,60 @@
+.richtemplates-panel {
+    border-color: #E42217;
+}
+
+div.richtemplates-panel h5 {
+    border-color: #E42217;
+}
+
+a:active, a:link, a:visited { color: #900; }
+a:hover { color: #300; }
+
+a.button-link {
+    background: #4477AA url(../img/ruby-button-link.png) repeat-x;
+    border-color: #E42217;
+}
+
+a.button-link:hover {
+    background: #008894 url(../img/ruby-button-link-hovered.png) repeat-x;;
+    border-color: #E42217;
+    color: #fff;
+}
+
+input[type='submit'],input[type='button'] {
+    background: #4477AA url(../img/ruby-button-link.png) repeat-x;
+}
+
+input[type='submit']:hover,input[type='button']:hover {
+    background: #008894 url(../img/ruby-button-link-hovered.png) repeat-x;;
+}
+
+.menu-top {
+    background: #008894 url(../img/ruby-gradient-big.png) repeat-x top left;
+}
+
+div.richtemplates-panel h5{
+	background: #008894 url(../img/ruby-gradient-big.png) repeat-x top left;
+}
+
+tr.datatable-thead-header th {
+	background: #C2EBEE url(../img/ruby-gradient-big.png) repeat-x top left;
+}
+
+table.datatable th {
+    background-color: #FFBDC3;
+}
+
+table.datatable a:active, table.datatable a:link, table.datatable a:visited {
+    color: #E00;
+}
+table.datatable a:hover {
+    color:#A00;
+}
+
+input[type="submit"], input[type="button"]  {
+    border-color: #E42217;
+}
+
+input[type="submit"]:hover, input[type="button"]:hover  {
+    border-color: #300;
+}

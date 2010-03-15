@@ -15,7 +15,8 @@ HTTP 403 Middleware
 if it comes to the 403 error code handler it has nothing to offer *out-of-the
 -box*. Well, in fact, it has, and it is crucial for this middleware's
 implementation: ``django.http.HttpResponseForbidden``. If this middleware is
-installed and instance of ``django.http.HttpResponseForbidden`` is cought
+installed and instance of ``django.http.HttpResponseForbidden`` is returned
+(which is done if ``django.core.exceptions.PermissionDenied`` is risen, too)
 then ``403.html`` template is returned.
 
 Installation
