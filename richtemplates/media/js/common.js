@@ -3,26 +3,11 @@
    Scripts require jQuery to run.
 */
 
-$(document).ready(function()
-{
-    $('.richtemplates-popup').each(function(){
-        var height = $(this).height();
-        var width = $(this).width();
-        
-        leftVal=e.pageX-(width/2)+"px";
-        topVal=e.pageY-(height/2)+"px";
-        
-        $('#popuup_div').css({left:leftVal,top:topVal}).show().fadeOut(2500);
-    });
-});
-
 function textarea_stabilizator(ta){
     // Dynamically changes textareas' height
     var content = ta.val();
     var content_length = content.split('\n').length;
     var rows = ta.attr('rows');
-
-    console.log("Textarea content length is: " + content_length);
 
     if (content_length <10){
         ta.attr('rows', '10');
@@ -42,6 +27,34 @@ $(document).ready(function(){
     $('textarea').keyup(function(){
         textarea_stabilizator($(this));
     });
+
+   $('.qtooltip').qtip({
+        position: {
+            adjust: {y: -3},
+            corner: {
+                target: 'topMiddle',
+                tooltip: 'bottomMiddle'
+            }
+        },
+        show: {delay: 0},
+        style: {
+            width: {
+                min: 100,
+                max: 350
+            },
+            padding: 5,
+            background: '#c1eaed',
+            color: '#093d6b',
+            textAlign: 'center',
+            border: {
+                width: 5,
+                radius: 5,
+                color: '#093d6b'
+            },
+            tip: 'bottomMiddle'
+        }
+    });
+
 });
 
 

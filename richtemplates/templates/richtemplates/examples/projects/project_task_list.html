@@ -29,6 +29,9 @@
 <div class="richtemplates-panel">    
     <h5>{% trans "Project details" %}</h5>
     <div class="richtemplates-panel-content">
+        <ul class="messages">
+            <li class="message message-info">Move mouse over "Last editor" cell to see how tooltip looks like</li>
+        </ul>
         {% autosort filter.qs as task_list %}
         {% autopaginate task_list 10 %}
 
@@ -54,7 +57,7 @@
                     <td>{{ task.created_at }}</td>
                     <td>{{ task.author }}</td>
                     <td>{{ task.edited_at }}</td>
-                    <td>{{ task.editor }}</td>
+                    <td><span class="qtooltip" title="{{ task.summary }}">{{ task.editor }}</span></td>
                     <td>{{ task.status }}</td>
                     <td>{{ task.priority }}</td>
                 </tr>

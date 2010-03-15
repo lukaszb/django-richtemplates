@@ -424,3 +424,18 @@ table.richblock-properties td, table.richblock-properties th {
     -webkit-border-bottom-right-radius: 5px;
 }
 
+.qtooltip {
+    display: block;
+}
+div.qtip-title {
+    /*background-color: #c1eaed;*/
+    background-color: blue;
+    border-color: red;
+}
+div.qtip-content {
+    border-color: red;
+    background-color: yellow;
+}
+div.qtip {
+    color: green;
+}
