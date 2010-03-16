@@ -28,7 +28,7 @@ $(document).ready(function(){
         textarea_stabilizator($(this));
     });
 
-   $('.qtooltip').qtip({
+   $('.show-tooltip').qtip({
         position: {
             adjust: {y: -3},
             corner: {
