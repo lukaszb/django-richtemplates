@@ -20,7 +20,12 @@ def tooltip(value, max_length=None):
     if max_length:
         max_length = int(max_length)
         output = value[:max_length]
+        if len(value) - 3 > max_length:
+            output += '...'
+    else:
+        output = value
+    value = force_escape(value)
     output = force_escape(output)
-    output = '<span class="show-tooltip" title="%s">%s</span>' %(output, output)
+    output = '<span class="show-tooltip" title="%s">%s</span>' % (value, output)
     return mark_safe(output)
 
