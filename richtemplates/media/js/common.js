@@ -55,6 +55,10 @@ $(document).ready(function(){
         }
     });
 
+    $('.show-tipsy').tipsy({
+        gravity: 's'
+    });
+
 });
 
 
