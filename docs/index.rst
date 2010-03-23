@@ -40,6 +40,7 @@ Documentation
    forms
    middleware
    templates
+   skins
 
 **Included utilities:**
 

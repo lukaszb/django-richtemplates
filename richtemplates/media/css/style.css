@@ -12,8 +12,10 @@ p {
     margin-top: 1em;
 }
 
-a:active,a:link,a:visited { color: #0D5798; }
-a:hover { color: #8CAFCD; }
+hr { color: #008894; border-color: #008894; } 
+
+a:active,a:link,a:visited { color: #00709F; }
+a:hover { color: #000; }
 
 a.block-link { display: block; }
 a.addlink {
@@ -92,7 +94,7 @@ input.disabled { background: #E8E8E8; }
 .menu-top {
     width: 100%;
     height: 22px;
-    background: #008894 url(../img/aqua-gradient-big.png) repeat-x top left;
+    background: #008894 url(../img/aqua-button-link-hovered.png) repeat-x top left;
     font: bold 11px Arial, Verdana, sans-serif;
     color: #fff;
     white-space: nowrap;
@@ -100,7 +102,9 @@ input.disabled { background: #E8E8E8; }
     padding: 0;
     margin: 0 0 0px 0;
 }
-.menu-top a:hover { color: #FFF; }
+.menu-top a { color: #fff; }
+.menu-top a:hover { color: #FFF; text-decoration: none; border-bottom: 2px solid #fff; }
+
 .menu-top-submenu {
     width: 100%;
     height: 22px;
@@ -177,6 +181,7 @@ div.richtemplates-panel h5{
 /* TABLES-FORMS */
 
 table { font-size: 11px; border-collapse: collapse; border-spacing: 0; }
+table th { color: #000; }
 
 table.formset { border: 1px solid #999; margin-bottom: 5px; padding: 5px; }
 
@@ -284,15 +289,15 @@ ul.errorlist li { float: left; padding: 0; }
 
 /* PAGINATOR  */
 .pagination {font-size:9px; padding-top:10px; padding-bottom:10px; line-height:22px; margin:0; border-top:1px solid #ddd; }
-.pagination a:link, .pagination a:visited {padding:2px 6px; border:solid 1px #ccc; background:white; text-decoration:none; margin: 0 1px;}
+.pagination a:link, .pagination a:visited {padding:2px 6px; border:solid 1px #ccc; background-color:white; text-decoration:none; margin: 0 1px;}
 .pagination a.showall { padding:0 !important; border:none !important; }
 .pagination a.showall:hover { color:#036 !important; background:transparent !important; }
 .pagination .end { border-width:2px !important; margin-right:6px; }
 .pagination a.this-page {padding:2px 6px; font-weight:bold; font-size:11px; vertical-align:top; border:solid 2px #aaa;}
-.pagination a:hover {color:white; background:#333; color:#fff;}
+.pagination a:hover {color:white; background-color:#C2EBEE; color:#333; border-color: #0D5798; }
 .pagination a:active {background-color: #C2EBEE;}
-.pagination .current {padding:2px 6px; border:solid 2px #0D5798; background-color:#C2EBEE; color:#999;}
-.pagination .disabled {padding:2px 6px; border:solid 1px #ccc; background:white; text-decoration:none; color: #ccc;}
+.pagination .current {padding:2px 6px; border:solid 2px #0D5798; background-color:#C2EBEE; color:#333;}
+.pagination .disabled {padding:2px 6px; border:solid 1px #ccc; background-color:white; text-decoration:none; color: #ccc;}
 
 
 /* BREADCRUMBS */
@@ -316,26 +321,6 @@ ul.errorlist li { float: left; padding: 0; }
 .richtemplates-breadcrumbs a:hover {
 	color: #0D5798;
 	text-decoration: underline;
-}
-
-/* TOOLTIPS */
-.show-tooltip {display: block;}
-.tooltip{
-    position:absolute;
-    z-index:999;
-    left:-9999px;
-    background-color:#dedede;
-    padding:5px;
-    border:1px solid #fff;
-    width:250px;
-}
-
-.tooltip p{
-    margin:0;
-    padding:0;
-    color:#fff;
-    background-color:#222;
-    padding:2px 7px;
 }
 
 .sql_block { margin: 10px; padding: 5px; border: 1px solid red; }
@@ -424,6 +409,8 @@ table.richblock-properties td, table.richblock-properties th {
     -webkit-border-bottom-right-radius: 5px;
 }
 
+/* TOOLTIPS */
+
 .qtooltip {
     display: block;
 }
@@ -440,6 +427,25 @@ div.qtip {
     color: green;
 }
 
+
+.show-tooltip {display: block;}
+.tooltip{
+    position:absolute;
+    z-index:999;
+    left:-9999px;
+    background-color:#dedede;
+    padding:5px;
+    border:1px solid #fff;
+    width:250px;
+}
+
+.tooltip p{
+    margin:0;
+    padding:0;
+    color:#fff;
+    background-color:#222;
+    padding:2px 7px;
+}
 
 /* ***** *
  * Tipsy *

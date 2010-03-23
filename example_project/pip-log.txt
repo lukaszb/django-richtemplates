@@ -1,0 +1,68 @@
+Downloading/unpacking pycairo
+  Getting page http://pypi.python.org/simple/pycairo
+  URLs to search for versions for pycairo:
+  * http://pypi.python.org/simple/pycairo/
+  Getting page http://cairographics.org/pycairo
+  Skipping page http://cairographics.org/releases/pycairo-1.8.8.tar.gz (from http://pypi.python.org/simple/pycairo/) because of Content-Type: application/x-gzip
+  Skipping page http://cairographics.org/releases/pycairo-1.8.4.tar.gz (from http://pypi.python.org/simple/pycairo/) because of Content-Type: application/x-gzip
+  Skipping page http://cairographics.org/releases/pycairo-1.8.2.tar.gz (from http://pypi.python.org/simple/pycairo/) because of Content-Type: application/x-gzip
+  Skipping page http://cairographics.org/releases/pycairo-1.8.6.tar.gz (from http://pypi.python.org/simple/pycairo/) because of Content-Type: application/x-gzip
+  Analyzing links from page http://pypi.python.org/simple/pycairo/
+    Skipping link http://cairographics.org/pycairo (from http://pypi.python.org/simple/pycairo/); not a file
+    Found link http://cairographics.org/releases/pycairo-1.8.8.tar.gz (from http://pypi.python.org/simple/pycairo/), version: 1.8.8
+    Found link http://cairographics.org/releases/pycairo-1.8.4.tar.gz (from http://pypi.python.org/simple/pycairo/), version: 1.8.4
+    Found link http://cairographics.org/releases/pycairo-1.8.2.tar.gz (from http://pypi.python.org/simple/pycairo/), version: 1.8.2
+    Found link http://cairographics.org/releases/pycairo-1.8.6.tar.gz (from http://pypi.python.org/simple/pycairo/), version: 1.8.6
+  Analyzing links from page http://cairographics.org/pycairo/
+    Skipping link http://cairographics.org/style.css (from http://cairographics.org/pycairo/); unknown archive format: .css
+    Skipping link http://cairographics.org/local.css (from http://cairographics.org/pycairo/); unknown archive format: .css
+    Skipping link http://cairographics.org/ (from http://cairographics.org/pycairo/); not a file
+    Skipping link http://cairographics.org/news/ (from http://cairographics.org/pycairo/); not a file
+    Skipping link http://cairographics.org/download/ (from http://cairographics.org/pycairo/); not a file
+    Skipping link http://cairographics.org/documentation/ (from http://cairographics.org/pycairo/); not a file
+    Skipping link http://cairographics.org/contact/ (from http://cairographics.org/pycairo/); not a file
+    Skipping link http://cairographics.org/examples/ (from http://cairographics.org/pycairo/); not a file
+    Skipping link http://cairographics.org (from http://cairographics.org/pycairo/); not a file
+    Found link http://cairographics.org/releases/pycairo-1.8.8.tar.gz (from http://cairographics.org/pycairo/), version: 1.8.8
+    Skipping link http://cairographics.org/documentation/pycairo (from http://cairographics.org/pycairo/); not a file
+    Skipping link http://cairographics.org/releases (from http://cairographics.org/pycairo/); not a file
+    Skipping link http://cairographics.org/pycairo/resources (from http://cairographics.org/pycairo/); not a file
+    Skipping link http://www.fsf.org/licensing/essays/free-sw.html (from http://cairographics.org/pycairo/); unknown archive format: .html
+    Skipping link http://cairographics.org/lists/ (from http://cairographics.org/pycairo/); not a file
+    Skipping link https://bugs.freedesktop.org/buglist.cgi?query_format=specific&amp;order=relevance+desc&amp;bug_status=__open__&amp;product=pycairo&amp;content= (from http://cairographics.org/pycairo/); unknown archive format: .cgi
+    Skipping link https://bugs.freedesktop.org/enter_bug.cgi?product=pycairo (from http://cairographics.org/pycairo/); unknown archive format: .cgi
+    Skipping link http://cairographics.org/ikiwiki?page=pycairo&amp;do=edit (from http://cairographics.org/pycairo/); not a file
+    Skipping link http://cairographics.org/recentchanges/ (from http://cairographics.org/pycairo/); not a file
+    Skipping link http://cairographics.org/ikiwiki?do=prefs (from http://cairographics.org/pycairo/); not a file
+    Skipping link http://cairographics.org/bindings/ (from http://cairographics.org/pycairo/); not a file
+    Skipping link http://cairographics.org/cairo-ocaml/ (from http://cairographics.org/pycairo/); not a file
+    Skipping link http://cairographics.org/cookbook/convertctopyandback/ (from http://cairographics.org/pycairo/); not a file
+    Skipping link http://cairographics.org/pycairo/resources/ (from http://cairographics.org/pycairo/); not a file
+  Using version 1.8.8 (newest of versions: 1.8.8, 1.8.8, 1.8.6, 1.8.4, 1.8.2)
+  Downloading from URL http://cairographics.org/releases/pycairo-1.8.8.tar.gz (from http://pypi.python.org/simple/pycairo/)
+  Running setup.py egg_info for package pycairo
+    Requested 'cairo >= 1.8.8' but version of cairo is 1.8.6
+    
+    Error: cairo >= 1.8.8 not found
+    Complete output from command python setup.py egg_info:
+    Requested 'cairo >= 1.8.8' but version of cairo is 1.8.6
+
+
+
+Error: cairo >= 1.8.8 not found
+
+----------------------------------------
+Command python setup.py egg_info failed with error code 1
+Exception information:
+Traceback (most recent call last):
+  File "/Users/lukaszb/.virtualenvs/d12/lib/python2.6/site-packages/pip-0.6.3-py2.6.egg/pip/basecommand.py", line 115, in main
+    self.run(options, args)
+  File "/Users/lukaszb/.virtualenvs/d12/lib/python2.6/site-packages/pip-0.6.3-py2.6.egg/pip/commands/install.py", line 155, in run
+    requirement_set.install_files(finder, force_root_egg_info=self.bundle, bundle=self.bundle)
+  File "/Users/lukaszb/.virtualenvs/d12/lib/python2.6/site-packages/pip-0.6.3-py2.6.egg/pip/req.py", line 854, in install_files
+    req_to_install.run_egg_info()
+  File "/Users/lukaszb/.virtualenvs/d12/lib/python2.6/site-packages/pip-0.6.3-py2.6.egg/pip/req.py", line 205, in run_egg_info
+    command_desc='python setup.py egg_info')
+  File "/Users/lukaszb/.virtualenvs/d12/lib/python2.6/site-packages/pip-0.6.3-py2.6.egg/pip/__init__.py", line 207, in call_subprocess
+    % (command_desc, proc.returncode))
+InstallationError: Command python setup.py egg_info failed with error code 1

@@ -1,0 +1,79 @@
+.richtemplates-panel {
+    border-color: #900;
+}
+
+div.richtemplates-panel h5 {
+    border-color: #900;
+}
+
+hr { color: #900; border-color: #900; } 
+
+a:active, a:link, a:visited { color: #900; }
+a:hover { color: #300; }
+
+a.button-link {
+    background: #F23C56 url(../../img/ruby-button-link.png) repeat-x;
+    border-color: #E42217;
+    color: #FFF;
+}
+
+a.button-link:hover {
+    background: #900 url(../../img/ruby-button-link-hovered.png) repeat-x;;
+    border-color: #E42217;
+    color: #fff;
+}
+
+.menu-top a { color: #fff; }
+.menu-top a:hover { color: #FFF; text-decoration: none; border-bottom: 2px solid #fff; }
+.menu-top {
+    background: #900 url(../../img/ruby-gradient-big.png) repeat-x top left;
+}
+.menu-top-submenu { background-color: #FFBDC3; }
+.menu-top-submenu a:hover { color: #000; text-decoration: none; border-bottom: 2px solid #000; }
+
+input[type='submit'],input[type='button'] {
+    background: #4477AA url(../../img/ruby-button-link.png) repeat-x;
+}
+
+input[type='submit']:hover,input[type='button']:hover {
+    background: #900 url(../../img/ruby-button-link-hovered.png) repeat-x;;
+}
+
+div.richtemplates-panel h5{
+	background: #900 url(../../img/ruby-gradient-big.png) repeat-x top left;
+}
+
+tr.datatable-thead-header th {
+	background: #FFBDC3 url(../../img/ruby-gradient-big.png) repeat-x top left;
+}
+
+table.datatable th {
+    background-color: #FFBDC3;
+}
+
+table.datatable a:active, table.datatable a:link, table.datatable a:visited {
+    color: #E00;
+}
+table.datatable a:hover {
+    color:#A00;
+}
+
+input[type="submit"], input[type="button"]  {
+    border-color: #E42217;
+}
+
+input[type="submit"]:hover, input[type="button"]:hover  {
+    border-color: #300;
+}
+
+
+/* PAGINATOR  */
+.pagination {border-top-color: #ddd; }
+.pagination a:link, .pagination a:visited {border-color: #ccc; background-color:white; }
+.pagination a.showall:hover { color:#036 !important; background:transparent !important; }
+.pagination a.this-page {border-color: #aaa;}
+.pagination a:hover {color: white; background-color:#F23C56; color:#fff; border-color: #900; }
+.pagination a:active {background-color: #C2EBEE;}
+.pagination .current {border-color: #900; background-color:#F23C56; color:#fff;}
+.pagination .disabled {border-color: #ccc; background-color:white; color: #ccc;}
+

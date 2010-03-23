@@ -1,6 +1,9 @@
 import datetime
+
 from django.db import models
 from django.contrib.auth.models import User
+from annoying.decorators import signals
+from richtemplates import settings as richtemplates_settings
 
 class Project(models.Model):
     name = models.CharField(max_length=32)
@@ -77,4 +80,18 @@ class Priority(models.Model):
 
     class Meta:
         verbose_name_plural = 'Priorities'
+
+
+class UserProfile(models.Model):
+    user = models.ForeignKey(User, unique=True)
+    skin = models.CharField(max_length=128)
+
+
+@signals.post_save(sender=User)
+def new_profile_handler(instance, **kwargs):
+    if kwargs['created'] is True:
+        UserProfile.objects.create(
+            user = instance,
+            skin = richtemplates_settings.DEFAULT_SKIN,
+        )
 

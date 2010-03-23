@@ -53,4 +53,5 @@ urlpatterns += patterns('richtemplates.examples.views',
 
 urlpatterns += patterns('',
     url(r'^rosetta/', include('rosetta.urls')),
+    url(r'^richtemplates/', include('richtemplates.urls')),
 )

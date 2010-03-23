@@ -1,0 +1,73 @@
+Downloading/unpacking django-profile
+  Getting page http://pypi.python.org/simple/django-profile
+  Could not fetch URL http://pypi.python.org/simple/django-profile: HTTP Error 404: Not Found
+  Will skip URL http://pypi.python.org/simple/django-profile when looking for download links for django-profile
+  Getting page http://pypi.python.org/simple/
+  URLs to search for versions for django-profile:
+  * http://pypi.python.org/simple/django-profile/
+  Getting page http://pypi.python.org/simple/django-profile/
+  Could not fetch URL http://pypi.python.org/simple/django-profile/: HTTP Error 404: Not Found
+  Will skip URL http://pypi.python.org/simple/django-profile/ when looking for download links for django-profile
+  Could not find any downloads that satisfy the requirement django-profile
+No distributions at all found for django-profile
+Exception information:
+Traceback (most recent call last):
+  File "/Users/lukaszb/.virtualenvs/d12/lib/python2.6/site-packages/pip-0.6.3-py2.6.egg/pip/basecommand.py", line 115, in main
+    self.run(options, args)
+  File "/Users/lukaszb/.virtualenvs/d12/lib/python2.6/site-packages/pip-0.6.3-py2.6.egg/pip/commands/install.py", line 155, in run
+    requirement_set.install_files(finder, force_root_egg_info=self.bundle, bundle=self.bundle)
+  File "/Users/lukaszb/.virtualenvs/d12/lib/python2.6/site-packages/pip-0.6.3-py2.6.egg/pip/req.py", line 823, in install_files
+    url = finder.find_requirement(req_to_install, upgrade=self.upgrade)
+  File "/Users/lukaszb/.virtualenvs/d12/lib/python2.6/site-packages/pip-0.6.3-py2.6.egg/pip/index.py", line 117, in find_requirement
+    raise DistributionNotFound('No distributions at all found for %s' % req)
+DistributionNotFound: No distributions at all found for django-profile
+------------------------------------------------------------
+/Users/lukaszb/.virtualenvs/d12/bin/pip run on Tue Mar 23 01:21:03 2010
+Downloading/unpacking userprofile
+  Getting page http://pypi.python.org/simple/userprofile
+  Could not fetch URL http://pypi.python.org/simple/userprofile: HTTP Error 404: Not Found
+  Will skip URL http://pypi.python.org/simple/userprofile when looking for download links for userprofile
+  Getting page http://pypi.python.org/simple/
+  URLs to search for versions for userprofile:
+  * http://pypi.python.org/simple/userprofile/
+  Getting page http://pypi.python.org/simple/userprofile/
+  Could not fetch URL http://pypi.python.org/simple/userprofile/: HTTP Error 404: Not Found
+  Will skip URL http://pypi.python.org/simple/userprofile/ when looking for download links for userprofile
+  Could not find any downloads that satisfy the requirement userprofile
+No distributions at all found for userprofile
+Exception information:
+Traceback (most recent call last):
+  File "/Users/lukaszb/.virtualenvs/d12/lib/python2.6/site-packages/pip-0.6.3-py2.6.egg/pip/basecommand.py", line 115, in main
+    self.run(options, args)
+  File "/Users/lukaszb/.virtualenvs/d12/lib/python2.6/site-packages/pip-0.6.3-py2.6.egg/pip/commands/install.py", line 155, in run
+    requirement_set.install_files(finder, force_root_egg_info=self.bundle, bundle=self.bundle)
+  File "/Users/lukaszb/.virtualenvs/d12/lib/python2.6/site-packages/pip-0.6.3-py2.6.egg/pip/req.py", line 823, in install_files
+    url = finder.find_requirement(req_to_install, upgrade=self.upgrade)
+  File "/Users/lukaszb/.virtualenvs/d12/lib/python2.6/site-packages/pip-0.6.3-py2.6.egg/pip/index.py", line 117, in find_requirement
+    raise DistributionNotFound('No distributions at all found for %s' % req)
+DistributionNotFound: No distributions at all found for userprofile
+------------------------------------------------------------
+/Users/lukaszb/.virtualenvs/d12/bin/pip run on Tue Mar 23 01:21:08 2010
+Downloading/unpacking django-userprofile
+  Getting page http://pypi.python.org/simple/django-userprofile
+  Could not fetch URL http://pypi.python.org/simple/django-userprofile: HTTP Error 404: Not Found
+  Will skip URL http://pypi.python.org/simple/django-userprofile when looking for download links for django-userprofile
+  Getting page http://pypi.python.org/simple/
+  URLs to search for versions for django-userprofile:
+  * http://pypi.python.org/simple/django-userprofile/
+  Getting page http://pypi.python.org/simple/django-userprofile/
+  Could not fetch URL http://pypi.python.org/simple/django-userprofile/: HTTP Error 404: Not Found
+  Will skip URL http://pypi.python.org/simple/django-userprofile/ when looking for download links for django-userprofile
+  Could not find any downloads that satisfy the requirement django-userprofile
+No distributions at all found for django-userprofile
+Exception information:
+Traceback (most recent call last):
+  File "/Users/lukaszb/.virtualenvs/d12/lib/python2.6/site-packages/pip-0.6.3-py2.6.egg/pip/basecommand.py", line 115, in main
+    self.run(options, args)
+  File "/Users/lukaszb/.virtualenvs/d12/lib/python2.6/site-packages/pip-0.6.3-py2.6.egg/pip/commands/install.py", line 155, in run
+    requirement_set.install_files(finder, force_root_egg_info=self.bundle, bundle=self.bundle)
+  File "/Users/lukaszb/.virtualenvs/d12/lib/python2.6/site-packages/pip-0.6.3-py2.6.egg/pip/req.py", line 823, in install_files
+    url = finder.find_requirement(req_to_install, upgrade=self.upgrade)
+  File "/Users/lukaszb/.virtualenvs/d12/lib/python2.6/site-packages/pip-0.6.3-py2.6.egg/pip/index.py", line 117, in find_requirement
+    raise DistributionNotFound('No distributions at all found for %s' % req)
+DistributionNotFound: No distributions at all found for django-userprofile

@@ -1,0 +1,81 @@
+.richtemplates-panel {
+    border-color: #092e20;
+}
+
+div.richtemplates-panel h5 {
+    border-color: #092e20;
+}
+
+hr { color: #092e20; border-color: #092e20; } 
+
+a:active, a:link, a:visited { color: #092e20; }
+a:hover { color: #000; }
+
+a.button-link {
+    background: #F23C56 url(../../img/django-button-link.png) repeat-x;
+    border-color: #092e20;
+    color: #FFF;
+}
+
+a.button-link:hover {
+    background: #092e20 url(../../img/django-button-link-hovered.png) repeat-x;;
+    border-color: #092e20;
+    color: #fff;
+}
+
+.menu-top a { color: #fff; }
+.menu-top a:hover { color: #FFF; text-decoration: none; border-bottom: 2px solid #fff; }
+.menu-top {
+    background: #092e20 url(../../img/django-button-link-hovered.png) repeat-x top left;
+}
+.menu-top-submenu { background-color: #92cc47; }
+.menu-top-submenu a:hover { color: #fff; text-decoration: none; border-bottom: 2px solid #fff; }
+
+
+input[type='submit'],input[type='button'] {
+    background: #4477AA url(../../img/django-button-link.png) repeat-x;
+}
+
+input[type='submit']:hover,input[type='button']:hover {
+    background: #092e20 url(../../img/django-button-link-hovered.png) repeat-x;;
+}
+
+div.richtemplates-panel h5{
+	background: #092e20 url(../../img/django-button-link.png) repeat-x top left;
+}
+
+tr.datatable-thead-header th {
+	background: #92cc47 url(../../img/django-button-link.png) repeat-x top left;
+}
+
+table.datatable th {
+    background-color: #92cc47;
+}
+
+table.datatable a:active, table.datatable a:link, table.datatable a:visited {
+    color: #092e20;
+}
+table.datatable a:hover {
+    color:#000;
+}
+
+input[type="submit"], input[type="button"]  {
+    border-color: #487858;
+}
+
+input[type="submit"]:hover, input[type="button"]:hover  {
+    border-color: #092e20;
+}
+
+
+/* PAGINATOR  */
+.pagination {border-top-color: #ddd; }
+.pagination a:link, .pagination a:visited {border-color: #ccc; background-color:white; }
+.pagination a.showall:hover { color:#036 !important; background:transparent !important; }
+.pagination a.this-page {border-color: #092e20;}
+.pagination a:hover {color: white; background-color:#487858; color:#fff; border-color: #092e20; }
+.pagination a:active {background-color: #487858;}
+.pagination .current {border-color: #092e20; background-color:#487858; color:#fff;}
+.pagination .disabled {border-color: #ccc; background-color:white; color: #ccc;}
+
+

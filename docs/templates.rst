@@ -225,13 +225,13 @@ our table we need to:
 
    .. code-block:: django
 
-      <td>{% anchor id "ID" %}</td>
-      <td>{% anchor summary "Summary" %}</td>
-      <td>{% anchor created_at "Created at" %}</td>
-      <td>{% anchor author "Author" %}</td>
-      <td>{% anchor edited_at "Modified at" %}</td>
-      <td>{% anchor editor "Last editor" %}</td>
-      <td>{% anchor status "Status" %}</td>
+      <th>{% anchor id "ID" %}</th>
+      <th>{% anchor summary "Summary" %}</th>
+      <th>{% anchor created_at "Created at" %}</th>
+      <th>{% anchor author "Author" %}</th>
+      <th>{% anchor edited_at "Modified at" %}</th>
+      <th>{% anchor editor "Last editor" %}</th>
+      <th>{% anchor status "Status" %}</th>
 
 
 .. _django: http://www.djangoproject.com

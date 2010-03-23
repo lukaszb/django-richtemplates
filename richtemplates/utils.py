@@ -3,7 +3,8 @@ import logging
 from django import forms
 from django.db import models
 from django.conf import settings
-from docutils.parsers.rst import directives
+from django.contrib import messages
+from django.utils.translation import ugettext as _
 
 def has_rel_to_model(form_field, model):
     """
@@ -35,22 +36,23 @@ def get_fk_fields(model, rel_model):
                 related_fields.append(field)
     return related_fields
 
-def register_rst_directives(directives_items):
+def get_skin_for_request(request):
     """
-    Registers restructuredText directives given as dictionary
-    with keys being names and paths to directive function.
+    Returns skin *alias* for the given request.
     """
-    for name, directive_path in directives_items:
-        try:
-            splitted = directive_path.split('.')
-            mod_path, method_name = '.'.join(splitted[:-1]), splitted[-1]
-            mod = __import__(mod_path, (), (), [method_name], -1)
-            directive = getattr(mod, method_name)
-            directives.register_directive(name, directive)
-            msg = "Registered restructuredText directive: %s" % method_name
-            logging.debug(msg)
-        except ImportError, err:
-            msg = "Couldn't register restructuredText directive. Original "\
-                "exception was: %s" % err
-            logging.warn(msg)
+    from richtemplates import settings as richtemplates_settings
+    if hasattr(request, 'user') and request.user.is_authenticated():
+        profile = request.user.get_profile()
+        if profile and hasattr(profile, richtemplates_settings.PROFILE_SKIN_FIELD):
+            skin_alias = getattr(profile, richtemplates_settings.PROFILE_SKIN_FIELD)
+            if skin_alias not in richtemplates_settings.SKINS.keys():
+                messages.warn(request, _("You should check your skin setting "
+                    "in profile"))
+            return richtemplates_settings.SKINS[skin_alias]
+        else:
+            skin_alias = richtemplates_settings.DEFAULT_SKIN
+    else:
+        skin_alias = richtemplates_settings.DEFAULT_SKIN
+
+    return richtemplates_settings.SKINS[richtemplates_settings.DEFAULT_SKIN]
 
