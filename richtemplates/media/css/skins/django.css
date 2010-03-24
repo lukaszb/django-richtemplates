@@ -44,6 +44,8 @@ div.richtemplates-panel h5{
 	background: #092e20 url(../../img/django-button-link.png) repeat-x top left;
 }
 
+/* Tables */
+table.datatable th, table.datatable td { border-color: #092e20; }
 tr.datatable-thead-header th {
 	background: #92cc47 url(../../img/django-button-link.png) repeat-x top left;
 }

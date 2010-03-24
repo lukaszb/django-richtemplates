@@ -41,6 +41,7 @@ Documentation
    middleware
    templates
    skins
+   userprofiles
 
 **Included utilities:**
 

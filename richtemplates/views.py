@@ -4,6 +4,9 @@ from django.shortcuts import redirect
 from django.utils.translation import ugettext as _
 from django.contrib import messages
 
+from richtemplates import settings as richtemplates_settings
+from richtemplates.skins import set_skin_at_request
+
 def handle403(request, template_name='403.html'):
     """
     Default error 403 (Permission denied) handler.
@@ -13,14 +16,9 @@ def handle403(request, template_name='403.html'):
     response.status_code = 403
     return response
 
-def set_skin(request, skin_name):
-    SKINS = ('aqua', 'ruby', 'django')
-    if skin_name in SKINS:
-        request.session['richtemplates_skin'] = skin_name
-        message = _("Skin changed to %s" % skin_name)
-        messages.info(request, message)
-    else:
-        message = _("There is no skin %s" % skin_name)
-        messages.error(request, message)
+def set_skin(request, skin):
+    message = _("Skin set to %s" % skin)
+    messages.info(request, message)
+    set_skin_at_request(request, skin)
     return redirect('/')
 

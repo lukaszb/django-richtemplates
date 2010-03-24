@@ -4,8 +4,11 @@ from django import template
 from django.template.defaultfilters import stringfilter, force_escape, slice_
 from django.utils.safestring import mark_safe
 
-from richtemplates import settings as richtemplates_settings
-from richtemplates.utils import get_skin_for_request
+import richtemplates.settings
+from richtemplates.skins import get_skins
+from richtemplates.skins import get_skin_by_alias
+from richtemplates.skins import get_skin_from_request
+from richtemplates.skins import set_skin_at_request
 
 register = template.Library()
 
@@ -34,7 +37,7 @@ def tooltip(value, max_length=None):
     output = '<span class="show-tooltip" title="%s">%s</span>' % (value, output)
     return mark_safe(output)
 
-
+@register.tag(name='richskin')
 def do_richskin(parser, token):
     """
     Parses tag that's supposed to be in this format:
@@ -52,7 +55,7 @@ def do_richskin(parser, token):
                 "in quotes" % tag_name
         else:
             skin_alias = skin_alias[1:-1]
-            if not skin_alias in richtemplates_settings.SKINS.keys():
+            if not skin_alias in richtemplates.settings.SKINS.keys():
                 raise template.TemplateSyntaxError, "%r is not proper "\
                     "skin alias (does not exist)" % skin_alias
     else:
@@ -71,32 +74,51 @@ class RichSkinNode(template.Node):
     """
     def __init__(self, skin_alias):
         self.skin_alias = skin_alias
+        if skin_alias:
+            logging.info("Called {% richskin %s %}" % skin_alias)
+        else:
+            logging.info("Called {% richskin %}")
+
     def render(self, context):
         link_tag = u'<link rel="stylesheet" type="text/css" href="%s" />'
         if self.skin_alias is not None:
-            skin = richtemplates_settings.SKINS[self.skin_alias]
+            skin = get_skin_by_alias(self.skin_alias)
+            result = link_tag % skin.url
         else:
             request = context['request']
-            skin = get_skin_for_request(request)
-            logging.info("From get_skin_for_request got %s" % skin)
-            if skin['alias'] in richtemplates_settings.NOT_RENDER_SKINS:
-                return '' 
-
-            if not richtemplates_settings.SESSION_SKIN_NAME in request.session:
-                request.session[richtemplates_settings.SESSION_SKIN_NAME] = skin['alias']
-            logging.info("Skin in session: %s" % request.session[richtemplates_settings.SESSION_SKIN_NAME])
-            if skin['alias'] != request.session[richtemplates_settings.SESSION_SKIN_NAME]:
-                logging.info("Skin is not same as one in session")
-                if hasattr(request, 'user') and request.user.is_authenticated():
-                    profile = request.user.get_profile()
-                    setattr(profile, richtemplates_settings.PROFILE_SKIN_FIELD,
-                        skin['alias'])
-            if not 'url' in skin:
-                logging.info("returned skin has no url")
-            logging.debug("Skin's url: %s" % skin['url'])
-        result = link_tag % skin['url']
+            logging.info(request.session.items())
+            skin = get_skin_from_request(request)
+            logging.debug("New skin is %s" % skin)
+            #set_skin_at_request(request, skin.alias)
+            result = link_tag % skin.url
         logging.info("RichSkinNode renders:\n%s" % result)
         return result
 
-register.tag('richskin', do_richskin)
+class RichSkinListNode(template.Node):
+    def __init__(self, context_var):
+        self.context_var = context_var
+
+    def render(self, context):
+        skins = get_skins()
+        logging.info("RichSkinListNode returning skins: %s" % skins)
+        context[self.context_var] = skins
+        return ''
+
+@register.tag
+def get_skin_list(parser, token):
+    """
+    Parses ``get_skin_list`` tag which should be in format:
+    {% get_skin_list [as context_var] %}
+    """
+    bits = token.split_contents()
+    if len(bits) not in (1, 3):
+        raise template.TemplateSyntaxError("get_skin_list tag should be in "
+            "format: {% get_skin_list [as context_var] %}")
+    context_var = 'skin_list'
+    if len(bits) == 3:
+        if bits[1] != 'as':
+            raise template.TemplateSyntaxError("get_skin_list tag should be "
+                "in format: {% get_skin_list [as context_var] %}")
+        context_var = bits[2]
+    return RichSkinListNode(context_var)
 

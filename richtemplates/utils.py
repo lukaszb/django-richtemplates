@@ -36,23 +36,15 @@ def get_fk_fields(model, rel_model):
                 related_fields.append(field)
     return related_fields
 
-def get_skin_for_request(request):
+def get_user_profile_model():
     """
-    Returns skin *alias* for the given request.
+    Returns class of user profiles or None if it is pointed at
+    settings (with ``AUTH_PROFILE_MODULE`` variable) or is pointed
+    wrongly (default ``get_model`` behaviour).
     """
-    from richtemplates import settings as richtemplates_settings
-    if hasattr(request, 'user') and request.user.is_authenticated():
-        profile = request.user.get_profile()
-        if profile and hasattr(profile, richtemplates_settings.PROFILE_SKIN_FIELD):
-            skin_alias = getattr(profile, richtemplates_settings.PROFILE_SKIN_FIELD)
-            if skin_alias not in richtemplates_settings.SKINS.keys():
-                messages.warn(request, _("You should check your skin setting "
-                    "in profile"))
-            return richtemplates_settings.SKINS[skin_alias]
-        else:
-            skin_alias = richtemplates_settings.DEFAULT_SKIN
-    else:
-        skin_alias = richtemplates_settings.DEFAULT_SKIN
-
-    return richtemplates_settings.SKINS[richtemplates_settings.DEFAULT_SKIN]
+    if not hasattr(settings, 'AUTH_PROFILE_MODULE'):
+        return None
+    app_label, model_name = settings.AUTH_PROFILE_MODULE.split('.')
+    model = models.get_model(app_label, model_name)
+    return model
 

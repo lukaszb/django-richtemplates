@@ -4,6 +4,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from annoying.decorators import signals
 from richtemplates import settings as richtemplates_settings
+from richtemplates import models as richtemplates_app
 
 class Project(models.Model):
     name = models.CharField(max_length=32)
@@ -59,7 +60,6 @@ class Task(models.Model):
         else:
             return datetime.datetime.now() - self.created_at
 
-
 class Status(models.Model):
     name = models.CharField(max_length=16)
     project = models.ForeignKey(Project)
@@ -82,16 +82,6 @@ class Priority(models.Model):
         verbose_name_plural = 'Priorities'
 
 
-class UserProfile(models.Model):
-    user = models.ForeignKey(User, unique=True)
-    skin = models.CharField(max_length=128)
-
-
-@signals.post_save(sender=User)
-def new_profile_handler(instance, **kwargs):
-    if kwargs['created'] is True:
-        UserProfile.objects.create(
-            user = instance,
-            skin = richtemplates_settings.DEFAULT_SKIN,
-        )
+class MyUserProfile(richtemplates_app.UserProfile):
+    customfield = models.CharField(max_length=128, null=True, blank=True)
 

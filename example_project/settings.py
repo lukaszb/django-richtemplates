@@ -111,18 +111,14 @@ DJALOG_LEVEL = 20 # logging.INFO default level
 DJALOG_FORMAT = '[%(levelname)s] %(message)s'
 
 if DEBUG:
-    DJALOG_SQL = True
+    DJALOG_SQL = False
     DJALOG_LEVEL = 5
 
-try:
-    import djalog
-    INSTALLED_APPS += ('djalog',)
-    if DJALOG_SQL:
-        MIDDLEWARE_CLASSES += (
-            'djalog.middleware.SQLLoggingMiddleware',
-        )
-except ImportError:
-    pass
+INSTALLED_APPS += ('djalog',)
+if DJALOG_SQL:
+    MIDDLEWARE_CLASSES += (
+        'djalog.middleware.SQLLoggingMiddleware',
+    )
 
 # ====================== #
 # RICHTEMPLATES SETTINGS #
@@ -134,8 +130,8 @@ RICHTEMPLATES_RESTRUCTUREDTEXT_DIRECTIVES = {
 
 RICHTEMPLATES_DEFAULT_SKIN = 'ruby'
 RICHTEMPLATES_SKINS = {
-    'aqua': {'name': 'Aqua XXX'},
+    'aqua': {'name': 'Aqua'},
 }
 
-AUTH_PROFILE_MODULE = 'examples.UserProfile'
+AUTH_PROFILE_MODULE = 'examples.MyUserProfile'
 

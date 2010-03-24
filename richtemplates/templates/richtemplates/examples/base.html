@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% load webdesign %}
+{% load richtemplates_tags %}
 
 {% block title %}Richtemplates examples{% endblock %}
 
@@ -17,9 +18,10 @@
     <hr/>
     <h3>Skins</h3>
     <ul class="nav-vertical">
-        <li><a href="{% url richtemplates_set_skin "aqua" %}">Aqua</a></li>
-        <li><a href="{% url richtemplates_set_skin "django" %}">Django</a></li>
-        <li><a href="{% url richtemplates_set_skin "ruby" %}">Ruby</a></li>
+        {% get_skin_list as skin_list %}
+        {% for skin in skin_list %}
+        <li><a href="{% url richtemplates_set_skin skin.alias %}">{{ skin.name }}</a></li>
+        {% endfor %}
     </ul>
 {% endblock %}
 
