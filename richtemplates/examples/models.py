@@ -2,9 +2,12 @@ import datetime
 
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils.translation import ugettext_lazy as _
+
 from annoying.decorators import signals
 from richtemplates import settings as richtemplates_settings
 from richtemplates import models as richtemplates_app
+from richtemplates.forms import RichSkinChoiceField
 
 class Project(models.Model):
     name = models.CharField(max_length=32)
@@ -84,4 +87,5 @@ class Priority(models.Model):
 
 class MyUserProfile(richtemplates_app.UserProfile):
     customfield = models.CharField(max_length=128, null=True, blank=True)
+    skin = RichSkinChoiceField(label=_("Color schema"))
 

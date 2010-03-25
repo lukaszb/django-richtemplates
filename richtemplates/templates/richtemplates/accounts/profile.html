@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% load i18n %}
+
+{% block col_left %}
+    
+    <div class="richtemplates-panel">
+        <h5>User: {{ profile.user }}</h5>
+	    <div class="richtemplates-panel-content">
+            {% if user == profile.user %}
+			<ul class="nav-vertical">
+                <li><a href="{{ profile.user.get_absolute_url }}">{% trans "Show your public profile" %}</a></li>
+                <li><a href="{% url richtemplates_examples_userprofile_edit profile.user.username %}">{% trans "Edit" %}</a></li>
+            </ul>
+            {% endif %}
+	    </div>
+	</div>
+
+{% endblock %}
+
+
+{% block col_main_title %}{% trans "User profile" %}{% endblock %}
+{% block col_main_content %}
+    xxx
+{% endblock %}

@@ -3,6 +3,7 @@ import django_filters
 
 from django import forms
 from django.db.models import Q
+from django.utils.translation import ugettext as _
 
 from richtemplates.forms import LimitingModelForm
 from richtemplates.examples.models import Task, Status, Priority, Project

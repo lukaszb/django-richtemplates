@@ -22,7 +22,6 @@ class RichSkinTests(TestCase):
 
     def test_alias(self):
         for skin in self.skins:
-            print skin.__dict__
             self.assertTrue(hasattr(skin, 'alias'))
             self.assertTrue(skin.alias is not None)
             self.assertTrue(skin.alias == slugify(skin.alias))
