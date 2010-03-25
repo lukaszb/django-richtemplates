@@ -36,7 +36,7 @@ def get_fk_fields(model, rel_model):
                 related_fields.append(field)
     return related_fields
 
-def get_user_profile_model():
+def get_user_profile_model(settings_module=settings):
     """
     Returns class of user profiles or None if it is pointed at
     settings (with ``AUTH_PROFILE_MODULE`` variable) or is pointed

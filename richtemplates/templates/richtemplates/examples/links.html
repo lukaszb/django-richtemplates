@@ -28,5 +28,12 @@
     {% endfor %}
 </ul>
 
+<h3>Links in "nav-vertical" with class "button-link" and "max-rounded"</h3>
+<ul class="nav-vertical">
+    {% for x in "1234" %}
+    <li><a class="button-link max-rounded" href="#{{ x }}">Link {{ x }}</a></li>
+    {% endfor %}
+</ul>
+
 {% endblock %}
 

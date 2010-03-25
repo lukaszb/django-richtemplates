@@ -37,16 +37,19 @@ def tooltip(value, max_length=None):
     output = '<span class="show-tooltip" title="%s">%s</span>' % (value, output)
     return mark_safe(output)
 
-@register.tag(name='richskin')
-def do_richskin(parser, token):
+@register.tag(name='get_richskin')
+def do_get_richskin(parser, token):
     """
     Parses tag that's supposed to be in this format:
-    {% richskin ["skin_alias"] %}. ``skin_alias`` string is optional.
+    {% get_richskin ["skin_alias"] %}.
+    ``skin_alias`` string is optional and if given tag would return skin object
+    with same ``alias`` value.
+    By default, ``skin`` context variable would be set.
     """
     bits = [b for b in token.split_contents()]
+    format = '{% get_richskin ["skin_alias"] %}'
     if len(bits) == 1:
         tag_name, skin_alias = bits[0], None
-        logging.info("Tag name: %s | Skin alias: %s" % (tag_name, skin_alias))
     elif len(bits) == 2:
         tag_name, skin_alias = bits
         if not (skin_alias[0] == skin_alias[-1]
@@ -60,9 +63,8 @@ def do_richskin(parser, token):
                     "skin alias (does not exist)" % skin_alias
     else:
         raise template.TemplateSyntaxError, "%r should be in format: "\
-            '{% %r ["skin_alias"] %}' % (tag_name, tag_name)
+            '%s' % (tag_name, format)
     
-    logging.info("Returning RichSkinNode with skin_alias: %s" % skin_alias)
     return RichSkinNode(skin_alias)
 
 class RichSkinNode(template.Node):
@@ -72,27 +74,18 @@ class RichSkinNode(template.Node):
     this skin would be returned. Otherwise, tag would check the context's
     request (user and session).
     """
-    def __init__(self, skin_alias):
+    def __init__(self, skin_alias, context_var='skin'):
         self.skin_alias = skin_alias
-        if skin_alias:
-            logging.info("Called {% richskin %s %}" % skin_alias)
-        else:
-            logging.info("Called {% richskin %}")
+        self.context_var = context_var
 
     def render(self, context):
-        link_tag = u'<link rel="stylesheet" type="text/css" href="%s" />'
         if self.skin_alias is not None:
             skin = get_skin_by_alias(self.skin_alias)
-            result = link_tag % skin.url
         else:
             request = context['request']
-            logging.info(request.session.items())
             skin = get_skin_from_request(request)
-            logging.debug("New skin is %s" % skin)
-            #set_skin_at_request(request, skin.alias)
-            result = link_tag % skin.url
-        logging.info("RichSkinNode renders:\n%s" % result)
-        return result
+        context[self.context_var] = skin
+        return ''
 
 class RichSkinListNode(template.Node):
     def __init__(self, context_var):
@@ -100,7 +93,6 @@ class RichSkinListNode(template.Node):
 
     def render(self, context):
         skins = get_skins()
-        logging.info("RichSkinListNode returning skins: %s" % skins)
         context[self.context_var] = skins
         return ''
 
@@ -109,6 +101,7 @@ def get_skin_list(parser, token):
     """
     Parses ``get_skin_list`` tag which should be in format:
     {% get_skin_list [as context_var] %}
+    By default, ``skin_list`` context variable would be set.
     """
     bits = token.split_contents()
     if len(bits) not in (1, 3):

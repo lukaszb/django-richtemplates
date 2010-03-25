@@ -9,3 +9,16 @@
 {% block menu_top %}
     {% include "layout/menu_top.html" %}
 {% endblock %}
+
+{% block breadcrumbs %}
+    {% load breadcrumber %}
+    <div class="richtemplates-breadcrumbs">
+        {% path_breadcrumbs request.path %}
+    </div>
+{% endblock %}
+
+{% block footer %}
+Site template based on 
+<a href="http://bitbucket.org/lukaszb/django-richtemplates/"
+    class="show-tipsy" title="Visit django-richtemplates homepage">django-richtemplates</a>
+{% endblock %}

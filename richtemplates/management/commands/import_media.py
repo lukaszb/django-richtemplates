@@ -63,7 +63,14 @@ class Command(LabelCommand):
         except ImportError:
             raise CommandError("Cannot find app %s" % app)
         app_path = app_module.__path__[0]
+        app_dir = os.path.basename(app_path)
         app_media_dir = os.path.abspath(os.path.join(app_path, 'media'))
+        _inner = os.path.join(app_media_dir, app_dir)
+        if os.path.isdir(_inner):
+            #logging.debug("Seems that %s has main media subdirectory, will "
+            #    "use it (%s)" % (app_module.__name__, _inner))
+            app_media_dir = _inner
+
         if not os.path.isdir(app_media_dir) and \
             options['fail_siltently'] is False:
             raise CommandError("Specified app '%s' has no 'media' directory!"

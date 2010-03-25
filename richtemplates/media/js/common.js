@@ -58,7 +58,15 @@ $(document).ready(function(){
     $('.show-tipsy').tipsy({
         gravity: 's'
     });
-
+    $('.show-tipsy-bottom').tipsy({
+        gravity: 'n'
+    });
+    $('.show-tipsy-left').tipsy({
+        gravity: 'e'
+    });
+    $('.show-tipsy-right').tipsy({
+        gravity: 'w'
+    });
 });
 
 

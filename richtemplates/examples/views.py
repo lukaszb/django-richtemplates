@@ -4,17 +4,21 @@ import django_filters
 from django.views.generic import simple
 from django.views.generic import list_detail
 from django.utils.datastructures import SortedDict
-from django.shortcuts import render_to_response, get_object_or_404
+from django.shortcuts import render_to_response, get_object_or_404, redirect
 from django.http import HttpResponseRedirect
 from django.http import HttpResponseForbidden
 from django.template import RequestContext
 from django.db.models import Count
 from django.contrib import messages
+from django.contrib.auth.models import User
+from django.core.exceptions import PermissionDenied
+from django.utils.translation import ugettext as _
 
 from richtemplates.examples.forms import ContactForm
 from richtemplates.examples.forms import TaskForm
 from richtemplates.examples.forms import TaskFilter
 from richtemplates.examples.models import Task, Project
+from richtemplates.forms import UserProfileForm
 
 try:
     from django.contrib import messages
@@ -145,6 +149,46 @@ def forbidden(request):
     """
     return HttpResponseForbidden()
 
+def set_skin(request, skin):
+    """
+    Set skin for user from given request.
+    """
+    try:
+        set_skin_at_request(request, skin)
+        message = _("Skin set to %s" % skin)
+        messages.info(request, message)
+    except SkinDoesNotExist:
+        message = _("Skin %s does not exist")
+        messages.error(request, message)
+    return redirect('/')
+
+def userprofile(request, username, template_name='richtemplates/accounts/profile.html'):
+    """
+    Basic user profile view.
+    """
+    user = get_object_or_404(User, username=username)
+    context = {
+        'profile': user.get_profile(),
+    }
+    return simple.direct_to_template(request, template_name, extra_context=context)
+
+def userprofile_edit(request, username, template_name='richtemplates/accounts/profile_edit.html'):
+    """
+    Edit profile view.
+    """
+    user = get_object_or_404(User, username=username)
+    if request.user != user:
+        raise PermissionDenied
+    form = UserProfileForm(request.POST or None, instance=user.get_profile())
+    if request.method == 'POST' and form.is_valid():
+        form.save()
+        message = _("Profile updated successfully")
+        messages.success(request, message)
+        return redirect(user.get_absolute_url())
+    context = {
+        'form': form,
+    }
+    return simple.direct_to_template(request, template_name, extra_context=context)
 
 # Colors dict taken from http://www.computerhope.com/htmcolor.htm
 

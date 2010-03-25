@@ -4,8 +4,8 @@
 Forms
 =====
 
-`django-richtemplates`_ comes with some custom forms which are designed
-to be reusable and easily extensible. Here is a list of available forms:
+`django-richtemplates`_ comes with some custom forms which are designed to be
+reusable and easily extensible. Here is a list of available forms:
 
 * :ref:`limiting_model_form`
 
@@ -20,9 +20,9 @@ would rely on when it comes to make a query.
 Example
 ~~~~~~~
 
-Concept of this form is simple but let us start with some basics. Let's
-assume we have one model which is *heart* of our scheme, and we have also
-3 other models which are related to the first one:
+Concept of this form is simple but let us start with some basics. Let's assume
+we have one model which is *heart* of our scheme, and we have also 3 other
+models which are related to the first one:
 
 .. code-block:: python
 
@@ -51,8 +51,8 @@ assume we have one model which is *heart* of our scheme, and we have also
        name = models.CharField(max_length=16)
        project = models.ForeignKey(Project)
 
-Our object here is to create a form for the ``Task``. We defined foreign key
-to the project table as we want to be able to specify other statuses and
+Our object here is to create a form for the ``Task``. We defined foreign key to
+the project table as we want to be able to specify other statuses and
 priorities for different projects. Normally we would create a form like this:
 
 .. code-block:: python
@@ -63,12 +63,12 @@ priorities for different projects. Normally we would create a form like this:
 
 But with this approach our form would give us ability to choose status and
 priority from all possible objects, related to each project. So we need to
-override ``status`` and ``priority`` fields or create some factory method
-which would return us a TaskForm with ``status`` and ``priority`` fields
-limited to the previously chosen ``project``. And what if we would have
-to make more such form classes? We do not want to break DRY rule, are we?
-Sure we don't and ``LimitingModelForm`` is here for us! To make one we would
-simply add ``choices_limiting_fields`` option to our form's ``Meta`` subclass:
+override ``status`` and ``priority`` fields or create some factory method which
+would return us a TaskForm with ``status`` and ``priority`` fields limited to
+the previously chosen ``project``. And what if we would have to make more such
+form classes? We do not want to break DRY rule, are we?  Sure we don't and
+``LimitingModelForm`` is here for us! To make one we would simply add
+``choices_limiting_fields`` option to our form's ``Meta`` subclass:
 
 .. code-block:: python
 
@@ -78,10 +78,10 @@ simply add ``choices_limiting_fields`` option to our form's ``Meta`` subclass:
        class Meta:
            choices_limiting_fields = ['project']
 
-``LimitingModelForm`` directly extends ``django.forms.ModelForm`` class and
-at the time of initialization, after normal ``django.forms.ModelForm.__init__``
-logic it simply calls a method which limits already created fields with
-foreign key to the model we specify in ``choices_limiting_fields`` iterable.
+``LimitingModelForm`` directly extends ``django.forms.ModelForm`` class and at
+the time of initialization, after normal ``django.forms.ModelForm.__init__``
+logic it simply calls a method which limits already created fields with foreign
+key to the model we specify in ``choices_limiting_fields`` iterable.
 
 .. note::
    This is still somewhat experimental and overall implementation should be
@@ -90,9 +90,8 @@ foreign key to the model we specify in ``choices_limiting_fields`` iterable.
 .. note::
    Do not use this form in admin! It would work perfectly fine for existing
    ``Task`` objects but if you'd try to create new one from admin a
-   ``LimitingModelFormError`` would be risen as ``LimitingModelForm``
-   requires that field specified in ``chocies_limiting_fields`` option
-   is already set on the object. In future it some ajax could be added
-   and this *check* would be called only after field is filled.
+   ``LimitingModelFormError`` would be risen as ``LimitingModelForm`` requires
+   that field specified in ``chocies_limiting_fields`` option is already set on
+   the object. This should be fixed though.
 
 .. _django-richtemplates: http://bitbucket.org/lukaszb/django-richtemplates/

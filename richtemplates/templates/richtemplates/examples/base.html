@@ -20,7 +20,7 @@
     <ul class="nav-vertical">
         {% get_skin_list as skin_list %}
         {% for skin in skin_list %}
-        <li><a href="{% url richtemplates_set_skin skin.alias %}">{{ skin.name }}</a></li>
+        <li><a href="{% url richtemplates_examples_set_skin skin.alias %}">{{ skin.name }}</a></li>
         {% endfor %}
     </ul>
 {% endblock %}

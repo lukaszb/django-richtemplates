@@ -11,17 +11,17 @@ Concepts and guidelines
 There are some basic rules we try to stick with while building generic
 templates. These are also guidelines for ourselves:
 
-* Do not forget, `django-richtemplates`_ are builded for intranet
-  applications, not public portals!
+* Do not forget, `django-richtemplates`_ are builded to simplify process of
+  writing boilerplate codes at presentation layer but is not intended to make
+  whole job for you
 * We try to base on ``div`` tags rather than ``tables``
-* While this is presentation layer supporting application we do include
-  some basic code, like generic :ref:`forms` or :ref:`middleware`.
-* We try to use names established by the community (for instance, our
-  main template would be called ``base.html``)
-* We use ``blocks`` inside previously prepared html tags.
-  So this is ok:
+* While this is presentation layer supporting application we do include some
+  basic code, like generic :ref:`forms` or :ref:`middleware`.
+* We try to use names established by the community (for instance, our main
+  template would be called ``base.html``)
+* We use ``blocks`` inside previously prepared html tags.  So this is ok:
 
-  .. code-block:: django
+  .. code-block:: html+django
   
      <body>
      {% block body %}
@@ -31,7 +31,7 @@ templates. These are also guidelines for ourselves:
 
   And this is wrong:
 
-  .. code-block:: django
+  .. code-block:: html+django
   
      {% block body %}
      <body>
@@ -149,7 +149,7 @@ provided set of styles in your template (we assume that ``task_list``
 queryset is passed into the context and it is a queryset
 of model ``Task`` defined at :ref:`templates-example-models` above):
 
-.. code-block:: django 
+.. code-block:: html+django 
 
    <table class="datatable">
        <thead class="datatable-thead">
@@ -186,20 +186,20 @@ our table we need to:
 
 1. Load django-pagination_ templatetags:
 
-   .. code-block:: django
+   .. code-block:: html+django
 
       {% load pagination_tags %}
 
 2. Paginate given queryset:
 
-   .. code-block:: django
+   .. code-block:: html+django
 
       {% autopaginate task_list %}
 
 3. And finally add ``paginate`` templatetag, below or on top of a table
    (or both):
 
-   .. code-block:: django
+   .. code-block:: html+django
 
       {% paginate %}
 
@@ -211,19 +211,19 @@ our table we need to:
 
 1. Load django-sorting_ templatetags:
 
-   .. code-block:: django
+   .. code-block:: html+django
 
       {% load sorting_tags %}
 
 2. Sort given queryset:
 
-   .. code-block:: django
+   .. code-block:: html+django
 
       {% autosort task_list %}
 
 3. And finally, use ``anchor`` templatetag to specify table headers:
 
-   .. code-block:: django
+   .. code-block:: html+django
 
       <th>{% anchor id "ID" %}</th>
       <th>{% anchor summary "Summary" %}</th>
@@ -234,8 +234,26 @@ our table we need to:
       <th>{% anchor status "Status" %}</th>
 
 
+Forms
+~~~~~
+
+
+Simple example:
+
+.. code-block:: html+django
+
+   <form action="." method="post">
+       <table class="form-table">
+           {% include "richtemplates/forms/form.html" %}
+       </table>
+       <div>
+           <input id="id_submit" type="submit" name="submit" value="Submit" />
+       </div>
+   </form>
+
 .. _django: http://www.djangoproject.com
 .. _django-richtemplates: http://bitbucket.org/lukaszb/django-richtemplates/
 .. _django-pagination: http://code.google.com/p/django-pagination/
 .. _django-sorting: http://github.com/directeur/django-sorting
 .. _django-tables: http://bazaar.launchpad.net/~miracle2k/django-tables/trunk
+

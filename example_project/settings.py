@@ -48,6 +48,11 @@ SECRET_KEY = 'g==ps7az_^^5vn-bty+&o231kh)ei(xzvrikp6i#&7=q9htof1'
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 
 INSTALLED_APPS = (
+    'admin_tools',
+    'admin_tools.theming',
+    'admin_tools.menu',
+    'admin_tools.dashboard',
+
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -72,6 +77,7 @@ INSTALLED_APPS = (
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.middleware.transaction.TransactionMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
@@ -86,6 +92,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.debug',
     'django.core.context_processors.i18n',
     'django.core.context_processors.media',
+    'django.core.context_processors.csrf',
     'django.core.context_processors.request',
     'django.contrib.messages.context_processors.messages',
 )

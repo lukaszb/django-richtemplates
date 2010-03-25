@@ -20,8 +20,7 @@ skin in your project you need to put following line in your settings module:
 
 .. code-block:: python
 
-   RICHTEMPLATES_DEFAULT_SKIN = 'ruby'
-
+   RICHTEMPLATES_DEFAULT_SKIN = 'django'
 
 Writing a skin
 --------------
@@ -36,11 +35,11 @@ into ``django-richtemplates``. Follow `Adding new skin`_ instructions.
 Adding new skin
 ---------------
 
-Already created a new css file? Great, but you still need to hook it into
-your project. To do so, you have to define provide information on your
-skin at settings module in ``RICHTEMPLATES_SKINS`` dictionary. Being more
-precise, you have to define skin's name and url to newly defined skin.
-Skins are recognized by alias which should be a key of the dictionary.
+Already created a new css file? Great, but you still need to hook it into your
+project. To do so, you have to provide information on your skin at settings
+module in ``RICHTEMPLATES_SKINS`` dictionary. Being more precise, you have to
+define skin's name and url to newly defined skin.  Skins are recognized by
+alias which should be a key of the dictionary.
 
 .. note::
    Alias of the skin should be a *slug*. At runtime, ``richtemplates``
@@ -55,9 +54,9 @@ Here is an example:
        'myskin': {'name': 'My custom skin name', 'url': 'mycss/myskin.css'},
    }
 
-Note that we haven't define full url - ``richtemplates`` would put
-``{{ MEDIA_URL }}`` in front of it. Moreover, if you would put ``myskin.css``
-at ``{{ MEDIA_URL }}/richtemplates/css/`` location you would not need to
+Note that we haven't define full url - ``richtemplates`` would put ``{{
+MEDIA_URL }}`` in front of it. Moreover, if you would put ``myskin.css`` at
+``{{ MEDIA_URL }}/richtemplates/css/skins/`` location you would not need to
 define ``url`` at all, and you could simply write:
 
 .. code-block:: python
@@ -67,8 +66,8 @@ define ``url`` at all, and you could simply write:
    }
 
 .. note::
-   You do not need to define ``url`` in ``RICHTEMPLATES_SKINS`` only if name of
-   the css file is the same as alias of the skin (key of ``RICHTEMPLATES_SKINS``
+   You need to define ``url`` in ``RICHTEMPLATES_SKINS`` only if name of the
+   css file is the same as alias of the skin (key of ``RICHTEMPLATES_SKINS``
    dictionary.
 
 Aqua skin

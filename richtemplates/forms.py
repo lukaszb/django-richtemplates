@@ -7,7 +7,8 @@ from django.utils.safestring import mark_safe
 from django.template import Template, Context
 from django.utils.translation import ugettext as _
 
-from richtemplates.utils import get_fk_fields
+from richtemplates.utils import get_fk_fields, get_user_profile_model
+from richtemplates.skins import get_skins
 
 import logging
 
@@ -200,4 +201,25 @@ class LimitingModelForm(forms.ModelForm):
                         raise LimitingModelFormError("Tried to limit field "
                             "'%s' but it's instance field is empty"
                             % model_field.name)
+
+
+# =================================== #
+# Richtemplates user profiles helpers #
+# =================================== #
+
+class RichSkinChoiceField(forms.ChoiceField):
+    """
+    Use this field for a user profile form if you want to allow users to 
+    set their default skin.
+    """
+    def __init__(self, *args, **kwargs):
+        super(RichSkinChoiceField, self).__init__(*args, **kwargs)
+        self.choices = [(skin.alias, skin.name) for skin in get_skins()]
+
+class UserProfileForm(forms.ModelForm):
+    skin = RichSkinChoiceField()
+
+    class Meta:
+        exclude = ('user',)
+        model = get_user_profile_model()
 

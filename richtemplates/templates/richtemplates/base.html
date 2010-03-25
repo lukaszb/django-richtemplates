@@ -7,7 +7,8 @@
     
     {% block head_css %}
     <link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}richtemplates/css/style.css" />
-    {% richskin %}
+    {% get_richskin %}
+    <link rel="stylesheet" type="text/css" href="{{ skin.url }}" />
     {% endblock %}
 
     {% block head_js %}
@@ -30,6 +31,7 @@
     {% block menu_top %}
         {% include "richtemplates/layout/menu_top.html" %}
     {% endblock %}
+    {% block breadcrumbs %}{% endblock %}
     <div id="body-content">
         
         {# Message Box #}

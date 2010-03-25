@@ -30,6 +30,7 @@ urlpatterns += patterns('richtemplates.examples.views',
     url(r'^colors/$', 'colors', name='richtemplates_examples_colors'),
     url(r'^forms/form1/$', 'form1', name='richtemplates_examples_form1'),
     url(r'^forbidden/$', 'forbidden', name='richtemplates_examples_forbidden'),
+    url(r'^set_skin/(?P<skin>[-\w]+)/$', 'set_skin', name='richtemplates_examples_set_skin'),
 
     url(r'^projects/$',
         view='project_list',

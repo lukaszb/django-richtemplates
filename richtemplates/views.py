@@ -1,11 +1,15 @@
 from django.http import HttpResponseForbidden, Http404
 from django.views.generic.simple import direct_to_template
-from django.shortcuts import redirect
+from django.shortcuts import redirect, get_object_or_404, render_to_response
 from django.utils.translation import ugettext as _
+from django.contrib.auth.models import User
 from django.contrib import messages
+from django.template import RequestContext
+from django.core.exceptions import PermissionDenied
 
 from richtemplates import settings as richtemplates_settings
-from richtemplates.skins import set_skin_at_request
+from richtemplates.skins import set_skin_at_request, SkinDoesNotExist
+from richtemplates.forms import UserProfileForm
 
 def handle403(request, template_name='403.html'):
     """
@@ -16,9 +20,4 @@ def handle403(request, template_name='403.html'):
     response.status_code = 403
     return response
 
-def set_skin(request, skin):
-    message = _("Skin set to %s" % skin)
-    messages.info(request, message)
-    set_skin_at_request(request, skin)
-    return redirect('/')
 
