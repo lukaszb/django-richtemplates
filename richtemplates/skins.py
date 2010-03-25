@@ -87,7 +87,6 @@ def get_skin_from_request(request):
     skin (or profile is not available at all).
     If possible, skin would be taken form user's profile.
     """
-    logging.debug("get_skin_from_request called")
     user = getattr(request, 'user', None)
     profile_model = get_user_profile_model()
     # Check if profile model is specified and user authed
@@ -98,13 +97,11 @@ def get_skin_from_request(request):
                 None)
             if alias:
                 skin = get_skin_by_alias(alias)
-                logging.debug("Returning skin %s" % skin)
                 return skin
         except profile_model.DoesNotExist:
             logging.debug("Profile specified but not available for user %s. "
                 "Will fallback to ``get_skin_from_session`` method." % user)
     skin = get_skin_from_session(request.session)
-    logging.debug("Returning skin %s" % skin)
     return skin
 
 def get_skin_from_session(session):
@@ -114,14 +111,12 @@ def get_skin_from_session(session):
     does not provide skin information. Default skin is specified
     with ``RICHTEMPLATES_DEFAULT_SKIN`` setting.
     """
-    logging.debug("get_skin_from_session called")
     session_skin_name = richtemplates.settings.SESSION_SKIN_NAME
     if session_skin_name in session:
         alias = session[session_skin_name]
     else:
         alias = richtemplates.settings.DEFAULT_SKIN
     skin = get_skin_by_alias(alias)
-    logging.debug("Returning skin %s" % skin)
     return skin
         
 def set_skin_at_request(request, skin_alias):
@@ -131,7 +126,6 @@ def set_skin_at_request(request, skin_alias):
     (defined at ``RICHTEMPLATES_PROFILE_SKIN_FIELD``) then skin is set
     there. Otherwise, skin is set on the session.
     """
-    logging.debug("Called set_skin_at_request with skin_alias %s" % skin_alias)
     if skin_alias not in richtemplates.settings.SKINS.keys():
         raise SkinDoesNotExist("Skin '%s' is not available")
     user = getattr(request, 'user', None)
@@ -154,9 +148,7 @@ def set_skin_at_session(session, skin_alias):
     """
     Sets skin info at given ``session`` object.
     """
-    logging.debug("Called set_skin_at_session with skin_alias %s" % skin_alias)
     if skin_alias not in richtemplates.settings.SKINS.keys():
         raise SkinDoesNotExist("Skin '%s' is not available")
-    #setattr(session, richtemplates.settings.SESSION_SKIN_NAME, skin_alias)
     session[richtemplates.settings.SESSION_SKIN_NAME] = skin_alias
 

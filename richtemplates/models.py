@@ -26,7 +26,7 @@ class UserProfile(models.Model):
 def new_richtemplates_profile(instance, **kwargs):
     if kwargs['created'] is True:
         _ProfileModel = get_user_profile_model()
-        _ProfileModel.objects.create(
+        _ProfileModel is not None and _ProfileModel.objects.create(
             user = instance,
         )
 
