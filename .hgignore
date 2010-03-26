@@ -9,5 +9,6 @@ build
 dist
 _build
 .DS_Store
+pip-log.txt
 example_project/media
 example_project/.hidden.db

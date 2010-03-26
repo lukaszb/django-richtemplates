@@ -19,6 +19,7 @@ from richtemplates.examples.forms import TaskForm
 from richtemplates.examples.forms import TaskFilter
 from richtemplates.examples.models import Task, Project
 from richtemplates.forms import UserProfileForm
+from richtemplates.skins import SkinDoesNotExist, set_skin_at_request
 
 try:
     from django.contrib import messages
