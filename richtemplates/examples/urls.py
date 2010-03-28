@@ -24,6 +24,11 @@ urlpatterns = patterns('django.views.generic.simple',
         kwargs={'template': 'richtemplates/examples/links.html'},
         name='richtemplates_examples_links'),
 
+    url(r'tooltips/$',
+        view='direct_to_template',
+        kwargs={'template': 'richtemplates/examples/tooltips.html'},
+        name='richtemplates_examples_tooltips'),
+
 )
 
 urlpatterns += patterns('richtemplates.examples.views',

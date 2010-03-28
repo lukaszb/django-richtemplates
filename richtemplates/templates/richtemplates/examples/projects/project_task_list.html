@@ -31,7 +31,10 @@
     <h5>{% trans "Project details" %}</h5>
     <div class="richtemplates-panel-content">
         <ul class="messages">
-            <li class="message message-info">Move mouse over "Last editor" cell to see how tooltip looks like</li>
+            <li class="message message-info">Move mouse over "Last editor" cell to see how tooltip (tipsy on jQuery) looks like</li>
+            <li class="message message-info">You may also use tipsy without templatetag - simply add special class
+                and title attributes to any HTML tag. Move mouse over "Reported by" cell to see it in action.
+            </li>
         </ul>
         {% autosort filter.qs as task_list %}
         {% autopaginate task_list 10 %}
@@ -56,7 +59,7 @@
                     <td>{{ task.id }}</td>
                     <td><a href="{% url richtemplates_examples_task_detail task.id %}">{{ task.summary }}</a></td>
                     <td>{{ task.created_at }}</td>
-                    <td>{{ task.author }}</td>
+                    <td class="show-tipsy" title="{{ task.author }}">{{ task.author }}</td>
                     <td>{{ task.edited_at }}</td>
                     <td>{{ task.editor|tooltip:"10" }}</td>
                     <td>{{ task.status }}</td>

@@ -28,33 +28,6 @@ $(document).ready(function(){
         textarea_stabilizator($(this));
     });
 
-   $('.show-tooltip').qtip({
-        position: {
-            adjust: {y: -3},
-            corner: {
-                target: 'topMiddle',
-                tooltip: 'bottomMiddle'
-            }
-        },
-        show: {delay: 0},
-        style: {
-            width: {
-                min: 100,
-                max: 350
-            },
-            padding: 5,
-            background: '#c1eaed',
-            color: '#093d6b',
-            textAlign: 'center',
-            border: {
-                width: 5,
-                radius: 5,
-                color: '#093d6b'
-            },
-            tip: 'bottomMiddle'
-        }
-    });
-
     $('.show-tipsy').tipsy({
         gravity: 's'
     });
