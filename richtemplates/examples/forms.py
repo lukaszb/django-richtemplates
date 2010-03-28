@@ -18,6 +18,7 @@ class ContactForm(forms.Form):
     content = forms.CharField(min_length=10, max_length=3000, widget=forms.Textarea)
     rating = forms.ChoiceField(choices=RATING, initial=1)
     email = forms.EmailField(required=False)
+    deadline = forms.DateField(required=False)
 
 class TaskForm(LimitingModelForm):
     class Meta:

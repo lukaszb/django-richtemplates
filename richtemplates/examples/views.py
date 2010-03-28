@@ -3,6 +3,7 @@ import django_filters
 
 from django.views.generic import simple
 from django.views.generic import list_detail
+from django.views.decorators.csrf import csrf_exempt
 from django.utils.datastructures import SortedDict
 from django.shortcuts import render_to_response, get_object_or_404, redirect
 from django.http import HttpResponseRedirect
@@ -104,6 +105,7 @@ def project_detail(request, project_id,
     }
     return list_detail.object_detail(request, **project_info)
 
+#@csrf_exempt
 def project_task_list(request, project_id,
     template_name='richtemplates/examples/projects/project_task_list.html'):
     """
