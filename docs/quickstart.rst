@@ -3,10 +3,10 @@
 Quickstart
 ==========
 
-`django-richtemplates`_'s source distribution comes with example projet
+`django-richtemplates`_'s source distribution comes with example project
 located at ``example_project`` of the archive. It's settings module is
-configured so it would try to lookup `django-richtemplates`_ in it's
-parent directory (so try not to move it).
+configured so it would try to lookup `django-richtemplates`_ in it's parent
+directory (so try not to move it).
 
 Remember that `django-richtemplates`_ needs Django_ >=1.2 (see
 :ref:`installation` and :ref:`configuration` sections for more information).
