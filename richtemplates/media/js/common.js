@@ -28,6 +28,7 @@ $(document).ready(function(){
         textarea_stabilizator($(this));
     });
 
+    /* Tipsy tooltips */
     $('.show-tipsy').tipsy({
         gravity: 's'
     });
@@ -39,6 +40,17 @@ $(document).ready(function(){
     });
     $('.show-tipsy-right').tipsy({
         gravity: 'w'
+    });
+
+    /* Datepicker */
+    $('input.datepicker').datepicker({
+        dateFormat: 'yy-mm-dd',
+        firstDay: 1,
+        showButtonPanel: true,
+        showAnim: 'show',
+        showOn: 'button',
+        buttonImage: '/media/richtemplates/img/ruby-calendar.gif',
+        buttonImageOnly: true
     });
 });
 
