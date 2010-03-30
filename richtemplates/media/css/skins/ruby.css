@@ -47,6 +47,7 @@ tr.datatable-thead-header th {
 	background: #FFBDC3 url(../../img/ruby-gradient-big.png) repeat-x top left;
 }
 
+table.datatable caption { color: #900; }
 table.datatable th {
     background-color: #FFBDC3;
 }
