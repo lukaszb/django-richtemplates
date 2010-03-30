@@ -5,7 +5,7 @@ body, div, span, dd, dt, dl, img, ul, ol, li, p,h0, h1, h2, h3, h4, legend, form
 }
 html { height: 100%; background-color: #DBD4C6; }
 
-body { font-size: 11px; font-family: Arial, sans-serif, Verdana;}
+body { font-size: 11px; font-family: Arial, sans-serif, Verdana; min-width: 900px; }
 h1, h2, h3, h3 { margin-top: 10px; padding-bottom: 10px; }
 p { 
     margin-bottom: 1.5em;
@@ -89,7 +89,7 @@ input.disabled { background: #E8E8E8; }
 #col_single { width: 90%; min-height: 500px; margin: 0 auto; }
 #col_single p { margin-bottom: 5px; }
 
-#col_left { width: 20%; max-width: 250px; float: left; }
+#col_left { width: 20%; max-width: 300px; margin-right: 10px; float: left; }
 #col_main {width: 78%; min-width: 75%; min-height: 500px; float: right; }
 
 #top {
@@ -151,12 +151,13 @@ ul.menu-top-right li { float: right; padding: 0; margin: 0 10px 0 0; }
 /* RICHTEMPLATES PANELS */
     
 .richtemplates-panel {
-	margin: 0 0 20px 0;
+	margin: 0 10px 20px 0;
 	border: 1px solid #008894;
 	background-color: #FFF;
 	padding: 1px;
 	color: rgb(97, 97, 97);
 	vertical-align: top;
+    min-width: 230px;
 }
 .richtemplates-panel table { vertical-align: top; }
 .richtemplates-panel div { vertical-align: top; }
