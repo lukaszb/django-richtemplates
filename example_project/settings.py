@@ -69,7 +69,7 @@ INSTALLED_APPS = (
     'rosetta',
 
     'richtemplates',
-    'richtemplates.examples',
+    'examples',
 
     'example_project',
 )

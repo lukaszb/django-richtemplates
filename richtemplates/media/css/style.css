@@ -362,9 +362,8 @@ input:focus, textarea:focus {
     margin: 10px 5px;
     padding: 5px;
 }
-.richblock ul, .richblock ol {
-    padding-left: 30px;
-}
+
+ul, ol { padding-left: 30px; }
 
 table.richblock-properties {
     /*width: 100%;*/
