@@ -15,10 +15,11 @@ from django.contrib.auth.models import User
 from django.core.exceptions import PermissionDenied
 from django.utils.translation import ugettext as _
 
-from richtemplates.examples.forms import ContactForm
-from richtemplates.examples.forms import TaskForm
-from richtemplates.examples.forms import TaskFilter
-from richtemplates.examples.models import Task, Project
+from examples.forms import ContactForm
+from examples.forms import TaskForm
+from examples.forms import TaskFilter
+from examples.forms import UserForm
+from examples.models import Task, Project
 from richtemplates.forms import UserProfileForm
 from richtemplates.skins import SkinDoesNotExist, set_skin_at_request
 
@@ -49,6 +50,21 @@ def form1(request, template_name='richtemplates/examples/form1.html'):
             messages and messages.error(request, error_msg)
             logging.error(error_msg)
 
+    context = {
+        'form': form,
+    }
+    return render_to_response(template_name, context, RequestContext(request))
+
+def manage_user_groups(request, username,
+    template_name='richtemplates/examples/manage_user_groups.html'):
+    """
+    View to show usage of FilteredSelectMultiple admin's widget. Permissions
+    are not the case here.
+    """
+    user = get_object_or_404(User, username=username)
+    form = UserForm(request.POST or None, instance=user)
+    if request.method == 'POST' and form.is_valid():
+        form.save()
     context = {
         'form': form,
     }

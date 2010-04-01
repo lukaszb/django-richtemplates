@@ -13,6 +13,11 @@
         <li><a href="{% url richtemplates_examples_links %}">Links</a></li>
         <li><a href="{% url richtemplates_examples_colors %}">Colors</a></li>
         <li><a href="{% url richtemplates_examples_form1 %}">Form 1</a></li>
+        {% if user.is_authenticated %}
+        <li><a href="{% url richtemplates_examples_manage_user_groups user.username %}">Manage user groups</a></li>
+        {% else %}
+        <li><a href="{% url auth_login %}">Log in</a> to manage groups</li>
+        {% endif %}
         <li><a href="{% url richtemplates_examples_tooltips %}">Tooltips</a></li>
         <li><a href="{% url richtemplates_examples_forbidden %}">Forbidden</a></li>
     </ul>

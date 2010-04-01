@@ -4,9 +4,11 @@ import django_filters
 from django import forms
 from django.db.models import Q
 from django.utils.translation import ugettext as _
+from django.contrib.auth.models import User, Group
+from django.contrib.admin.widgets import FilteredSelectMultiple
 
 from richtemplates.forms import LimitingModelForm
-from richtemplates.examples.models import Task, Status, Priority, Project
+from examples.models import Task, Status, Priority, Project
 
 RATING = [(i, u'%d' % i) for i in xrange(1,6)]
 
@@ -19,6 +21,11 @@ class ContactForm(forms.Form):
     rating = forms.ChoiceField(choices=RATING, initial=1)
     email = forms.EmailField(required=False)
     deadline = forms.DateField(required=False)
+
+class UserForm(forms.ModelForm):
+    groups = forms.ModelMultipleChoiceField(Group.objects.all(),
+        #widget=FilteredSelectMultiple(_("Groups"), False, attrs={'rows': 10 })
+    )
 
 class TaskForm(LimitingModelForm):
     class Meta:

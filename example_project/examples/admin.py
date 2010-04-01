@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from richtemplates.examples.models import Task, Status, Project, Priority
+from examples.models import Task, Status, Project, Priority
 from richtemplates.forms import LimitingModelForm
 
 class TaskAdmin(admin.ModelAdmin):

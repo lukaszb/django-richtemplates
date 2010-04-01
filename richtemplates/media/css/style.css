@@ -29,7 +29,7 @@ a.deletelink {
 a.button-link {
     background: #4477AA url(../img/aqua-button-link.png) repeat-x;
     color: #FFF;
-    border: 1px solid #153E7E;
+    border: 1px solid #00AEB4;
     border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px;
     margin: 2px;
     padding: 2px 10px 2px 10px;
@@ -46,7 +46,6 @@ a.max-rounded {
 a.max-rounded:hover {
     border-radius: 15px; -webkit-border-radius: 15px; -moz-border-radius: 15px;
 }
-
 
 label {font-weight: bold;}
 hr { color: #008894; margin-bottom: 10px; }
@@ -78,6 +77,7 @@ input.disabled { background: #E8E8E8; }
 .centered { text-align: center; }
 .lefted { text-align: left; }
 .righted { text-align: right; }
+.bolded { font-weight: bold; }
 
 
 /* BODY-LAYOUT */
@@ -144,9 +144,9 @@ ul.menu-top-right li { float: right; padding: 0; margin: 0 10px 0 0; }
 
 
 /* NAVIGATION LISTs */
-.nav-vertical { list-style: none; margin: 10px 0 10px; }
+.nav-vertical { list-style: none; margin: 10px 0 10px; padding: 0; }
 .nav-vertical li { padding-bottom: 5px; margin-top: 3px; }
-.nav-inline { list-style: none; margin: 10px 0 10px 5px; }
+.nav-inline { list-style: none; margin: 10px 0 10px 5px; padding: 0; }
 .nav-inline li { display: inline; margin-right: 10px; }
 /* RICHTEMPLATES PANELS */
     
@@ -250,6 +250,7 @@ td.messages-field { text-align: left; }
 /* MESSAGES & ERRORS */
 ul.messages {
     list-style: none;
+    padding: 0;
 }
 ul.messages li.message, .message p {
     padding: 6px 10px 8px 10px;
