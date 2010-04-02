@@ -8,6 +8,7 @@ urlpatterns = patterns('',
     (r'', include('examples.urls')),
 
     (r'^accounts/', include('registration.urls')),
+    url(r'^admin_tools/', include('admin_tools.urls')),
     (r'^admin/', include(admin.site.urls)),
     url(r'^users/(?P<username>\w+)/$',
         view='examples.views.userprofile',
