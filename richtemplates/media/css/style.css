@@ -78,6 +78,7 @@ input.disabled { background: #E8E8E8; }
 .lefted { text-align: left; }
 .righted { text-align: right; }
 .bolded { font-weight: bold; }
+.hidden { display: none; }
 
 
 /* BODY-LAYOUT */
@@ -353,7 +354,7 @@ input:focus, textarea:focus {
     border: 1px solid #996;
     border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px;
     margin: 10px 5px;
-    padding-bottom: 10px;
+    padding: 10px 5px 10px 5px;
 }
 .richblock h2, .richblock h3 {
     margin: 10px 5px;

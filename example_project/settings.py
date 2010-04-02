@@ -66,7 +66,7 @@ INSTALLED_APPS = (
     'django_sorting',
     'pagination',
     'registration',
-    'rosetta',
+    'native_tags',
 
     'richtemplates',
     'examples',
@@ -141,4 +141,12 @@ RICHTEMPLATES_SKINS = {
 }
 
 AUTH_PROFILE_MODULE = 'examples.MyUserProfile'
+
+# ==================== #
+# NATIVE TAGS SETTINGS #
+# ==================== #
+
+NATIVE_TAGS = (
+    'native_tags.contrib.pygmentize',
+)
 

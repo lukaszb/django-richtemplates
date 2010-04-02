@@ -11,6 +11,8 @@ div.codeblock {
 
 .code-highlight {
     padding: 0px;
+    margin-top: 5px;
+    margin-bottom: 5px;
     border-left: 2px solid #ccc;
 }
 .code-highlight pre, .linenodiv pre { 

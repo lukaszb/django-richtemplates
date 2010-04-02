@@ -24,6 +24,9 @@ $(document).ready(function(){
     $('textarea').each(function(){
         textarea_stabilizator($(this));
     });
+    $('textarea').click(function(){
+        textarea_stabilizator($(this));
+    });
     $('textarea').keyup(function(){
         textarea_stabilizator($(this));
     });
@@ -51,6 +54,12 @@ $(document).ready(function(){
         showOn: 'button',
         buttonImage: '/media/richtemplates/img/ruby-calendar.gif',
         buttonImageOnly: true
+    });
+
+    $('a.togglable').each(function(){
+        $(this).togglable({
+            showLabel: $(this).text()
+        });
     });
 });
 
