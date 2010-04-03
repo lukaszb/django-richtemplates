@@ -10,6 +10,8 @@ from django.utils.translation import ugettext as _
 from richtemplates.utils import get_fk_fields, get_user_profile_model
 from richtemplates.skins import get_skins
 
+from richtemplates.fields import RestructuredTextAreaField
+
 import logging
 
 class DynamicActionChoice(object):

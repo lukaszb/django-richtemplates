@@ -61,7 +61,7 @@
                 {% for task in task_list %}
                 <tr class="{% cycle "odd" "even" %} hoverable">
                     <td>{{ task.id }}</td>
-                    <td><a href="{% url richtemplates_examples_task_detail task.id %}">{{ task.summary }}</a></td>
+                    <td><a class="block-link" href="{% url richtemplates_examples_task_detail task.id %}">{{ task.summary }}</a></td>
                     <td>{{ task.created_at }}</td>
                     <td class="show-tipsy" title="{{ task.author }}">{{ task.author }}</td>
                     <td>{{ task.edited_at }}</td>

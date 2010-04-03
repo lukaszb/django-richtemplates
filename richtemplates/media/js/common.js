@@ -18,6 +18,8 @@ function textarea_stabilizator(ta){
     else if (content_length < rows+1) {
         ta.attr('rows', rows-1);
     }
+
+    ta.attr('cols', 80);
 }
 
 $(document).ready(function(){
