@@ -7,7 +7,7 @@ from django.utils.translation import ugettext as _
 from django.contrib.auth.models import User, Group
 from django.contrib.admin.widgets import FilteredSelectMultiple
 
-from richtemplates.forms import LimitingModelForm
+from richtemplates.forms import LimitingModelForm, UserByNameField
 from examples.models import Task, Status, Priority, Project
 
 RATING = [(i, u'%d' % i) for i in xrange(1,6)]
@@ -16,11 +16,12 @@ class ContactForm(forms.Form):
     """
     Example of boring contact form.
     """
-    username = forms.CharField(min_length=2, max_length=16)
+    username = UserByNameField(min_length=2, max_length=16)
     content = forms.CharField(min_length=10, max_length=3000, widget=forms.Textarea)
     rating = forms.ChoiceField(choices=RATING, initial=1)
     email = forms.EmailField(required=False)
     deadline = forms.DateField(required=False)
+    action = forms.ChoiceField(choices=[(1, 'abc'), (2, 'zzz')], widget=forms.RadioSelect)
 
 class UserForm(forms.ModelForm):
     groups = forms.ModelMultipleChoiceField(Group.objects.all(),

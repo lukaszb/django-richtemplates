@@ -1,11 +1,12 @@
 # encoding: UTF-8
 
 from django import forms
+from django.contrib.auth.models import User
 from django.db import models
 from django.forms.util import ErrorList
 from django.utils.safestring import mark_safe
-from django.template import Template, Context
 from django.utils.translation import ugettext as _
+from django.template import Template, Context
 
 from richtemplates.utils import get_fk_fields, get_user_profile_model
 from richtemplates.skins import get_skins
@@ -59,16 +60,15 @@ def DynamicActionFormFactory(available_choices, selected = None):
         for (field_name, field,) in choice.fields.items():
             field.required = False
             fields[field_name] = field
-            logging.debug(('setting required of field %s to False' % field_name))
 
     def clean(self):
         cleaned_data = self.cleaned_data
         chosen_action = cleaned_data.get('action_type')
         if chosen_action is None or chosen_action == u'':
-            logging.debug("Cleaned data:\n%s" % cleaned_data)
+            #logging.debug("Cleaned data:\n%s" % cleaned_data)
             raise forms.ValidationError(_("Choose one action first"))
         self.chosen_action = chosen_action
-        logging.debug("Chosen action: %s" % chosen_action)
+        #logging.debug("Chosen action: %s" % chosen_action)
         for choice in enabled_choices:
             if (choice.action == chosen_action):
                 for (field_name, field,) in choice.fields.items():
@@ -114,10 +114,12 @@ def DynamicActionFormFactory(available_choices, selected = None):
             row_output = t.render(Context(data))
             output.append( row_output )
 
-        return mark_safe('\n'.join(output))
+        return mark_safe(u'\n'.join(output))
     
     # Constructor of the newly created form class
     def __init__(self, *args, **kwargs):
+        # allow instance parameter
+        self.instance = kwargs.pop('instance', None)
         super( type(self), self).__init__(*args, **kwargs)
         self.dynfields = {}
         for field in self:
@@ -204,6 +206,32 @@ class LimitingModelForm(forms.ModelForm):
                             "'%s' but it's instance field is empty"
                             % model_field.name)
 
+
+class UserByNameField(forms.CharField):
+    """
+    Allows to choose user by simple typing his or her
+    name instead of picking up from <select> tag.
+    """
+    def __init__(self, queryset=User.objects.all(), *args, **kwargs):
+        self.queryset = queryset
+        super(UserByNameField, self).__init__(*args, **kwargs)
+
+    def clean(self, value):
+        """
+        Returns user for whom task is beign assigned.
+        """
+        # Firstly, we have to clean as normal CharField
+        value = super(UserByNameField, self).clean(value)
+        # Now do the magic
+        username = value.strip()
+        if username == '':
+            return None
+        try:
+            user = User.objects.get(username=username)
+        except User.DoesNotExist:
+            raise forms.ValidationError("No user found!")
+        logging.debug("Returns UserByNameField: %s" % user)
+        return user
 
 # =================================== #
 # Richtemplates user profiles helpers #
