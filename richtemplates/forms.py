@@ -8,10 +8,10 @@ from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext as _
 from django.template import Template, Context
 
+from richtemplates import settings as richtemplates_settings
 from richtemplates.utils import get_fk_fields, get_user_profile_model
 from richtemplates.skins import get_skins
-
-from richtemplates.fields import RestructuredTextAreaField
+from richtemplates.fields import RestructuredTextAreaField, UserByNameField
 
 import logging
 
@@ -30,10 +30,10 @@ def DynamicActionFormFactory(available_choices, selected = None):
     Returns Form object with radio choices based on available_choices
     but only selected ones are initialized. If selected (as sequence of
     action numbers) is not given, will return all possibilities.
-    
+
     Raises exception if there are two DynamicActionChoice with same
     'action' number within available_choices.
-    
+
     Creates basic clean up mechanism - only fields of the chosen action
     radio button are passed to the cleaned_data, others are removed. As so,
     if extended, form should call super(*cls*, self).clean() method if
@@ -41,13 +41,13 @@ def DynamicActionFormFactory(available_choices, selected = None):
     """
 
     class SameActionChoiceError(Exception):
-        pass 
-    
+        pass
+
     if (selected is None):
         enabled_choices = available_choices
     else:
         enabled_choices = [ choice for choice in available_choices if (choice.action in selected) ]
-    
+
     fields = {
         'action_type' : forms.TypedChoiceField(
             choices=[ (choice.action, choice.label) for choice in enabled_choices ],
@@ -76,7 +76,7 @@ def DynamicActionFormFactory(available_choices, selected = None):
                             not self._errors.has_key(field_name):
                         self._errors[field_name] = ErrorList(['This field is required'])
         return cleaned_data
-    
+
     def as_p_rows(self):
         """
         Should return <p> tags with one action radio plus any associated fields,
@@ -87,9 +87,9 @@ def DynamicActionFormFactory(available_choices, selected = None):
         dynchoices = {}
         data = {}
         context = Context(data)
-        
+
         chosen_action = int( self.dynfields['action_type'].data or enabled_choices[0].action )
-        
+
         for choice in enabled_choices:
             dynchoices[choice.action] = choice
             fields = []
@@ -100,7 +100,7 @@ def DynamicActionFormFactory(available_choices, selected = None):
             data = {
                 'action' : choice.action,
                 'label' : choice.label,
-                'fields' : fields, 
+                'fields' : fields,
             }
             row = '<p><input type="radio" name="action_type" id="id_action_type_{{ action }}"'
             row += ' value="{{ action }}"'
@@ -115,7 +115,7 @@ def DynamicActionFormFactory(available_choices, selected = None):
             output.append( row_output )
 
         return mark_safe(u'\n'.join(output))
-    
+
     # Constructor of the newly created form class
     def __init__(self, *args, **kwargs):
         # allow instance parameter
@@ -135,10 +135,6 @@ def DynamicActionFormFactory(available_choices, selected = None):
             }
     )
 
-    class Media:
-        js = ('{{ MEDIA_URL }}richtemplates/js/action_form.js',)
-    form.Media = Media
-   
     return form
 
 
@@ -177,13 +173,13 @@ class LimitingModelForm(forms.ModelForm):
             limiting_fields.append(field)
 
         return limiting_fields
-        
+
     def _limit_querysets(self):
         """
         Limits querysets of the fields using
         self._meta.choices_limiting_fields.
         """
-        
+
         for model_field in self._get_limiting_model_fields():
             limiting_model = model_field.related.parent_model
             for bfield in self:
@@ -193,7 +189,7 @@ class LimitingModelForm(forms.ModelForm):
 
                 model_to_check = field.queryset.model
                 fk_fields = get_fk_fields(model_to_check, limiting_model)
-                
+
                 if len(fk_fields) > 1:
                     raise LimitingModelFormError("Too many fk'd fields")
                 elif fk_fields and limiting_model is fk_fields[0].related.parent_model:
@@ -207,39 +203,13 @@ class LimitingModelForm(forms.ModelForm):
                             % model_field.name)
 
 
-class UserByNameField(forms.CharField):
-    """
-    Allows to choose user by simple typing his or her
-    name instead of picking up from <select> tag.
-    """
-    def __init__(self, queryset=User.objects.all(), *args, **kwargs):
-        self.queryset = queryset
-        super(UserByNameField, self).__init__(*args, **kwargs)
-
-    def clean(self, value):
-        """
-        Returns user for whom task is beign assigned.
-        """
-        # Firstly, we have to clean as normal CharField
-        value = super(UserByNameField, self).clean(value)
-        # Now do the magic
-        username = value.strip()
-        if username == '':
-            return None
-        try:
-            user = User.objects.get(username=username)
-        except User.DoesNotExist:
-            raise forms.ValidationError("No user found!")
-        logging.debug("Returns UserByNameField: %s" % user)
-        return user
-
 # =================================== #
 # Richtemplates user profiles helpers #
 # =================================== #
 
 class RichSkinChoiceField(forms.ChoiceField):
     """
-    Use this field for a user profile form if you want to allow users to 
+    Use this field for a user profile form if you want to allow users to
     set their default skin.
     """
     def __init__(self, *args, **kwargs):

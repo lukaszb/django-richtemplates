@@ -10,7 +10,7 @@ from richtemplates import models as richtemplates_app
 from richtemplates.forms import RichSkinChoiceField
 
 class Project(models.Model):
-    name = models.CharField(max_length=32)
+    name = models.CharField(max_length=32, unique=True)
     is_public = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
     created_by = models.ForeignKey(User)

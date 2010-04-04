@@ -12,6 +12,13 @@
                 buttonImage: '{{ MEDIA_URL }}richtemplates/img/ruby-calendar.gif',
                 buttonImageOnly: true
             });
+
+            var users=[{% for u in form.username.field.queryset %}"{{ u.username }}"{% if not forloop.last %}, {% endif %}{% endfor %}];
+            $('#id_username').autocomplete({
+                source: users,
+                delay: 0
+            });
+
         });
     </script>
 {% endblock %}
