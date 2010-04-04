@@ -76,7 +76,7 @@ def get_skin_by_alias(alias):
     raise SkinDoesNotExist("Skin with alias '%s' is not available. Check "
         "your settings file (available skins are: %s)"
         % (alias,  pformat([skin.alias for skin in skins])))
-    
+
 def get_skin_from_request(request):
     """
     Returns ``RichSkin`` object for the given request.
@@ -118,7 +118,7 @@ def get_skin_from_session(session):
         alias = richtemplates.settings.DEFAULT_SKIN
     skin = get_skin_by_alias(alias)
     return skin
-        
+
 def set_skin_at_request(request, skin_alias):
     """
     Sets skin on the given ``request`` instance.

@@ -1,7 +1,7 @@
-.. _custom_management_commands:
+.. _management_commands:
 
-Custom Django management commands
-=================================
+Management commands
+===================
 
 This section describes available, custom management commands included with
 ``richtemplates`` application.

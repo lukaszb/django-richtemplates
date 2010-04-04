@@ -14,17 +14,46 @@ from richtemplates.management.helpers import copy_dir_helper, make_writeable,\
     get_settings_as_dict
 
 class Command(LabelCommand):
-    help =\
+    help = """
+    Copies ``media`` directory from django pluggable app into this project.
+
+    If ``media`` directory would containt subdirectory called same as this
+    application's ``app_label``, this subdirectory would become source
+    directory.
+
+    Source directory is put into ``media`` directory inside the project. If
+    this destination directory does not exist it would be created.
+
+    **Synopsis**
+
+    .. code-block:: bash
+
+       ./manage.py import_media [options] app [app2] [app3] ...
+
+    **Options**
+
+    ``--fail-silently``
+      *Default*: ``False``
+
+      Turning on would not raise exception if specified ``app`` does not have
+      ``media`` directory.
+
+    ``--force``
+       *Default*: ``False``
+
+       By default, if destination directory already exists, ``CommandError``
+       would be raised. By turning this flag on check is not made.
+
+    ``--media-root``
+       *Default*: same as ``django.settings.MEDIA_ROOT``
+
+       This is destination directory. All source directories would be copied
+       as *subdirectories* into this directory.
+
     """
-    Copies 'media' directory from django pluggable app into this
-    project. Will use used settings module, transform it into dict
-    and try to render media files (css/js) using this dict as a context.
-    Files would be placed at %s (default, may be overriden by ``--media-root``
-    option).
-    """ % (os.path.join(settings.MEDIA_ROOT, '<app>'),)
     __doc__ = help
 
-    args = '[apps]'
+    args = 'app [app2] [app3]'
     requires_model_validation = False
     option_list = LabelCommand.option_list + (
         make_option('--media-root', dest='media_root',
@@ -77,8 +106,8 @@ class Command(LabelCommand):
                 % app)
         copy_dir_helper(app_media_dir, dst, force=options['force'])
         make_writeable(MEDIA_ROOT)
-        
-        # Replaces django template variables with 
+
+        # Replaces django template variables with
         # ones founded in your settings file
         # submedia.submedia_files(dst)
         # Turning off as implementation was bad design decision
