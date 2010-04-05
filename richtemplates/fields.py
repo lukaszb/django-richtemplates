@@ -1,3 +1,5 @@
+import logging
+
 from django import forms
 from django.contrib.auth.models import User
 
@@ -28,6 +30,5 @@ class UserByNameField(forms.CharField):
             user = User.objects.get(username=username)
         except User.DoesNotExist:
             raise forms.ValidationError("No user found!")
-        logging.debug("Returns UserByNameField: %s" % user)
         return user
 
