@@ -17,13 +17,18 @@ Hook richtemplates into your project
 This is done similar to other Django pluggable applications. Simply add
 ``richtemplates`` into your ``INSTALLED_APPS`` tuple at ``settings`` module.
 
-Additionally, you would need to add *context_processor* provided by
-``richtemplates`` at yout ``settings`` module:
+Additionally, you need to add *context processor* provided by
+``richtemplates`` at your ``settings`` module **AND** ``request`` *context
+processor* which boundled with Django_ but not included by default:
 
 .. code-block:: python
 
-   TEMPLATE_CONTEXT_PROCESSORS = (
-        # ...
+   from django.conf import global_settings
+   
+   # ...
+   
+   TEMPLATE_CONTEXT_PROCESSORS = global_settings.TEMPLATE_CONTEXT_PROCESSORS + (
+        'django.core.context_processors.request',
         'richtemplates.context_processors.media',
    )
 
@@ -121,4 +126,6 @@ Following configuration settings may be overriden:
 
     ``richtemplates`` comes with some support for restructuredText. It is still
     undocumented.
+
+.. _Django: http://www.djangoproject.com
 

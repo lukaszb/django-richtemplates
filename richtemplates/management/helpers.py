@@ -1,7 +1,7 @@
 import os
 import shutil
-import logging
 import inspect
+import logging
 
 from django.core.management.base import _make_writeable, CommandError
 

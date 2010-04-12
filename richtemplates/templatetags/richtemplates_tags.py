@@ -1,14 +1,11 @@
-import logging
-
 from django import template
-from django.template.defaultfilters import stringfilter, force_escape, slice_
+from django.template.defaultfilters import stringfilter, force_escape
 from django.utils.safestring import mark_safe
 
 import richtemplates.settings
 from richtemplates.skins import get_skins
 from richtemplates.skins import get_skin_by_alias
 from richtemplates.skins import get_skin_from_request
-from richtemplates.skins import set_skin_at_request
 
 register = template.Library()
 
@@ -19,7 +16,7 @@ def tooltip(value, max_length=None):
     Adds tooltip mechanism to the given value by
     embracing it with 'span' tag with proper class.
     If `max_length` parameter is given, value
-    would be chopped down to the given length and 
+    would be chopped down to the given length and
     three dots would be added.
     See ``common.js`` file (located within media
     directory) for details how tooltips are created
@@ -64,7 +61,7 @@ def do_get_richskin(parser, token):
     else:
         raise template.TemplateSyntaxError, "%r should be in format: "\
             '%s' % (tag_name, format)
-    
+
     return RichSkinNode(skin_alias)
 
 class RichSkinNode(template.Node):

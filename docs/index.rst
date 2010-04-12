@@ -3,8 +3,8 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to django-richtemplates's documentation!
-================================================
+Richtemplates
+=============
 
 `django-richtemplates`_ is a set of templates (surprise!), template tags,
 media files providing presentation layer similar to what Richfaces library
@@ -19,6 +19,19 @@ applications.
 
 .. image:: _static/richtemplates-examples-home.png
    :width: 500px
+
+Sources and issue tracker
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Sources may be found at `bitbucket
+<http://bitbucket.org/lukaszb/django-richtemplates/>`_. You may file a bug
+there, too. 
+
+License
+~~~~~~~
+
+`django-richtemplates`_ is an open source project released under MIT_ license.
+Copy of the license should be boundled with source code archive.
 
 Documentation
 =============
@@ -43,6 +56,13 @@ Documentation
    skins
    userprofiles
 
+**Manual**
+
+.. toctree::
+   :maxdepth: 1
+
+   manual/index
+
 **Included utilities:**
 
 .. toctree::
@@ -66,3 +86,5 @@ Other topics
 
 .. _django: http://www.djangoproject.com
 .. _django-richtemplates: http://bitbucket.org/lukaszb/django-richtemplates/
+.. _mit: http://www.opensource.org/licenses/mit-license.php
+

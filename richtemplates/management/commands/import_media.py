@@ -1,17 +1,13 @@
 import os
-import logging
 import richtemplates
 
 from optparse import make_option
 
 from django.conf import settings
 from django.core.management.base import LabelCommand, CommandError
-from django.template.defaultfilters import slugify
 from django.utils.importlib import import_module
 
-from richtemplates.management import rt_init, submedia
-from richtemplates.management.helpers import copy_dir_helper, make_writeable,\
-    get_settings_as_dict
+from richtemplates.management.helpers import copy_dir_helper, make_writeable
 
 class Command(LabelCommand):
     help = """

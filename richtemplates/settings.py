@@ -5,6 +5,18 @@ from django.core.exceptions import ImproperlyConfigured
 from django.template.defaultfilters import slugify
 from docutils.parsers.rst import directives
 
+if 'django.core.context_processors.request' \
+    not in settings.TEMPLATE_CONTEXT_PROCESSORS:
+        raise ImproperlyConfigured("To use richtemplates you need to add "
+            "'django.core.context_processors.request' to your "
+            "TEMPLATE_CONTEXT_PROCESSORS")
+
+if 'richtemplates.context_processors.media' \
+    not in settings.TEMPLATE_CONTEXT_PROCESSORS:
+        raise ImproperlyConfigured("To use richtemplates you need to add "
+            "'richtemplates.context_processors.media' to your "
+            "TEMPLATE_CONTEXT_PROCESSORS")
+
 MEDIA_URL = getattr(settings, 'RICHTEMPLATES_MEDIA_URL',
     settings.MEDIA_URL + 'richtemplates/')
 
@@ -19,8 +31,6 @@ SKINS = {
     'django': {'name': 'Django'},
     'ruby': {'name': 'Ruby'},
 }
-
-
 
 if hasattr(settings, 'RICHTEMPLATES_SKINS'):
     skins = getattr(settings, 'RICHTEMPLATES_SKINS')
@@ -38,7 +48,7 @@ if hasattr(settings, 'RICHTEMPLATES_SKINS'):
         if not set(skin_info.keys()).issubset(allowed_keys):
             raise ImproperlyConfigured("Wrong keys defined for skin '%s' "
                 "(allowed keys: %s)" % (alias, allowed_keys))
-    
+
     SKINS.update(**skins)
 
 def register_rst_directives(directives_items):
