@@ -13,8 +13,10 @@ class UserByNameField(forms.CharField):
     name instead of picking up from <select> tag.
     """
     def __init__(self, queryset=User.objects.all(), *args, **kwargs):
-        self.queryset = queryset
         super(UserByNameField, self).__init__(*args, **kwargs)
+        if callable(queryset):
+            self.queryset = queryset
+        self.queryset = queryset
 
     def clean(self, value):
         """
@@ -27,7 +29,7 @@ class UserByNameField(forms.CharField):
         if username == '':
             return None
         try:
-            user = User.objects.get(username=username)
+            user = self.queryset.get(username=username)
         except User.DoesNotExist:
             raise forms.ValidationError("No user found!")
         return user
