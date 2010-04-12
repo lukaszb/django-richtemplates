@@ -1,0 +1,51 @@
+{% extends "examples/projects/base.html" %}
+
+{% load markup %}
+{% load i18n %}
+
+{% block col_main_title %}{{ project.name }}{% endblock %}
+
+{% block col_main %}
+<div class="richtemplates-panel">
+    <h5>{{ project.name }}</h5>
+    <div class="richtemplates-panel-content">
+        <h1>{{ project.name|capfirst }}</h1>
+        <ul class="nav-inline">
+            <li><a class="button-link" href="{{ project.get_absolute_url }}">{% trans "Project details" %}</a></li>
+            <li><a class="button-link" href="{{ project.get_task_list_url }}">{% trans "Task list" %}</a></li>
+        </ul>
+
+    </div>
+</div>
+
+{% block col_main_extra %}
+<div class="richtemplates-panel">    
+    <h5>{% trans "Project details" %}</h5>
+    <div class="richtemplates-panel-content">
+        <div class="richblock">
+            <table class="richblock-properties">
+                <tbody>
+                    <tr>
+                        <th>{% trans "Project" %}</th>
+                        <td>{{ project.name }}</td>
+                    </tr>
+                    <tr>
+                        <th>{% trans "Visibility" %}</th>
+                        <td>
+                            {% if project.public %}
+                            {% trans "Public" %}
+                            {% else %}
+                            {% trans "Private" %}
+                            {% endif %}
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+    {% endblock col_main_extra %}
+
+{% endblock col_main %}
+
+

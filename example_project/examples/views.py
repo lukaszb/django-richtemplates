@@ -28,13 +28,13 @@ try:
 except ImportError:
     messages = None
 
-def colors(request, template_name='richtemplates/examples/color_tables.html'):
+def colors(request, template_name='examples/color_tables.html'):
 
     extra_context = {'colors': SortedDict(COLORS)}
 
     return simple.direct_to_template(request, template_name, extra_context)
 
-def form1(request, template_name='richtemplates/examples/form1.html'):
+def form1(request, template_name='examples/form1.html'):
 
     form = ContactForm(request.POST or None)
     if request.method == 'POST':
@@ -56,7 +56,7 @@ def form1(request, template_name='richtemplates/examples/form1.html'):
     return render_to_response(template_name, context, RequestContext(request))
 
 def manage_user_groups(request, username,
-    template_name='richtemplates/examples/manage_user_groups.html'):
+    template_name='examples/manage_user_groups.html'):
     """
     View to show usage of FilteredSelectMultiple admin's widget. Permissions
     are not the case here.
@@ -70,7 +70,7 @@ def manage_user_groups(request, username,
     }
     return render_to_response(template_name, context, RequestContext(request))
 
-def task_list(request, template_name='richtemplates/examples/projects/task_list.html'):
+def task_list(request, template_name='examples/projects/task_list.html'):
     """
     Returns ``Task`` objects list.
     """
@@ -83,7 +83,7 @@ def task_list(request, template_name='richtemplates/examples/projects/task_list.
     return list_detail.object_list(request, **task_list_info)
 
 def task_detail(request, task_id,
-        template_name='richtemplates/examples/projects/task_detail.html'):
+        template_name='examples/projects/task_detail.html'):
     """
     Returns single ``Task`` details.
     """
@@ -97,7 +97,7 @@ def task_detail(request, task_id,
     return list_detail.object_detail(request, **task_detail_info)
 
 def project_list(request,
-    template_name='richtemplates/examples/projects/project_list.html'):
+    template_name='examples/projects/project_list.html'):
     """
     Returns ``Project`` objects list.
     """
@@ -109,7 +109,7 @@ def project_list(request,
     return list_detail.object_list(request, **project_list_info)
 
 def project_detail(request, project_id,
-    template_name='richtemplates/examples/projects/project_detail.html'):
+    template_name='examples/projects/project_detail.html'):
     """
     Returns single ``Project`` details.
     """
@@ -123,7 +123,7 @@ def project_detail(request, project_id,
 
 #@csrf_exempt
 def project_task_list(request, project_id,
-    template_name='richtemplates/examples/projects/project_task_list.html'):
+    template_name='examples/projects/project_task_list.html'):
     """
     Returns ``Task`` objects list for chosen ``Project``.
     """
@@ -141,7 +141,7 @@ def project_task_list(request, project_id,
     return render_to_response(template_name, context, RequestContext(request))
 
 def task_edit(request, task_id,
-    template_name='richtemplates/examples/projects/task_form.html'):
+    template_name='examples/projects/task_form.html'):
     """
     Edits ``Task`` object.
     """

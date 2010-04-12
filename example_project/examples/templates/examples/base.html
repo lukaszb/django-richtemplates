@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% load webdesign %}
+{% load richtemplates_tags %}
+
+{% block title %}Richtemplates examples{% endblock %}
+
+{% block col_left_title %}Left column title{% endblock %}
+{% block col_left_content %}
+    <ul class="nav-vertical">
+        <li><a href="{% url richtemplates_examples_home %}">Home</a></li>
+        <li><a href="{% url richtemplates_examples_messages %}">Messages</a></li>
+        <li><a href="{% url richtemplates_examples_links %}">Links</a></li>
+        <li><a href="{% url richtemplates_examples_colors %}">Colors</a></li>
+        <li><a href="{% url richtemplates_examples_form1 %}">Form 1</a></li>
+        {% if user.is_authenticated %}
+        <li><a href="{% url richtemplates_examples_manage_user_groups user.username %}">Manage user groups</a></li>
+        {% else %}
+        <li><a href="{% url auth_login %}">Log in</a> to manage groups</li>
+        {% endif %}
+        <li><a href="{% url richtemplates_examples_tooltips %}">Tooltips</a></li>
+        <li><a href="{% url richtemplates_examples_forbidden %}">Forbidden</a></li>
+    </ul>
+    <hr/>
+    <h3>Skins</h3>
+    <ul class="nav-vertical">
+        {% get_skin_list as skin_list %}
+        {% for skin in skin_list %}
+        <li><a href="{% url richtemplates_examples_set_skin skin.alias %}">{{ skin.name }}</a></li>
+        {% endfor %}
+    </ul>
+{% endblock %}
+
+{% block col_main_title %}Main column title{% endblock %}
+{% block col_main_content %}
+<h1>Home</h1>
+
+{% lorem 5 p %}
+
+{% endblock %}

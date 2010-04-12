@@ -1,19 +1,19 @@
 from django.conf.urls.defaults import *
 
 urlpatterns = patterns('django.views.generic.simple',
-    url(r'^$', 
+    url(r'^$',
         view='redirect_to',
         kwargs={'url': 'home'},
         name='richtemplates_examples'),
 
     url(r'^home/$',
         view='direct_to_template',
-        kwargs={'template': 'richtemplates/examples/home.html'},
+        kwargs={'template': 'examples/home.html'},
         name='richtemplates_examples_home'),
 
     url(r'^messages/$',
         view='direct_to_template',
-        kwargs={'template': 'richtemplates/examples/messages.html',
+        kwargs={'template': 'examples/messages.html',
             'extra_context': {
                 'tags': ['debug', 'info', 'success', 'warning', 'info']},
         },
@@ -21,12 +21,12 @@ urlpatterns = patterns('django.views.generic.simple',
 
     url(r'^links/$',
         view='direct_to_template',
-        kwargs={'template': 'richtemplates/examples/links.html'},
+        kwargs={'template': 'examples/links.html'},
         name='richtemplates_examples_links'),
 
     url(r'tooltips/$',
         view='direct_to_template',
-        kwargs={'template': 'richtemplates/examples/tooltips.html'},
+        kwargs={'template': 'examples/tooltips.html'},
         name='richtemplates_examples_tooltips'),
 
 )

@@ -1,0 +1,89 @@
+{% extends "examples/base.html" %}
+
+{% load native %}
+
+{% block col_main_title %}Message examples{% endblock %}
+{% block col_main_content %}
+
+<h1>Examples of message boxes</h1>
+
+<hr/>
+
+{# Messages as unordered list #}
+<h2>Messages as unordered list</h2>
+
+<ul class="messages toggleable">
+    <li class="message message-debug">This is <u>debug</u> message</li>
+    <li class="message message-info">This is <u>info</u> message</li>
+    <li class="message message-success">This is <u>success</u> message</li>
+    <li class="message message-warning">This is <u>warning</u> message</li>
+    <li class="message message-error">This is <u>error</u> message</li>
+    <li>This is message <u>without classes</u></li>
+</ul>
+
+<p><a href="#messages-as-unordered-list-code" class="button-link togglable max-rounded">View source</a></p>
+
+<div id="messages-as-unordered-list-code" class="hidden">
+{% highlight_block html+django cssclass="code-highlight" lineno=true %}
+<ul class="messages">
+    <li class="message message-debug">This is <u>debug</u> message</li>
+    <li class="message message-info">This is <u>info</u> message</li>
+    <li class="message message-success">This is <u>success</u> message</li>
+    <li class="message message-warning">This is <u>warning</u> message</li>
+    <li class="message message-error">This is <u>error</u> message</li>
+    <li>This is message <u>without classes</u></li>
+</ul>
+{% endhighlight_block %}
+</div>
+
+<hr/>
+
+{# Messages in unordered list with divs #}
+<h2>Messages in unordered list with divs</h2>
+
+<ul class="messages">
+    <li><div class="message message-debug"><p>This is <u>debug</u> message</p></div></li>
+    <li><div class="message message-info"><p>This is <u>info</u> message</p></div></li>
+    <li><div class="message message-success"><p>This is <u>success</u> message</p></div></li>
+    <li><div class="message message-warning"><p>This is <u>warning</u> message</p></div></li>
+    <li><div class="message message-error"><p>This is <u>error</u> message</p></div></li>
+</ul>
+
+<p><a href="#messages-in-unordered-list-with-divs-code" class="button-link togglable max-rounded">View source</a></p>
+
+<div id="messages-in-unordered-list-with-divs-code" class="hidden">
+{% highlight_block html+django cssclass="code-highlight" lineno=true %}
+<ul class="messages">
+    <li><div class="message message-debug"><p>This is <u>debug</u> message</p></div></li>
+    <li><div class="message message-info"><p>This is <u>info</u> message</p></div></li>
+    <li><div class="message message-success"><p>This is <u>success</u> message</p></div></li>
+    <li><div class="message message-warning"><p>This is <u>warning</u> message</p></div></li>
+    <li><div class="message message-error"><p>This is <u>error</u> message</p></div></li>
+</ul>
+{% endhighlight_block %}
+</div>
+
+<hr/>
+
+{# Simple messages #}
+<h2>Simple messages</h2>
+
+<div class="message message-success"><p>This is <u>success</u> message</p></div>
+<div class="message message-info"><p>This is <u>information</u> message</p></div>
+<div class="message message-warning"><p>This is <u>warning</u> message</p></div>
+<div class="message message-error"><p>This is <u>error</u> message</p></div>
+
+<p><a href="#simple-messages-code" class="button-link togglable max-rounded">View source</a></p>
+
+<div id="simple-messages-code" class="hidden">
+{% highlight_block html+django cssclass="code-highlight" lineno=true %}
+<div class="message message-success"><p>This is <u>success</u> message</p></div>
+<div class="message message-info"><p>This is <u>information</u> message</p></div>
+<div class="message message-warning"><p>This is <u>warning</u> message</p></div>
+<div class="message message-error"><p>This is <u>error</u> message</p></div>
+{% endhighlight_block %}
+</div>
+
+<hr/>
+
+{% endblock %}

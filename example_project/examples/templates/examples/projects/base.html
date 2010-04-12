@@ -1,0 +1,24 @@
+{% extends "examples/base.html" %}
+
+{% block menu_top %}{{ block.super }}
+<div class="menu-top-submenu">
+    <ul class="menu-top-left">
+        <li><a href="{% url richtemplates_examples_project_list %}">Projects</a></li>
+        <li><a href="{% url richtemplates_examples_task_list %}">All tasks</a></li>
+    </ul>
+</div>
+{% endblock %}
+
+{% block col_left_extra %}
+<div class="richtemplates-panel">
+    <h5>Tasks</h5>
+    <div class="richtemplates-panel-content">
+        
+        <ul class="nav-vertical">
+            <li><a href="{% url richtemplates_examples_task_list %}">Task list</a></li>
+        </ul>
+
+    </div>
+</div>
+{% endblock %}
+

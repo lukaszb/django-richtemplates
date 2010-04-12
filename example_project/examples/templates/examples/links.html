@@ -1,0 +1,39 @@
+{% extends "examples/base.html" %}
+
+{% block col_main_title %}Links examples{% endblock %}
+{% block col_main_content %}
+
+<h2>Simple anchors</h2>
+<h3>Links in "nav-inline" unordered list</h3>
+<ul class="nav-inline">
+    {% for x in "123456789" %}
+    <li>
+        <a href="#{{ x }}">Link {{ x }}</a>
+        {% if not forloop.last %} | {% endif %}
+    </li>
+    {% endfor %}
+</ul>
+
+<h3>Links in "nav-vertical" unordered list</h3>
+<ul class="nav-vertical">
+    {% for x in "123456789" %}
+    <li><a href="#{{ x }}">Link {{ x }}</a></li>
+    {% endfor %}
+</ul>
+
+<h3>Links with class "button-link"</h3>
+<ul class="nav-inline">
+    {% for x in "1234" %}
+    <li><a class="button-link" href="#{{ x }}">Link {{ x }}</a></li>
+    {% endfor %}
+</ul>
+
+<h3>Links in "nav-vertical" with class "button-link" and "max-rounded"</h3>
+<ul class="nav-vertical">
+    {% for x in "1234" %}
+    <li><a class="button-link max-rounded" href="#{{ x }}">Link {{ x }}</a></li>
+    {% endfor %}
+</ul>
+
+{% endblock %}
+

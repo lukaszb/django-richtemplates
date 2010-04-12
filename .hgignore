@@ -5,6 +5,7 @@ syntax: glob
 *.egg-info
 *.swp
 *.bak
+*.orig
 build
 dist
 _build

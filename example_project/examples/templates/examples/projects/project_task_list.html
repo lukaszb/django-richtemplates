@@ -1,0 +1,79 @@
+{% extends "examples/projects/project_detail.html" %}
+
+{% load markup %}
+{% load i18n %}
+{% load pagination_tags %}
+{% load sorting_tags %}
+{% load richtemplates_tags %}
+
+{% block col_left %}
+
+<div class="richtemplates-panel">
+    <h5>Task search</h5>
+    <div class="richtemplates-panel-content">
+        <form action="." method="get">
+            <table class="filterform-table">
+                {% for field in filter.form %}
+                    {% include "richtemplates/forms/filter-field.html" %}
+                {% endfor %}
+            </table>
+            <p>
+                <input id="id_filter_task" type="submit" value="Search" />
+            </p>
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+{% block col_main_extra %}
+<div class="richtemplates-panel">    
+    <h5>{% trans "Project details" %}</h5>
+    <div class="richtemplates-panel-content">
+        <ul class="messages">
+            <li class="message message-info">Move mouse over "Last editor" cell to see how 
+                tooltip (tipsy on jQuery) looks like
+            </li>
+            <li class="message message-info">You may also use tipsy without templatetag - simply add special class
+                and title attributes to any HTML tag. Move mouse over "Reported by" cell to see it in action.
+            </li>
+            <li class="message message-info">More on tooltips may be found
+                <a href="{% url richtemplates_examples_tooltips %}">here</a>
+            </li>
+        </ul>
+        {% autosort filter.qs as task_list %}
+        {% autopaginate task_list 10 %}
+
+        <table class="datatable">
+            <thead class="datatable-thead">
+                <tr class="datatable-thead-header"><th colspan="8">Tasks</th></tr>
+                <tr class="datatable-thead-subheader">
+                    <th>ID</th>
+                    <th>{% anchor summary "Summary" %}</th>
+                    <th>{% anchor created_at "Created at" %}</th>
+                    <th>Reported by</th>
+                    <th>Modified at</th>
+                    <th>Last editor</th>
+                    <th>{% anchor status "Status" %}</th>
+                    <th>{% anchor priority "Priority" %}</th>
+                </tr>
+            </thead>
+            <tbody class="datatable-tbody">
+                {% for task in task_list %}
+                <tr class="{% cycle "odd" "even" %} hoverable">
+                    <td>{{ task.id }}</td>
+                    <td><a class="block-link" href="{% url richtemplates_examples_task_detail task.id %}">{{ task.summary }}</a></td>
+                    <td>{{ task.created_at }}</td>
+                    <td class="show-tipsy" title="{{ task.author }}">{{ task.author }}</td>
+                    <td>{{ task.edited_at }}</td>
+                    <td>{{ task.editor|tooltip:"10" }}</td>
+                    <td>{{ task.status }}</td>
+                    <td>{{ task.priority }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        {% paginate %}
+    </div>
+</div>
+{% endblock col_main_extra %}

@@ -1,0 +1,38 @@
+{% extends "examples/projects/base.html" %}
+
+{% load pagination_tags %}
+{% load sorting_tags %}
+
+{% block col_main_title %}Project list{% endblock %}
+{% block col_main %}
+
+<div class="richtemplates-panel">
+    <h5>Projects</h5>
+    <div class="richtemplates-panel-content">
+        <h1>Project List</h1>
+
+        {% autosort project_list %}
+        {% autopaginate project_list %}
+
+        <table class="datatable">
+            <thead class="datatable-thead">
+                <tr class="datatable-thead-subheader">
+                    <th>ID</th>
+                    <th>{% anchor name "Name" %}</th>
+                    <th>{% anchor task__count "Tasks" %}</th>
+                </tr>
+            </thead>
+            <tbody class="datatable-tbody">
+                {% for project in project_list %}
+                <tr class="{% cycle "odd" "even" %} hoverable">
+                    <td>{{ project.id }}</td>
+                    <td><a href="{% url richtemplates_examples_project_detail project.id %}">{{ project.name }}</a></td>
+                    <td>{{ project.task__count }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        {% paginate %}
+                
+{% endblock %}

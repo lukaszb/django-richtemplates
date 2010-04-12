@@ -1,0 +1,40 @@
+{% extends "examples/base.html" %}
+
+{% load native %}
+
+{% block col_main_title %}Tooltips{% endblock %}
+{% block col_main_content %}
+
+<p>We use <a href="http://onehackoranother.com/projects/jquery/tipsy/">tipsy</a> for displaying tooltips.</p>
+<p>Using tooltips with richtemplates is easy thanks to <a href="{{ MEDIA_URL }}richtemplates/js/common.js">common.js</a> file injected in base template file.</p>
+<h1>Links like buttons, with tooltips</h1>
+
+<ul class="messages">
+    <li class="message message-info">Move mouse over links below</li>
+</ul>
+
+<div class="richblock">
+<ul class="nav-vertical">
+    <li><a class="button-link show-tipsy" href="#" title="Top tooltip">Button link</a></li>
+    <li><a class="button-link show-tipsy-right" href="#" title="Right tooltip">Button link with tooltip on right</a></li>
+    <li><a class="button-link show-tipsy-bottom" href="#" title="Bottom tooltip">Button link with tooltip on bottom</a></li>
+    <li><a class="button-link show-tipsy-left" href="#" title="Left tooltip">Button link with tooltip on left</a></li>
+</ul>
+</div>
+
+<p><a href="#tooltips-samples-code" class="button-link togglable max-rounded">View source</a></p>
+
+<div id="tooltips-samples-code" class="hidden">
+{% highlight_block html+django cssclass="code-highlight" lineno=true %}
+<ul class="nav-vertical">
+    <li><a class="button-link show-tipsy" href="#" title="Top tooltip">Button link</a></li>
+    <li><a class="button-link show-tipsy-right" href="#" title="Right tooltip">Button link with tooltip on right</a></li>
+    <li><a class="button-link show-tipsy-bottom" href="#" title="Bottom tooltip">Button link with tooltip on bottom</a></li>
+    <li><a class="button-link show-tipsy-left" href="#" title="Left tooltip">Button link with tooltip on left</a></li>
+</ul>
+{% endhighlight_block %}
+</div>
+
+{% endblock %}
+
+
