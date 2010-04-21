@@ -149,5 +149,6 @@ AUTH_PROFILE_MODULE = 'examples.MyUserProfile'
 
 NATIVE_TAGS = (
     'native_tags.contrib.pygmentize',
+    'richtemplates.templatetags.native',
 )
 

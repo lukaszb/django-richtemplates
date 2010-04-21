@@ -15,7 +15,6 @@ def find_package_data():
                 fpath = os.path.join(dir, file)[len('richtemplates/'):]
                 data['richtemplates'].append(fpath)
     return data
-import pprint
 
 setup(
     name = 'django-richtemplates',
@@ -32,6 +31,7 @@ setup(
     requires = ['Djalog'],
     install_requires = [
         'djalog',
+        'django-pagination>=1.0.5,<=1.0.5',
     ],
     classifiers = ['Development Status :: 4 - Beta',
                    'Environment :: Web Environment',

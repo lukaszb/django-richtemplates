@@ -13,14 +13,12 @@
                 buttonImageOnly: true
             });
 
-            var users=[{% for u in form.username.field.queryset %}"{{ u.username }}"{% if not forloop.last %}, {% endif %}{% endfor %}];
-            $('#id_username').autocomplete({
-                source: users,
-                delay: 0
-            });
-
         });
     </script>
+
+    {% load native %}
+    {% autocomplete_field form.username delay=0 %}
+
 {% endblock %}
 
 {% block col_main_title %}Form 1 example{% endblock %}
