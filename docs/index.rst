@@ -56,12 +56,14 @@ Documentation
    skins
    userprofiles
 
-**Manual**
+..
+   **Manual**
+   
+   .. toctree::
+      :maxdepth: 1
+   
+      manual/index
 
-.. toctree::
-   :maxdepth: 1
-
-   manual/index
 
 **Included utilities:**
 

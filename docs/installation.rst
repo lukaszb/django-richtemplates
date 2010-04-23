@@ -47,9 +47,6 @@ downloaded the archive, unpack it, go into newly created directory and type::
 
     python setup.py install
 
-.. note::
-   You will need superuser privileges in order to install the package.
-
 .. _installation-manual-bitbucket:
 
 Manual installation from Mercurial repository

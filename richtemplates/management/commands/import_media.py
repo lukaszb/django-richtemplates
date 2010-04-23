@@ -15,7 +15,8 @@ class Command(LabelCommand):
 
     If ``media`` directory would containt subdirectory called same as this
     application's ``app_label``, this subdirectory would become source
-    directory.
+    directory (i.e. this would import media from excellent `django-admin-tools
+    <http://bitbucket.org/izi/django-admin-tools/>`_ properly).
 
     Source directory is put into ``media`` directory inside the project. If
     this destination directory does not exist it would be created.
