@@ -31,7 +31,13 @@ setup(
     requires = ['Djalog'],
     install_requires = [
         'djalog',
+        'django-annoying',
         'django-pagination>=1.0.5,<=1.0.5',
+        'django-filter',
+        'django-registration>=0.7',
+        'django-native-tags',
+        'docutils',
+        'Pygments',
     ],
     classifiers = ['Development Status :: 4 - Beta',
                    'Environment :: Web Environment',
