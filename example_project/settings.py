@@ -112,7 +112,7 @@ TEMPLATE_DIRS = (
 # DJALOG SETTINGS #
 # =============== #
 
-DJALOG_SQL = False
+DJALOG_SQL = True
 DJALOG_SQL_LEVEL = 5
 DJALOG_USE_COLORS = True
 DJALOG_LEVEL = 20 # logging.INFO default level

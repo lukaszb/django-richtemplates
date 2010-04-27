@@ -1,5 +1,3 @@
-import logging
-
 from django import forms
 from django.contrib.auth.models import User
 
@@ -33,4 +31,27 @@ class UserByNameField(forms.CharField):
         except User.DoesNotExist:
             raise forms.ValidationError("No user found!")
         return user
+
+class ModelByNameField(forms.CharField):
+    """
+    """
+    def __init__(self, queryset, field='name', *args, **kwargs):
+        super(ModelByNameField, self).__init__(*args, **kwargs)
+        self.queryset = callable(queryset) and queryset() or queryset
+        self.field = field
+
+    def clean(self, value):
+        """
+        Returns instance of model class of the given queryset.
+        """
+        # Clean as normal CharField first
+        value = super(ModelByNameField, self).clean(value)
+        value = value.strip()
+        if value == '':
+            return None
+        try:
+            instance = self.queryset.get(**{self.field: value})
+        except self.queryset.model.DoesNotExist:
+            raise forms.ValidationError("No object found")
+        return instance
 
