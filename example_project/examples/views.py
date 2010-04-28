@@ -34,7 +34,7 @@ def colors(request, template_name='examples/color_tables.html'):
 
     return simple.direct_to_template(request, template_name, extra_context)
 
-def form1(request, template_name='examples/form1.html'):
+def contact(request, template_name='examples/contact.html'):
 
     form = ContactForm(request.POST or None)
     if request.method == 'POST':

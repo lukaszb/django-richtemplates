@@ -1,3 +1,5 @@
+@import url(skins/redmond/jquery-ui-1.8.custom.css);
+
 /* BASIC */
 body, div, span, dd, dt, dl, img, ul, ol, li, p,h0, h1, h2, h3, h4, legend, form, hr, fieldset {
     margin: 0;

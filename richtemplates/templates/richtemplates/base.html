@@ -9,10 +9,10 @@
     {% block head_css %}
     <link rel="stylesheet" type="text/css" href="{{ RICHTEMPLATES_MEDIA_URL }}css/style.css" />
     <link rel="stylesheet" type="text/css" href="{{ RICHTEMPLATES_MEDIA_URL }}css/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="{{ RICHTEMPLATES_MEDIA_URL }}css/blitzer/jquery-ui-1.8.custom.css" />
+    {# set 'skin' context variable #}
     {% get_richskin %}
     {% if skin.alias != 'aqua' %}
-    <link rel="stylesheet" type="text/css" href="{{ skin.url }}" />
+        <link rel="stylesheet" type="text/css" href="{{ skin.url }}" />
     {% endif %}
     {% endblock %}
 

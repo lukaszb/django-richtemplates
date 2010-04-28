@@ -1,0 +1,59 @@
+{% extends "examples/base.html" %}
+
+{% load native %}
+
+{% block col_main_title %}Buttons{% endblock %}
+{% block col_main_content %}
+
+<div class="richtabs">
+    <ul>
+        <li><a href="#simple">Simple buttons</a></li>
+        <li><a href="#radio">Grouped buttons</a></li>
+    </ul>
+    <form>
+
+        <div id="simple">
+            <button class="richbutton">Button tag</button>
+            <a href="#" class="richbutton">Anchor</a>
+            <input type="submit" class="richbutton" value="Submit button"/>
+
+            <p><a href="#simple-buttons-code" class="button-link togglable max-rounded">View source</a></p>
+
+            <div id="simple-buttons-code" class="hidden codeblock">
+                {% highlight_block html+django cssclass="code-highlight" linenos=true %}
+<button class="richbutton">Button tag</button>
+<a href="#" class="richbutton">Anchor</a>
+<input type="submit" class="richbutton" value="Submit button"/>
+                {% endhighlight_block %}
+            </div>
+        </div>
+
+        <div id="radio">
+            <div class="richbuttonset">
+                <input type="radio" id="radio1" name="radio"/><label for="radio1">Choice 1</label>
+                <input type="radio" id="radio2" name="radio"/><label for="radio2">Choice 2</label>
+                <input type="radio" id="radio3" name="radio"/><label for="radio3">Choice 3</label>
+            </div>
+
+            <p><a href="#buttonset-code" class="button-link togglable max-rounded">View source</a></p>
+
+            <div id="buttonset-code" class="hidden codeblock">
+                {% highlight_block html+django cssclass="code-highlight" linenos=true %}
+<div class="richbuttonset">
+    <input type="radio" id="radio1" name="radio"/><label for="radio1">Choice 1</label>
+    <input type="radio" id="radio2" name="radio"/><label for="radio2">Choice 2</label>
+    <input type="radio" id="radio3" name="radio"/><label for="radio3">Choice 3</label>
+</div>
+                {% endhighlight_block %}
+            </div>
+        </div>
+
+    </form>
+</div>
+
+
+
+{% endblock %}
+
+
+

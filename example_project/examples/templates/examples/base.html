@@ -12,14 +12,22 @@
         <li><a href="{% url richtemplates_examples_messages %}">Messages</a></li>
         <li><a href="{% url richtemplates_examples_links %}">Links</a></li>
         <li><a href="{% url richtemplates_examples_colors %}">Colors</a></li>
-        <li><a href="{% url richtemplates_examples_form1 %}">Form 1</a></li>
+        <li><a href="{% url richtemplates_examples_contact %}">Contact form</a></li>
+        {% comment %}
         {% if user.is_authenticated %}
         <li><a href="{% url richtemplates_examples_manage_user_groups user.username %}">Manage user groups</a></li>
         {% else %}
         <li><a href="{% url auth_login %}">Log in</a> to manage groups</li>
         {% endif %}
+        {% endcomment %}
         <li><a href="{% url richtemplates_examples_tooltips %}">Tooltips</a></li>
         <li><a href="{% url richtemplates_examples_forbidden %}">Forbidden</a></li>
+    </ul>
+    <hr/>
+    <h3>jQuery UI Integration</h3>
+    <ul class="nav-vertical">
+        <li><a href="{% url richtemplates_examples_buttons %}">Buttons</a></li>
+        <li><a href="{% url richtemplates_examples_tabs %}">Tabs</a></li>
     </ul>
     <hr/>
     <h3>Skins</h3>

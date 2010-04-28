@@ -1,3 +1,4 @@
+import sys
 from setuptools import setup, find_packages
 
 richtemplates = __import__('richtemplates')
@@ -26,7 +27,7 @@ def find_package_data():
 setup(
     name = 'django-richtemplates',
     version = VERSION,
-    url = 'http://bitbucket.org/lukaszb/richtemplates/',
+    url = 'http://bitbucket.org/lukaszb/django-richtemplates/',
     author = 'Lukasz Balcerzak',
     author_email = 'lukasz.balcerzak@python-center.pl',
     description = richtemplates.__doc__,

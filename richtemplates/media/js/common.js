@@ -47,14 +47,17 @@ $(document).ready(function(){
         gravity: 'w'
     });
 
-    /* Datepicker */
+    /* ************************ *
+     * jQuery UI common scripts *
+     * ************************ */
+
     $('input.datepicker').datepicker({
-        dateFormat: 'yy-mm-dd',
+        dateFormat: 'yy-mm-dd', //TODO: Use L10N
         firstDay: 1,
         showButtonPanel: true,
         showAnim: 'show',
         showOn: 'button',
-        buttonImage: '/media/richtemplates/img/ruby-calendar.gif',
+        buttonImage: '/media/richtemplates/img/calendar.png', //TODO: Dont hardcode url
         buttonImageOnly: true
     });
 
@@ -63,6 +66,10 @@ $(document).ready(function(){
             showLabel: $(this).text()
         });
     });
+
+    $('.richtabs').tabs();
+    $('.richbutton').button();
+    $('.richbuttonset').buttonset();
 });
 
 

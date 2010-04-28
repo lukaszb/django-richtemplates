@@ -16,7 +16,7 @@ applications.
 Installation
 ------------
 
-Refer to INSTALL.rst file.
+Refer to ``docs/installation.rst`` file.
 
 Documentation
 -------------
