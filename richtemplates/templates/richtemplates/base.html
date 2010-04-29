@@ -91,7 +91,9 @@
     {% block footer_wrapper %}
     <div id="footer">
         {% block footer %}
-        <p>by Łukasz Balcerzak</p>
+        <p>{% now "Y" %} &copy; <a href="http://bitbucket.org/lukaszb/django-richtemplates/"
+                                   class="show-tipsy"
+                                   title="Go to richtemplates homepage">django-richtemplates</a></p>
         {% endblock %}
     </div>
     {% endblock footer_wrapper %}
