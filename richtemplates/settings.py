@@ -1,8 +1,7 @@
-import logging
+from djalog import DjalogLogger as logger
 
 from django.conf import settings
 from django.core.exceptions import ImproperlyConfigured
-from django.template.defaultfilters import slugify
 from docutils.parsers.rst import directives
 
 if 'django.core.context_processors.request' \
@@ -64,11 +63,11 @@ def register_rst_directives(directives_items):
             directive = getattr(mod, method_name)
             directives.register_directive(name, directive)
             msg = "Registered restructuredText directive: %s" % method_name
-            logging.debug(msg)
+            logger.debug(msg)
         except ImportError, err:
             msg = "Couldn't register restructuredText directive. Original "\
                 "exception was: %s" % err
-            logging.warn(msg)
+            logger.warn(msg)
 
 
 RESTRUCTUREDTEXT_DIRECTIVES = getattr(settings,
