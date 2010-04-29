@@ -5,5 +5,5 @@ include INSTALL.rst
 recursive-include richtemplates/templates *
 recursive-include richtemplates/templates_profiles *
 recursive-include richtemplates/media *
-recursive-include example_project *
+recursive-include example_project *.py *.json *.txt
 recursive-include docs *
