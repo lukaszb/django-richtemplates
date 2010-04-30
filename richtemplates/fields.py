@@ -1,5 +1,8 @@
 from django import forms
+from django.utils.translation import ugettext as _
 from django.contrib.auth.models import User
+
+from richtemplates.utils import LazyProperty
 
 class RestructuredTextAreaField(forms.CharField):
 
@@ -29,16 +32,39 @@ class UserByNameField(forms.CharField):
         try:
             user = self.queryset.get(username=username)
         except User.DoesNotExist:
-            raise forms.ValidationError("No user found!")
+            raise forms.ValidationError(_("No user found!"))
         return user
 
 class ModelByNameField(forms.CharField):
     """
+    This field acts like normal CharField but at the time it is being cleaned
+    it would try to fetch instance from the given ``queryset``. Cleaned value
+    is used in a undelying query.
+
+    :param: queryset - ``QuerySet`` object specyfing model to be fetched; may be
+      callable
+    :param: attr - attribute used to fetch instance from the ``queryset``
+
+    Example::
+
+       >>> field = ModelByNameField(queryset=User.objects.all, attr='username')
+       >>> field.clean('admin')
+
+    Above code returns User instance with 'admin' username or raises
+    ``forms.ValidationError`` if that user does not exist. Note that we pass not
+    yet called ``User.objects.all`` function and we specify attribute
+    ``username`` which is used by ``clean`` method to fetch proper instance.
     """
-    def __init__(self, queryset, field='name', *args, **kwargs):
+    def __init__(self, queryset, attr='name', *args, **kwargs):
         super(ModelByNameField, self).__init__(*args, **kwargs)
-        self.queryset = callable(queryset) and queryset() or queryset
-        self.field = field
+        self._queryset = queryset
+        self.attr = attr
+
+    @LazyProperty
+    def queryset(self):
+        if callable(self._queryset):
+            return self._queryset()
+        return self._queryset
 
     def clean(self, value):
         """
@@ -50,8 +76,8 @@ class ModelByNameField(forms.CharField):
         if value == '':
             return None
         try:
-            instance = self.queryset.get(**{self.field: value})
+            instance = self.queryset.get(**{self.attr: value})
         except self.queryset.model.DoesNotExist:
-            raise forms.ValidationError("No object found")
+            raise forms.ValidationError(_("No object found"))
         return instance
 

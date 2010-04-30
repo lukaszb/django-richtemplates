@@ -1,10 +1,6 @@
-import logging
-
 from django import forms
 from django.db import models
 from django.conf import settings
-from django.contrib import messages
-from django.utils.translation import ugettext as _
 
 def has_rel_to_model(form_field, model):
     """
@@ -47,4 +43,31 @@ def get_user_profile_model(settings_module=settings):
     app_label, model_name = settings.AUTH_PROFILE_MODULE.split('.')
     model = models.get_model(app_label, model_name)
     return model
+
+class LazyProperty(object):
+    """
+    Decorator for easier creation of ``property`` from potentially expensive to
+    calculate attribute of the class.
+
+    Usage::
+
+      class Foo(object):
+          @LazyProperty
+          def bar(self):
+              print 'Calculating self._bar'
+              return 42
+
+    Taken from http://blog.pythonisito.com/2008/08/lazy-descriptors.html.
+    """
+
+
+    def __init__(self, func):
+        self._func = func
+        self.__name__ = func.__name__
+        self.__doc__ = func.__doc__
+
+    def __get__(self, obj, klass=None):
+        if obj is None: return None
+        result = obj.__dict__[self.__name__] = self._func(obj)
+        return result
 

@@ -16,6 +16,8 @@ p {
 
 hr { color: #008894; border-color: #008894; } 
 
+pre { font-family: Bitstream Vera Sans Mono,monospace; font-size: 13px; }
+
 a:active,a:link,a:visited { color: #00709F; }
 a:hover { color: #000; }
 
