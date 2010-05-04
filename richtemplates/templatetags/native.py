@@ -5,7 +5,7 @@ These are native tags so in order to load them you need to::
 
 in your templates.
 """
-from native_tags.decorators import function, block
+from richtemplates import settings as richtemplates_settings
 
 def autocomplete_field(bfield, **opts):
     """
@@ -50,3 +50,15 @@ def autocomplete_field(bfield, **opts):
     return script_body
 autocomplete_field.function = True
 
+def do_get_code_style(context):
+    user = context['user']
+    if user and user.is_authenticated():
+        style = getattr(user.get_profile(),
+            richtemplates_settings.PROFILE_CODE_STYLE_FIELD,
+            richtemplates_settings.DEFAULT_CODE_STYLE)
+    else:
+        style = richtemplates_settings.DEFAULT_CODE_STYLE
+    return style
+do_get_code_style.function = True
+do_get_code_style.takes_context = True
+do_get_code_style.name = 'get_code_style'

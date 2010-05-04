@@ -1,11 +1,11 @@
-import richtemplates.settings
-
 from django.db import models
 from django.conf import settings
 from django.contrib.auth.models import User
+from django.utils.translation import ugettext_lazy as _
 
 from annoying.decorators import signals
 from richtemplates.utils import get_user_profile_model
+from richtemplates import settings as richtemplates_settings
 
 class UserProfile(models.Model):
     """
@@ -14,9 +14,13 @@ class UserProfile(models.Model):
     profile. If so, it is possible to simply extend this class or leave it at
     all.
     """
-    user = models.ForeignKey(User, unique=True)
-    skin = models.CharField(max_length=128,
-        default=richtemplates.settings.DEFAULT_SKIN)
+    user = models.ForeignKey(User, verbose_name=_('user'), unique=True)
+    skin = models.CharField(max_length=128, verbose_name=('skin'),
+        default=richtemplates_settings.DEFAULT_SKIN,
+        help_text=_("Skin used on the site"))
+    code_style = models.CharField(_('Codes style'), max_length=128,
+        default=richtemplates_settings.DEFAULT_CODE_STYLE,
+        help_text=_("Style used to show code snippets"))
 
     class Meta:
         abstract = getattr(settings, 'AUTH_PROFILE_MODULE',

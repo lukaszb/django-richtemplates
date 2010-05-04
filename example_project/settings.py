@@ -141,6 +141,11 @@ RICHTEMPLATES_SKINS = {
     'aqua': {'name': 'Aqua'},
 }
 
+RICHTEMPLATES_PYGMENTS_STYLES = {
+    'irblack': 'richtemplates.pygstyles.irblack.IrBlackStyle',
+}
+RICHTEMPLATES_DEFAULT_CODE_STYLE = 'irblack'
+
 AUTH_PROFILE_MODULE = 'examples.MyUserProfile'
 
 # ==================== #
@@ -148,7 +153,7 @@ AUTH_PROFILE_MODULE = 'examples.MyUserProfile'
 # ==================== #
 
 NATIVE_TAGS = (
-    'native_tags.contrib.pygmentize',
+    'richtemplates.templatetags.pygmentize',
     'richtemplates.templatetags.native',
 )
 

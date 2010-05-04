@@ -59,8 +59,6 @@ class LazyProperty(object):
 
     Taken from http://blog.pythonisito.com/2008/08/lazy-descriptors.html.
     """
-
-
     def __init__(self, func):
         self._func = func
         self.__name__ = func.__name__

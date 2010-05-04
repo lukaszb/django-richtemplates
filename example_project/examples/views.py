@@ -203,7 +203,7 @@ def userprofile_edit(request, username, template_name='richtemplates/accounts/pr
         form.save()
         message = _("Profile updated successfully")
         messages.success(request, message)
-        return redirect(user.get_absolute_url())
+        #return redirect(user.get_absolute_url())
     context = {
         'form': form,
     }

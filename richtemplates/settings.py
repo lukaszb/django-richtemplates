@@ -31,6 +31,11 @@ SKINS = {
     'ruby': {'name': 'Ruby'},
 }
 
+DEFAULT_CODE_STYLE = getattr(settings,
+    'RICHTEMPLATES_DEFAULT_CODE_STYLE', 'native')
+PROFILE_CODE_STYLE_FIELD = getattr(settings,
+    'RICHTEMPLATES_PROFILE_CODE_STYLE_FIELD', 'code_style')
+
 if hasattr(settings, 'RICHTEMPLATES_SKINS'):
     skins = getattr(settings, 'RICHTEMPLATES_SKINS')
     if not isinstance(skins, dict):
@@ -74,4 +79,57 @@ RESTRUCTUREDTEXT_DIRECTIVES = getattr(settings,
     'RICHTEMPLATES_RESTRUCTUREDTEXT_DIRECTIVES', {})
 
 register_rst_directives(RESTRUCTUREDTEXT_DIRECTIVES.items())
+
+
+# ======================= #
+# Pygments styles helpers #
+# ======================= #
+
+def register_pygments_style(pygment_styles):
+    """
+    Registers Pygments style classes. Pygments currently has plugin support at
+    pkg_resources level whitch is not always straightforword. This method allows
+    to register pygments styles easier and on the fly.
+
+    Expects a dict with alias keys and classes/paths to classes values. Default
+    pygments styles are always registered and you cannot override them (would
+    raise ImproperlyConfigured exception). After style is registered, it may be
+    received with ``richtemplates.pygstyles.get_style`` method which expects
+    alias parameter.
+    """
+    try:
+        from pygments.styles import STYLE_MAP, get_style_by_name
+        from pygments.style import Style
+    except ImportError:
+        raise ImproperlyConfigured("pygments are required to use richtemplates")
+    registry = {}
+    for alias, style_path in pygment_styles.items():
+        if alias in STYLE_MAP:
+            raise ImproperlyConfigured("Cannot override builtin %s pygments "
+                "styles" % alias)
+        if isinstance(style_path, Style):
+            klass = style_path
+        else:
+            try:
+                splitted = style_path.split('.')
+                mod_path, class_name = '.'.join(splitted[:-1]), splitted[-1]
+                mod = __import__(mod_path, (), (), [class_name], -1)
+                klass = getattr(mod, class_name)
+            except (ImportError, AttributeError), err:
+                raise ImproperlyConfigured("Cannot register style %s: %s.\n"
+                    "Original error was: %s" % (alias, style_path, err))
+        registry[alias] = klass
+        logger.debug("Registered %s as pygments style with alias %s"
+            % (klass.__name__, alias))
+    for alias in STYLE_MAP:
+        klass = get_style_by_name(alias)
+        registry[alias] = klass
+        logger.debug("Registered %s as pygments style with alias %s"
+            % (klass.__name__, alias))
+    return registry
+
+PYGMENTS_STYLES = getattr(settings,
+    'RICHTEMPLATES_PYGMENTS_STYLES', {})
+
+REGISTERED_PYGMENTS_STYLES = register_pygments_style(PYGMENTS_STYLES)
 

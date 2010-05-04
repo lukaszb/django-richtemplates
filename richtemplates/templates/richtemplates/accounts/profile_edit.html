@@ -10,7 +10,11 @@
             {% include "richtemplates/forms/form.html" %}
         </table>
         <div>
-            <input id="id_submit" type="submit" name="submit" value="Submit" />
+            <input id="id_submit" class="button" type="submit" name="submit" value="Update" />
+            <input class="button" type="button" name="submit" value="Back to profile"
+                    onclick="window.location='{% spaceless %}
+                    {% url richtemplates_examples_userprofile form.instance.user.username %}
+                    {% endspaceless %}'"/>
         </div>
     </form>
 {% endblock %}

@@ -7,6 +7,7 @@ from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext as _
 from django.template import Template, Context
 
+from richtemplates import settings as richtemplates_settings
 from richtemplates.utils import get_fk_fields, get_user_profile_model
 from richtemplates.skins import get_skins
 from richtemplates.fields import RestructuredTextAreaField, UserByNameField,\
@@ -87,7 +88,7 @@ def DynamicActionFormFactory(available_choices, selected = None):
 
         dynchoices = {}
         data = {}
-        context = Context(data)
+        Context(data)
 
         chosen_action = int( self.dynfields['action_type'].data or enabled_choices[0].action )
 
@@ -217,8 +218,19 @@ class RichSkinChoiceField(forms.ChoiceField):
         super(RichSkinChoiceField, self).__init__(*args, **kwargs)
         self.choices = [(skin.alias, skin.name) for skin in get_skins()]
 
+class RichCodeStyleChoiceField(forms.ChoiceField):
+    """
+    Use this field for user profile form if you want to allow users to set
+    their code style used by pygments to highlight code snipppets.
+    """
+    def __init__(self, *args, **kwargs):
+        super(RichCodeStyleChoiceField, self).__init__(*args, **kwargs)
+        self.choices = [(alias, alias.title()) for alias in
+            sorted(richtemplates_settings.REGISTERED_PYGMENTS_STYLES.keys())]
+
 class UserProfileForm(forms.ModelForm):
     skin = RichSkinChoiceField()
+    code_style = RichCodeStyleChoiceField()
 
     class Meta:
         exclude = ('user',)
