@@ -10,7 +10,7 @@ div.richtemplates-panel h5 {
 hr { color: #092e20; border-color: #092e20; } 
 
 a:active, a:link, a:visited { color: #092e20; }
-a:hover { color: #000; }
+a:hover { color: #92CC47; }
 
 a.button-link {
     background: #F23C56 url(../../img/django-button-link.png) repeat-x;

@@ -580,3 +580,28 @@ div.qtip {
 .width-99 { width: 99%; }
 .width-100 { width: 100%; }
 
+div.codeblock {
+    overflow: auto;
+    padding: 0px;
+    border: 1px solid #ccc;
+    background: #f8f8f8;
+    font-size: 100%;
+    line-height: 100%;
+    /* new */
+    line-height: 125%;
+}
+
+.code-highlight {
+    padding: 0px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border-left: 2px solid #ccc;
+}
+.code-highlight pre, .linenodiv pre { 
+	padding: 5px;
+    margin: 0;
+}
+.linenos a { text-decoration: none; }
+
+.code { display: block; }
+
