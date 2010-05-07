@@ -40,7 +40,7 @@ setup(
     install_requires = [
         'djalog',
         'django-annoying',
-        'django-pagination>=1.0.5,<=1.0.5',
+        'django-pagination>=1.0.7',
         'django-filter',
         'django-registration>=0.7',
         'django-native-tags',
