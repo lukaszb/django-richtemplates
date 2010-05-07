@@ -205,7 +205,7 @@ table.form-table select { float: left; margin-left: 20px; max-width: 250px; min-
 table.form-table textarea { float: left; margin-left: 20px; max-width: 600px; min-width: 250px; }
 table.form-table label { float: right; margin-right: 5px; }
 table.form-table input { float: left; margin-right: 5px; }
-table.form-table span.help-text { float: left; margin-right: 5px; }
+table.form-table span.help-text { float: left; margin-left: 20px; margin-right: 5px; clear: both; max-width: 600px }
 table.form-table tbody tr td input[disabled=disabled] { background-color: #DDD; }
 table.form-table th, table.form-table td { vertical-align: top; }
 table.form-table td ul {

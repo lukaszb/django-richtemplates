@@ -20,7 +20,8 @@ class ContactForm(forms.Form):
     rating = forms.ChoiceField(choices=RATING, initial=1)
     email = forms.EmailField(required=False)
     deadline = forms.DateField(required=False,
-        widget=forms.DateInput(attrs={'class': 'datepicker'}))
+        widget=forms.DateInput(attrs={'class': 'datepicker'}),
+        help_text="Format: YYYY-MM-DD")
     action = forms.ChoiceField(choices=[(1, 'foo'), (2, 'bar')],
         widget=forms.RadioSelect)
 

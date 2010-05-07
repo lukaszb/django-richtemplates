@@ -1,5 +1,5 @@
 <tr id="{{ field.auto_id }}_tr" class="field{% if field.errors %} errors invalid{% endif %}">
-    <th id="{{ field.auto_id }}_th">
+    <th id="{{ field.auto_id }}_th"{% if field.errors %} class="invalid"{% endif %}>
         {{ field.label_tag }}
     </th>
     <td id="{{ field.auto_id }}_td">
