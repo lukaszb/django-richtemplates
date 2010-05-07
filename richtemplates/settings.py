@@ -18,6 +18,8 @@ if 'richtemplates.context_processors.media' \
 
 MEDIA_URL = getattr(settings, 'RICHTEMPLATES_MEDIA_URL',
     settings.MEDIA_URL + 'richtemplates/')
+IMAGES_URL = MEDIA_URL + 'img/'
+ICONS_URL = IMAGES_URL + 'icons/'
 
 BASE_SKINS = ('aqua',)
 SESSION_SKIN_NAME = getattr(settings, 'RICHTEMPLATES_SESSION_SKIN_NAME',

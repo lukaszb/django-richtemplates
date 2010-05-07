@@ -63,3 +63,24 @@ def do_get_code_style(context):
 get_code_style = function(do_get_code_style, takes_context=True,
     name='get_code_style')
 
+def richicon_src(icon):
+    """
+    Returns link to the icon.
+    """
+    src = richtemplates_settings.ICONS_URL + icon
+    return src
+richicon_src.function = True
+
+def richicon(icon, **opts):
+    """
+    Returns html's ``img`` tag with message icon.
+    """
+    src = richicon_src(icon)
+    tag = '<img src="%s"' % src
+    for attr in ('class', 'alt', 'title'):
+        if attr in opts:
+            tag += ' %s="%s"' % (attr, opts[attr])
+    tag += '/>'
+    return tag
+richicon.function = True
+

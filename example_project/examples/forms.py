@@ -4,6 +4,7 @@ from django import forms
 from django.contrib.auth.models import Group
 
 from richtemplates.forms import LimitingModelForm, UserByNameField
+from richtemplates import settings as richtemplates_settings
 from examples.models import Task
 
 RATING = [(i, u'%d' % i) for i in xrange(1,6)]
@@ -14,7 +15,8 @@ class ContactForm(forms.Form):
     """
     username = UserByNameField(min_length=2, max_length=16)
     content = forms.CharField(min_length=10, max_length=3000,
-        widget=forms.Textarea)
+        widget=forms.Textarea,
+        help_text="Lorem ipsum dolor sit amet. " * 10)
     rating = forms.ChoiceField(choices=RATING, initial=1)
     email = forms.EmailField(required=False)
     deadline = forms.DateField(required=False,
@@ -23,9 +25,7 @@ class ContactForm(forms.Form):
         widget=forms.RadioSelect)
 
 class UserForm(forms.ModelForm):
-    groups = forms.ModelMultipleChoiceField(Group.objects.all(),
-        #widget=FilteredSelectMultiple(_("Groups"), False, attrs={'rows': 10 })
-    )
+    groups = forms.ModelMultipleChoiceField(Group.objects.all())
 
 class TaskForm(LimitingModelForm):
     class Meta:
@@ -33,7 +33,7 @@ class TaskForm(LimitingModelForm):
         choices_limiting_fields = ['project']
 
     class Media:
-        css = {'all': ['richtemplates/css/monoarea.css']}
+        css = {'all': [richtemplates_settings.MEDIA_URL + 'css/monoarea.css']}
 
 def TaskFilter(data=None, queryset=Task.objects.all(), project=None):
     """

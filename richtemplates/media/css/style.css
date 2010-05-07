@@ -215,13 +215,15 @@ table.form-table td ul {
     /*list-style: none;*/
 }
 table.form-table td ul li label { float: left; margin: 0; padding: 0; clear: both; }
-table.form-table td ul li { margin: 0; padding: 0; }
+table.form-table td ul li { padding: 0px;}
+table.form-table td ul.errorlist li { padding: 7px 5px 5px 25px;}
 
 table.filterform-table { font-size: 11px; white-space: nowrap; }
 table.filterform-table th { font-weight: bold; text-align: right;}
 table.filterform-table td { padding: 5px; text-align: left; }
-table.filterform-table span{ margin-left: 20px; }
-table.filterform-table span.help-text{ font-size: 9px; }
+table.filterform-table span { margin-left: 20px; }
+table.filterform-table span.help-text { font-size: 9px; }
+table.filterform-table span.errors { margin-left: 0; }
 table.filterform-table input { float: left; margin-left: 20px; max-width: 100px; min-width: 100px; }
 table.filterform-table select { float: left; margin-left: 20px; max-width: 100px; min-width: 100px; }
 table.filterform-table textarea { float: left; margin-left: 20px; max-width: 100px; min-width: 100px; }
@@ -293,7 +295,8 @@ ul.messages li.message, .message p {
 }
 
 ul.errorlist { list-style: none; color: #b51818; float: left; padding: 0;}
-ul.errorlist li { float: left; padding: 0; }
+ul.errorlist li { float: left; padding: 7px 5px 5px 25px; margin: 0; }
+.invalid { color: #b51818; }
 
 .errors input { border: 1px solid #b51818; }
 .errors textarea { border: 1px solid #b51818; }

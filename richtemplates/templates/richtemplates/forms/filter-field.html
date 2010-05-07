@@ -1,10 +1,21 @@
+{% load richtemplates_tags native %}
+{% if field.errors %}
+<tr class="field errors">
+    <td colspan="2">
+        <ul class="errorlist">
+            {% for error in field.errors %}
+            <li class="message message-error">{{ error|tooltip:"30" }}</li>
+            {% endfor %}
+        </ul>
+    </td>
+</tr>
+{% endif %}
 <tr class="field{% if field.errors %} errors{% endif %}">
-    <th>
+    
+    <th{% if field.errors %} class="invalid"{% endif %}>
         {{ field.label_tag }}
-        
     </th>
     <td>
-    	{% if field.errors %}<span>{% for error in field.errors %}{{ error }}{% endfor %}</span><br/>{% endif %}
         {{ field }}
         {% if field.field.required and not field.data%}<span class="required">*</span>{% endif %}
 		{% if field.help_text %}<br/><span class="help_text">{{ field.help_text }}{% endif %}

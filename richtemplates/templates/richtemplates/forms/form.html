@@ -11,24 +11,6 @@
         {{ field }}
         {% if field.errors %}<span class="error">{{ field.label_tag }}: {{ field.errors }}</span>{% endif %}
     {% else %}
-		<tr id="{{ field.auto_id }}_tr" class="field{% if field.errors %} errors invalid{% endif %}">
-			<th id="{{ field.auto_id }}_th">
-				{{ field.label_tag }}
-			</th>
-			<td id="{{ field.auto_id }}_td">
-				{{ field }}
-				
-				{% if field.field.required  %}<span class="required">*</span>{% endif %}
-                {% if field.errors %}
-                <ul class="errorlist">
-                    {% for error in field.errors %}
-                    <li><div class="message message-error"><p>{{ error }}</p></li>
-                    {% endfor %}
-                </ul>
-                {% endif %}
-				{#{ field.errors }#}
-				{% if field.help_text %}<span class="help-text"> {{ field.help_text }}</span>{% endif %}
-			</td>
-		</tr>
+		{% include "richtemplates/forms/field.html" %}
     {% endif %}
 {% endfor %}
