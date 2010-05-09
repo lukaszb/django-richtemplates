@@ -24,6 +24,10 @@ class ContactForm(forms.Form):
         help_text="Format: YYYY-MM-DD")
     action = forms.ChoiceField(choices=[(1, 'foo'), (2, 'bar')],
         widget=forms.RadioSelect)
+    how_to_reach_me = forms.MultipleChoiceField(choices=(
+            ('email', 'Via Email'),
+            ('phone', 'Via phone'),
+        ), required=False)
 
 class UserForm(forms.ModelForm):
     groups = forms.ModelMultipleChoiceField(Group.objects.all())
