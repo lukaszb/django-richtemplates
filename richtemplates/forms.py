@@ -12,10 +12,11 @@ from richtemplates.utils import get_fk_fields, get_user_profile_model
 from richtemplates.skins import get_skins
 from richtemplates.fields import RestructuredTextAreaField, UserByNameField,\
     ModelByNameField
+from richtemplates.widgets import RichCheckboxSelectMultiple
 
 __all__ = ['RestructuredTextAreaField', 'UserByNameField', 'ModelByNameField',
     'DynamicActionChoice', 'DynamicActionFormFactory', 'LimitingModelFormError',
-    'LimitingModelForm',]
+    'LimitingModelForm', 'RichCheckboxSelectMultiple',]
 
 class DynamicActionChoice(object):
     """

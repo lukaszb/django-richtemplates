@@ -242,8 +242,11 @@ tr.datatable-thead-header th {
 tr.datatable-thead-subheader th { background-color: #C2EBEE; }
 table.datatable th { background-color: #C2EBEE; }
 tbody.datatable-tbody td { background-color: #FFF; }
-table.datatable tbody tr:hover { color: #000; background: #eed !important }
-table.datatable tbody tr:hover td { color: #000; background: #eed !important }
+table.datatable tbody tr:hover { color: #000; background: #ffc !important }
+table.datatable tbody tr:hover td { color: #000; background: #ffc !important }
+
+.richtable-row-higlighted { background: #ffc !important }
+.richtable-row-higlighted td { background: #ffc !important }
  
 tr.odd td { background-color: #FFF; }
 tr.even td { background-color: #EFE; }
@@ -347,7 +350,7 @@ ul.errorlist li { float: left; padding: 7px 5px 5px 25px; margin: 0; }
 
 /* Input highligh */
 input:focus, textarea:focus {
-    background:#ffc;
+    background: #ffc;
     border: 1px solid #00CDCD;
 }
 

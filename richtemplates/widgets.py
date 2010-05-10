@@ -16,8 +16,14 @@ class RichCheckboxSelectMultiple(forms.SelectMultiple):
     def render(self, name, value, attrs=None, choices=()):
         if value is None: value = []
         has_id = attrs and 'id' in attrs
+        checkbox_class = 'richtable-checkbox'
+        if attrs and 'class' in attrs:
+            attrs['class'] = attrs['class'] + ' ' + checkbox_class
+        else:
+            attrs['class'] = checkbox_class
         final_attrs = self.build_attrs(attrs, name=name)
-        output = [u'<table class="datatable">',
+        output = [u'<table class="datatable%s">' %
+                    (attrs and 'class' in attrs and ' ' + attrs['class']),
                   u'<thead class="datatable-thead">',
                   u'<tr class="datatable-thead-subheader">'
                       u'<th>%s</th>' % _("State"),
@@ -37,7 +43,6 @@ class RichCheckboxSelectMultiple(forms.SelectMultiple):
                 label_for = u' for="%s"' % final_attrs['id']
             else:
                 label_for = ''
-
             cb = forms.CheckboxInput(final_attrs, check_test=lambda value: value in str_values)
             option_value = force_unicode(option_value)
             rendered_cb = cb.render(name, option_value)
