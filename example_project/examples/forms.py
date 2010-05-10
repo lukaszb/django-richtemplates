@@ -27,7 +27,7 @@ class ContactForm(forms.Form):
     how_to_reach_me = forms.MultipleChoiceField(choices=(
             ('email', 'Via Email'),
             ('phone', 'Via phone'),
-        ), required=False)
+        ), initial=['email'], required=False)
 
 class UserForm(forms.ModelForm):
     groups = forms.ModelMultipleChoiceField(Group.objects.all())
