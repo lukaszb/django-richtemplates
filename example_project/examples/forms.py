@@ -4,6 +4,7 @@ from django import forms
 from django.contrib.auth.models import Group
 
 from richtemplates.forms import LimitingModelForm, UserByNameField
+from richtemplates.widgets import RichCheckboxSelectMultiple
 from richtemplates import settings as richtemplates_settings
 from examples.models import Task
 
@@ -27,7 +28,9 @@ class ContactForm(forms.Form):
     how_to_reach_me = forms.MultipleChoiceField(choices=(
             ('email', 'Via Email'),
             ('phone', 'Via phone'),
-        ), initial=['email'], required=False)
+        ), initial=['email'], required=False,
+        widget = RichCheckboxSelectMultiple
+    )
 
 class UserForm(forms.ModelForm):
     groups = forms.ModelMultipleChoiceField(Group.objects.all())

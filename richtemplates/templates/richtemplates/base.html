@@ -48,7 +48,7 @@
         {# For new message framework, available since Django 1.2 #}
         {% block messages_block %}
         {% if messages %}
-        <ul class="messages">
+        <ul id="global-messages" class="messages">
             {% for message in messages %}
             <li class="message message-{% if message.tags %}{{ message.tags }}{% else %}info{% endif %}">{{ message }}</li>
             {% endfor %}

@@ -70,6 +70,20 @@ $(document).ready(function(){
     $('.richtabs').tabs();
     $('.richbutton').button();
     $('.richbuttonset').buttonset();
+
+    $('#global-messages li').hover(
+        function(){
+            $(this).stop().addClass('border-gray').addClass('to-be-closed');
+        },
+        function(){
+            if (!$(this).hidden){
+                $(this).stop().removeClass('border-gray').removeClass('to-be-closed');
+            }
+        }
+    );
+    $('#global-messages li').click(function(){
+        $(this).hide();
+    });
 });
 
 

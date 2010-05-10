@@ -16,14 +16,6 @@ urlpatterns = patterns('django.views.generic.simple',
         kwargs={'template': 'examples/home.html'},
         name='richtemplates_examples_home'),
 
-    url(r'^messages/$',
-        view='direct_to_template',
-        kwargs={'template': 'examples/messages.html',
-            'extra_context': {
-                'tags': ['debug', 'info', 'success', 'warning', 'info']},
-        },
-        name='richtemplates_examples_messages'),
-
     url(r'^links/$',
         view='direct_to_template',
         kwargs={'template': 'examples/links.html'},
@@ -42,6 +34,10 @@ urlpatterns = patterns('django.views.generic.simple',
 )
 
 urlpatterns += patterns('examples.views',
+    url(r'^messages/$',
+        view='messages_view',
+        name='richtemplates_examples_messages'),
+
     url(r'^colors/$', 'colors', name='richtemplates_examples_colors'),
     url(r'^forms/contact/$', 'contact', name='richtemplates_examples_contact'),
     url(r'^forbidden/$', 'forbidden', name='richtemplates_examples_forbidden'),

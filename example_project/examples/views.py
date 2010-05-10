@@ -23,10 +23,16 @@ from examples.models import Task, Project
 from richtemplates.forms import UserProfileForm
 from richtemplates.skins import SkinDoesNotExist, set_skin_at_request
 
-try:
-    from django.contrib import messages
-except ImportError:
-    messages = None
+def messages_view(request, template_name='examples/messages.html'):
+    tags = ['debug', 'info', 'success', 'warning', 'info']
+    for tag in tags:
+        getattr(messages, tag)(request, "This is global message tagged as '%s'"
+            % tag)
+
+    context = {
+        'tags': tags,
+    }
+    return render_to_response(template_name, context, RequestContext(request))
 
 def colors(request, template_name='examples/color_tables.html'):
 
