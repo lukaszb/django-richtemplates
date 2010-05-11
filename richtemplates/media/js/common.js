@@ -84,32 +84,6 @@ $(document).ready(function(){
     $('#global-messages li').click(function(){
         $(this).hide();
     });
-
-    $('input.richtable-checkbox').each(function(){
-        var input = $(this); // jQuery object
-        var checkbox = this; // DOM object
-        var row = $(this).parent().parent(); // jQuery row object
-        if (checkbox.checked) row.addClass('richtable-row-higlighted');
-        
-        row.click(function(){
-            if (checkbox.checked) {
-                checkbox.checked = false;
-                input.change();
-            } else {
-                checkbox.checked = true;
-                input.change();
-            }
-        });
-
-        input.change(function(){
-            console.log("Changing '" + input + "'");
-            if (checkbox.checked) {
-                row.addClass('richtable-row-higlighted');
-            } else {
-                row.removeClass('richtable-row-higlighted');
-            }
-        });
-    });
 });
 
 

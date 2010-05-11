@@ -1,9 +1,7 @@
 import logging
-import django_filters
 
 from django.views.generic import simple
 from django.views.generic import list_detail
-from django.views.decorators.csrf import csrf_exempt
 from django.utils.datastructures import SortedDict
 from django.shortcuts import render_to_response, get_object_or_404, redirect
 from django.http import HttpResponseRedirect
@@ -19,6 +17,7 @@ from examples.forms import ContactForm
 from examples.forms import TaskForm
 from examples.forms import TaskFilter
 from examples.forms import UserForm
+from examples.forms import MultipleChoicesForm
 from examples.models import Task, Project
 from richtemplates.forms import UserProfileForm
 from richtemplates.skins import SkinDoesNotExist, set_skin_at_request
@@ -59,6 +58,16 @@ def contact(request, template_name='examples/contact.html'):
     context = {
         'form': form,
     }
+    return render_to_response(template_name, context, RequestContext(request))
+
+def multiple_choices(request, template_name='examples/multiplechoices.html'):
+    form = MultipleChoicesForm(request.POST or None)
+    if request.method == 'POST':
+        if form.is_valid():
+            messages and messages.success(request, u'Submission succeeded')
+        else:
+            messages and messages.error(u'Submission failed')
+    context = {'form': form}
     return render_to_response(template_name, context, RequestContext(request))
 
 def manage_user_groups(request, username,

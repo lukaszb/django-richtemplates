@@ -32,6 +32,34 @@ class ContactForm(forms.Form):
         widget = RichCheckboxSelectMultiple
     )
 
+def unslugify(value):
+    return value.replace('-', ' ').capitalize()
+
+class MultipleChoicesForm(forms.Form):
+    CHOICES = ((key, unslugify(key)) for key in (
+        ('view_project'),
+        ('edit_project'),
+        ('add_project'),
+        ('delete_project'),
+        ('view_task'),
+        ('edit_task'),
+        ('add_task'),
+        ('delete_task'),
+        ('view_user'),
+        ('edit_user'),
+        ('add_user'),
+        ('delete_user'),
+        ('view_group'),
+        ('edit_group'),
+        ('add_group'),
+        ('delete_group'),
+    ))
+    fake_permissions = forms.MultipleChoiceField(choices=CHOICES,
+        initial = ['view_project', 'edit_project', 'add_task', 'delete_task'],
+        required = False,
+        widget = RichCheckboxSelectMultiple)
+
+
 class UserForm(forms.ModelForm):
     groups = forms.ModelMultipleChoiceField(Group.objects.all())
 

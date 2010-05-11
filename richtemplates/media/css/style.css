@@ -217,6 +217,7 @@ table.form-table td ul {
 table.form-table td ul li label { float: left; margin: 0; padding: 0; clear: both; }
 table.form-table td ul li { padding: 0px;}
 table.form-table td ul.errorlist li { padding: 7px 5px 5px 25px;}
+table.form-table tbody tr.ui-selected td { background: #ffc; }
 
 table.filterform-table { font-size: 11px; white-space: nowrap; }
 table.filterform-table th { font-weight: bold; text-align: right;}
@@ -244,9 +245,7 @@ table.datatable th { background-color: #C2EBEE; }
 tbody.datatable-tbody td { background-color: #FFF; }
 table.datatable tbody tr:hover { color: #000; background: #ffc !important }
 table.datatable tbody tr:hover td { color: #000; background: #ffc !important }
-
-.richtable-row-higlighted { background: #ffc !important }
-.richtable-row-higlighted td { background: #ffc !important }
+table.datatable tbody tr.ui-selected td { background: #ffc; }
  
 tr.odd td { background-color: #FFF; }
 tr.even td { background-color: #EFE; }

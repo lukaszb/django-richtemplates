@@ -5,6 +5,7 @@ from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext as _
 
 from richtemplates.templatetags.native import richicon_src
+from richtemplates import settings as richtemplates_settings
 
 from itertools import chain
 
@@ -13,7 +14,18 @@ class RichCheckboxSelectMultiple(forms.SelectMultiple):
     Copied from django.forms.CheckboxSelectMultiple with additional
     img icons tags.
     """
+
+    class Media:
+        js = (richtemplates_settings.MEDIA_URL +
+            'js/jquery-richcheckboxselectmultiple.js',)
+
+    def __init__(self, extra=True, *args, **kwargs):
+        self.extra = extra
+        super(RichCheckboxSelectMultiple, self).__init__(*args, **kwargs)
+
     def render(self, name, value, attrs=None, choices=()):
+        import logging
+        logging.debug("Adding media %s" % RichCheckboxSelectMultiple.Media.js)
         if value is None: value = []
         has_id = attrs and 'id' in attrs
         checkbox_class = 'richtable-checkbox'
@@ -22,7 +34,7 @@ class RichCheckboxSelectMultiple(forms.SelectMultiple):
         else:
             attrs['class'] = checkbox_class
         final_attrs = self.build_attrs(attrs, name=name)
-        output = [u'<table class="datatable%s">' %
+        output = [u'<table class="datatable richcheckboxselectmultiple%s">' %
                     (attrs and 'class' in attrs and ' ' + attrs['class']),
                   u'<thead class="datatable-thead">',
                   u'<tr class="datatable-thead-subheader">'
@@ -58,8 +70,18 @@ class RichCheckboxSelectMultiple(forms.SelectMultiple):
                           u'<td class="centered">%s</td>'
                           u'<td><label%s>%s</label></td>'
                           u'<td>%s</td>'
-                          u'</tr>' % (tr_class, img_tag, label_for, option_label, rendered_cb))
-        output.append(u'</tbody></table>')
+                          u'</tr></tbody>' % (tr_class, img_tag, label_for, option_label, rendered_cb))
+        if self.extra:
+            output.append(
+                u'<tfoot>'
+                u'<tr><td colspan="3">'
+                u'<a class="richbutton select-all">Select all</a>'
+                u'<a class="richbutton deselect-all">Deselect all</a>'
+                u'<a class="richbutton change-all">Reverse all</a>'
+                u'</td></tr>'
+                u'</tfoot>')
+
+        output.append(u'</table>')
         return mark_safe(u'\n'.join(output))
 
     def id_for_label(self, id_):
