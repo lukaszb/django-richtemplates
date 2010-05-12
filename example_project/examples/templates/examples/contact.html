@@ -3,6 +3,7 @@
 {% load native %}
 
 {% block extra_head %}{{ block.super }}
+    {{ form.media }}
     {% autocomplete_field form.username delay=0 %}
 {% endblock %}
 

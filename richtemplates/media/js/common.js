@@ -69,7 +69,9 @@ $(document).ready(function(){
 
     $('.richtabs').tabs();
     $('.richbutton').button();
+    $('.richbuttonset .button-link').removeClass('button-link');
     $('.richbuttonset').buttonset();
+    $('a.button-link').buttonset();
 
     $('#global-messages li').hover(
         function(){
