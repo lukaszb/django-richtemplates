@@ -68,10 +68,12 @@ $(document).ready(function(){
     });
 
     $('.richtabs').tabs();
+    $('.richbutton .button-link').removeClass('button-link');
     $('.richbutton').button();
+    $('.richbutton-wrench.button-link').removeClass('button-link');
+    $('.richbutton-wrench').button({icons: { primary: "ui-icon-wrench" }});
     $('.richbuttonset .button-link').removeClass('button-link');
     $('.richbuttonset').buttonset();
-    $('a.button-link').buttonset();
 
     $('#global-messages li').hover(
         function(){
