@@ -201,6 +201,7 @@ table.formset { border: 1px solid #999; margin-bottom: 5px; padding: 5px; }
 table.form-table .shorter { min-width: 150px; max-width: 250px; }
 table.form-table input[type=text] { max-width: 250px; min-width: 250px; }
 table.form-table input { float: left; margin-left: 20px; }
+table.form-table table { float: left; margin-left: 20px; }
 table.form-table select { float: left; margin-left: 20px; max-width: 250px; min-width: 250px; }
 table.form-table textarea { float: left; margin-left: 20px; max-width: 600px; min-width: 250px; }
 table.form-table label { float: right; margin-right: 5px; }
