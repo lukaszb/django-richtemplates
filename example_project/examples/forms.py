@@ -33,7 +33,7 @@ class ContactForm(forms.Form):
     )
 
 def unslugify(value):
-    return value.replace('-', ' ').capitalize()
+    return value.replace('_', ' ').replace('-', ' ').capitalize()
 
 class MultipleChoicesForm(forms.Form):
     CHOICES = ((key, unslugify(key)) for key in (
