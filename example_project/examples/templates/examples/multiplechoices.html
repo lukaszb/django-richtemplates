@@ -4,24 +4,7 @@
 
 {% block extra_head %}{{ block.super }}
 {{ form.media }}
-<script type="text/javascript">
-    $(document).ready(function(){
-        $('#select-all').click(function(){
-            $('#multiplechoices-form tr').each(function(){
-                if (!$(this).hasClass('ui-selected')){
-                    $(this).click();
-                }
-            });
-        });
-        $('#deselect-all').click(function(){
-            $('#multiplechoices-form tr').each(function(){
-                if ($(this).hasClass('ui-selected')){
-                    $(this).click();
-                }
-            });
-        });
-    });
-</script>
+
 {% endblock %}
 
 {% block col_main_title %}Multiple choices form{% endblock %}
@@ -36,6 +19,65 @@
         <input id="id_submit" class="richbutton" type="submit" name="submit" value="Submit"/>
     </div>
 </form>
+
+<p><a href="#html-code" class="button-link togglable max-rounded">View html source</a></p>
+
+<div id="html-code" class="hidden codeblock">
+{% highlight_block html+django cssclass="code-highlight" linenos=true %}
+{% templatetag openblock %} block extra_head {% templatetag closeblock %}
+    {% templatetag openvariable %} form.media {% templatetag closevariable %}
+{% templatetag openblock %} endblock {% templatetag closeblock %}
+
+{% templatetag openblock %} block col_main_content {% templatetag closeblock %}
+<form id="multiplechoices-form" action="." method="post">
+    {% templatetag openblock %} csrf_token {% templatetag closeblock %}
+    <table class="form-table">
+        {% templatetag openblock %} include "richtemplates/forms/form.html" {% templatetag closeblock %}
+    </table>
+    <div>
+        <input id="id_submit" class="richbutton" type="submit" name="submit" value="Submit"/>
+    </div>
+</form>
+{% templatetag openblock %} endblock {% templatetag closeblock %}
+{% endhighlight_block %}
+</div>
+
+<p><a href="#python-code" class="button-link togglable max-rounded">View python source</a></p>
+
+<div id="python-code" class="hidden codeblock">
+{% highlight_block python cssclass="code-highlight" linenos=true %}
+from django import forms
+from richtemplates.widgets import RichCheckboxSelectMultiple
+
+def unslugify(value):
+    return value.replace('_', ' ').replace('-', ' ').capitalize()
+
+class MultipleChoicesForm(forms.Form):
+    CHOICES = ((key, unslugify(key)) for key in (
+        ('view_project'),
+        ('edit_project'),
+        ('add_project'),
+        ('delete_project'),
+        ('view_task'),
+        ('edit_task'),
+        ('add_task'),
+        ('delete_task'),
+        ('view_user'),
+        ('edit_user'),
+        ('add_user'),
+        ('delete_user'),
+        ('view_group'),
+        ('edit_group'),
+        ('add_group'),
+        ('delete_group'),
+    ))
+    fake_permissions = forms.MultipleChoiceField(choices=CHOICES,
+        initial = ['view_project', 'edit_project', 'add_task', 'delete_task'],
+        required = False,
+        widget = RichCheckboxSelectMultiple)
+{% endhighlight_block %}
+</div>
+
 
 {% endblock %}
 

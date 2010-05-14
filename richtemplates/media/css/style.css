@@ -16,7 +16,7 @@ p {
 
 hr { color: #008894; border-color: #008894; } 
 
-pre { font-family: Bitstream Vera Sans Mono,monospace; font-size: 13px; }
+pre { font-family: Bitstream Vera Sans Mono,monospace; font-size: 1.3em; line-height: 1.3em; }
 
 a:active,a:link,a:visited { color: #00709F; }
 a:hover { color: #000; }
@@ -605,7 +605,7 @@ div.qtip {
     background-position: 5px center;
 }
 
-div.codeblock {
+div.codeblock, pre.literal-block {
     overflow: auto;
     padding: 0px;
     border: 1px solid #ccc;
@@ -614,6 +614,11 @@ div.codeblock {
     line-height: 100%;
     /* new */
     line-height: 125%;
+}
+
+pre.literal-block {
+    margin-left: 20px;
+    margin-right: 20px;
 }
 
 .code-highlight {
