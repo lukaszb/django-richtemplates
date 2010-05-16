@@ -6,7 +6,7 @@
 
 {% block title %}Richtemplates examples{% endblock %}
 
-{% block extra_head %}
+{% block extra_head %}{{ block.super }}
 {% endblock %}
 
 {% block col_left_title %}Left column title{% endblock %}
@@ -29,12 +29,20 @@
         <li><a href="{% url richtemplates_examples_forbidden %}">Forbidden</a></li>
     </ul>
     <hr/>
+
     <h3>jQuery UI Integration</h3>
     <ul class="nav-vertical">
         <li><a href="{% url richtemplates_examples_buttons %}">Buttons</a></li>
         <li><a href="{% url richtemplates_examples_tabs %}">Tabs</a></li>
     </ul>
     <hr/>
+
+    <h3>Ajax</h3>
+    <ul class="nav-vertical">
+        <li><a href="{% url richtemplates_examples_task_list_ajaxed %}">Taks list</a></li>
+    </ul>
+    <hr/>
+
     <h3>Skins</h3>
     <ul class="nav-vertical">
         {% get_skin_list as skin_list %}

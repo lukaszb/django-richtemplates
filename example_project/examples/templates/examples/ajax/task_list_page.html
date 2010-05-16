@@ -1,0 +1,44 @@
+<table class="datatable">
+    <thead class="datatable-thead">
+        <tr class="datatable-thead-subheader">
+            <th>ID</th>
+            <th>Summary</th>
+            <th>Created at</th>
+            <th>Project</th>
+            <th>Reported by</th>
+            <th>Modified at</th>
+            <th>Last editor</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody id="task-list-tbody" class="datatable-tbody">
+        {% for task in items.object_list %}
+        <tr class="{% cycle "odd" "even" %} hoverable">
+            <td>{{ task.id }}</td>
+            <td><a href="{% url richtemplates_examples_task_detail task.id %}">{{ task.summary }}</a></td>
+            <td>{{ task.created_at }}</td>
+            <td>{{ task.project }}</td>
+            <td>{{ task.author }}</td>
+            <td>{{ task.edited_at }}</td>
+            <td>{{ task.editor }}</td>
+            <td>{{ task.status }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<div class="pagination">
+    <span class="step-links">
+        {% if items.has_previous %}
+            <a href="#" onclick="Dajaxice.examples.task_list_paginator('Dajax.process',{'p':{{ items.previous_page_number }}})">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ items.number }} of {{ items.paginator.num_pages }}.
+        </span>
+
+        {% if items.has_next %}
+            <a href="#" onclick="Dajaxice.examples.task_list_paginator('Dajax.process',{'p':{{ items.next_page_number }}})">next</a>
+        {% endif %}
+    </span>
+</div>

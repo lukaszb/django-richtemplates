@@ -34,9 +34,7 @@ def messages_view(request, template_name='examples/messages.html'):
     return render_to_response(template_name, context, RequestContext(request))
 
 def colors(request, template_name='examples/color_tables.html'):
-
     extra_context = {'colors': SortedDict(COLORS)}
-
     return simple.direct_to_template(request, template_name, extra_context)
 
 def contact(request, template_name='examples/contact.html'):

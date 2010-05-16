@@ -62,6 +62,8 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.webdesign',
 
+    'dajaxice',
+    'dajax',
     'djalog',
     'django_sorting',
     'pagination',
@@ -145,6 +147,7 @@ RICHTEMPLATES_PYGMENTS_STYLES = {
     'irblack': 'richtemplates.pygstyles.irblack.IrBlackStyle',
 }
 RICHTEMPLATES_DEFAULT_CODE_STYLE = 'irblack'
+RICHTEMPLATES_USE_DAJAX = True
 
 AUTH_PROFILE_MODULE = 'examples.MyUserProfile'
 
@@ -155,5 +158,14 @@ AUTH_PROFILE_MODULE = 'examples.MyUserProfile'
 NATIVE_TAGS = (
     'richtemplates.templatetags.pygmentize',
     'richtemplates.templatetags.native',
+)
+
+# ======================= #
+# DAJAX/DAJAXICE SETTINGS #
+# ======================= #
+
+DAJAXICE_MEDIA_PREFIX = 'dajaxice'
+DAJAXICE_FUNCTIONS = (
+    'examples.ajax.task_list_paginator',
 )
 

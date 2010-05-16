@@ -68,6 +68,14 @@ urlpatterns += patterns('examples.views',
         name='richtemplates_examples_task_edit'),
 )
 
+# Ajaxed
+
+urlpatterns += patterns('examples.views.ajaxed',
+    url(r'^tasks-ajaxed/$',
+        view='task_list_ajaxed',
+        name='richtemplates_examples_task_list_ajaxed'),
+)
+
 urlpatterns += patterns('',
     url(r'^richtemplates/', include('richtemplates.urls')),
 )

@@ -33,6 +33,8 @@ SKINS = {
     'ruby': {'name': 'Ruby'},
 }
 
+USE_DAJAX = getattr(settings, 'RICHTEMPLATES_USE_DAJAX', False)
+
 DEFAULT_CODE_STYLE = getattr(settings,
     'RICHTEMPLATES_DEFAULT_CODE_STYLE', 'native')
 PROFILE_CODE_STYLE_FIELD = getattr(settings,
