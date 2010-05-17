@@ -54,4 +54,45 @@
 {% endblock %}
 
 
+{% block col_main_extra %}
+<div class="richtabs">
+    <ul>
+        <li><a href="#tab3">Tab 1</a></li>
+        <li><a href="#tab4">Tab 2</a></li>
+    </ul>
+    <div id="tab3">
+        {% lorem 3 p %}
+    </div>
+
+    <div id="tab4">
+        <div class="richblock">
+            {% lorem 3 p %}
+        </div>
+    </div>
+
+</div>
+
+<p><a href="#tabs-sample-code2" class="button-link togglable max-rounded">View source</a></p>
+
+<div id="tabs-sample-code2" class="hidden codeblock">
+{% highlight_block html+django cssclass="code-highlight" linenos=true %}
+<div class="richtabs">
+    <ul>
+        <li><a href="#tab3">Tab 1</a></li>
+        <li><a href="#tab4">Tab 2</a></li>
+    </ul>
+    <div id="tab3">
+        {% templatetag openblock %} lorem 3 p {% templatetag closeblock %}
+    </div>
+
+    <div id="tab4">
+        <div class="richblock">
+            {% templatetag openblock %} lorem 3 p {% templatetag closeblock %}
+        </div>
+    </div>
+
+</div>
+{% endhighlight_block %}
+</div>
+{% endblock %}
 

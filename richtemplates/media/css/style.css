@@ -163,6 +163,11 @@ ul.menu-top-right li { float: right; padding: 0; margin: 0 10px 0 0; }
 	color: rgb(97, 97, 97);
 	vertical-align: top;
     min-width: 230px;
+    -webkit-box-shadow: #AAA 0px 0px 10px;
+    -webkit-border-bottom-left-radius: 5px;
+    -webkit-border-bottom-right-radius: 5px;
+    -moz-border-radius-bottomleft: 5px;
+    -moz-border-radius-bottomright: 5px;
 }
 .richtemplates-panel table { vertical-align: top; }
 .richtemplates-panel div { vertical-align: top; }
@@ -365,6 +370,7 @@ input:focus, textarea:focus {
     border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px;
     margin: 10px 5px;
     padding: 10px 5px 10px 5px;
+    -webkit-box-shadow: #AAA 0px 0px 10px;
 }
 .richblock h2, .richblock h3 {
     margin: 10px 5px;
@@ -483,10 +489,10 @@ div.qtip {
   .tipsy-east { background-position: right center; }
   .tipsy-west { background-position: left center; }
 
-.show-tipsy:hover { text-decoration: underline; }
-.show-tipsy-bottom:hover { text-decoration: underline; }
-.show-tipsy-left:hover { text-decoration: underline; }
-.show-tipsy-right:hover { text-decoration: underline; }
+.show-tipsy:hover {}
+.show-tipsy-bottom:hover {}
+.show-tipsy-left:hover {}
+.show-tipsy-right:hover {}
 
 /* Width classes */
 
