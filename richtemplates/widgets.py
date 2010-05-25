@@ -1,3 +1,7 @@
+"""
+Richtemplates provides some widgets helping to use it's styles and other
+goodies.
+"""
 from django import forms
 from django.utils.encoding import force_unicode
 from django.utils.html import conditional_escape
@@ -11,8 +15,29 @@ from itertools import chain
 
 class RichCheckboxSelectMultiple(forms.SelectMultiple):
     """
-    Copied from django.forms.CheckboxSelectMultiple with additional
-    img icons tags.
+    Copied from django.forms.CheckboxSelectMultiple with additional img icons
+    tags.  With javascript enabled allows to check single box by clicking on
+    it's row / label / box. Uses nice css highlighting.
+
+    Full example::
+
+        from django import forms
+        from richtemplates.widgets import RichCheckboxSelectMultiple
+        def unslugify(value):
+            return value.replace('_', ' ').replace('-', ' ').capitalize()
+
+        class MultipleChoicesForm(forms.Form):
+            CHOICES = ((key, unslugify(key)) for key in (
+                ('view_project'),
+                ('edit_project'),
+                ('add_project'),
+                ('delete_project'),
+            ))
+            fake_permissions = forms.MultipleChoiceField(choices=CHOICES,
+                initial = ['view_project'],
+                required = False,
+                widget = RichCheckboxSelectMultiple)
+
     """
 
     class Media:
@@ -70,7 +95,8 @@ class RichCheckboxSelectMultiple(forms.SelectMultiple):
                           u'<td class="centered">%s</td>'
                           u'<td><label%s>%s</label></td>'
                           u'<td>%s</td>'
-                          u'</tr></tbody>' % (tr_class, img_tag, label_for, option_label, rendered_cb))
+                          u'</tr></tbody>' % (tr_class, img_tag, label_for,
+                              option_label, rendered_cb))
         if self.extra:
             output.append(
                 u'<tfoot>'

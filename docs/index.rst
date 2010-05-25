@@ -56,6 +56,7 @@ Documentation
    skins
    userprofiles
 
+   api/index
 ..
    **Manual**
    
