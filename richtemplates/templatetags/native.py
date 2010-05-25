@@ -84,3 +84,20 @@ def richicon(icon, **opts):
     return tag
 richicon.function = True
 
+def richuiicon(icon, **opts):
+    """
+    Returns ``button`` + ``span`` tags representing jQuery ui icon for a given
+    ``icon`` string. You may use one of ``ui-icon-wrench``,
+    ``ui-icon-document`` etc.  For a full list reference jQuery UI
+    documentation (or take a look at richtemplate's example project).
+    """
+    float = opts.get('float', '')
+    tag = opts.get('tag', 'button')
+    bits = ('<%s ' % tag,
+            'class="richuiicon %s ' % (float and 'richuiicon-' + float),
+            'ui-state-default ui-corner-all">',
+            '<span class="ui-icon %s"></span>' % icon,
+            '</%s>' % tag)
+    return ''.join(bits)
+richuiicon.function = True
+

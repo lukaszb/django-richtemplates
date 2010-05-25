@@ -270,6 +270,7 @@ ul.messages {
 ul.messages li.message, .message p {
     padding: 6px 10px 8px 10px;
     padding-left: 25px;
+    -webkit-box-shadow: #AAA 0px 0px 10px;    
 }
 .message {
     margin: 5px 0 5px 0;
@@ -359,6 +360,9 @@ input:focus, textarea:focus {
     border: 1px solid #00CDCD;
 }
 
+a:focus {
+    outline: none;
+}
 
 /**************
  * Richblocks *
@@ -381,6 +385,12 @@ input:focus, textarea:focus {
     padding: 5px;
 }
 
+.shadowed {
+    -webkit-box-shadow: #AAA 0px 0px 10px;
+}
+.no-shadow {
+    -webkit-box-shadow: none;
+}    
 ul, ol { padding-left: 30px; }
 
 table.richblock-properties {
@@ -633,13 +643,27 @@ pre.literal-block {
     margin-bottom: 5px;
     border-left: 2px solid #ccc;
 }
-.code-highlight pre, .linenodiv pre { 
+.code-highlight pre, .linenodiv pre, .annotatediv pre { 
 	padding: 5px;
     margin: 0;
 }
+.linenodiv pre, .annotatediv pre {
+    text-align: right;
+}
 .linenos a { text-decoration: none; }
+.annotate a { text-decoration: none; }
 
 .code { display: block; }
+
+.codeblock tr.annotate-header {
+    font-weight: bold;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-top: 0;
+}
+.codeblock td {
+    border-right: 1px solid #ccc;
+}
 
 div.diffblock {
     overflow: auto;

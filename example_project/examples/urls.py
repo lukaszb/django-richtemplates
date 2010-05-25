@@ -30,10 +30,10 @@ urlpatterns = patterns('django.views.generic.simple',
         view='direct_to_template',
         kwargs={'template': 'examples/tooltips.html'},
         name='richtemplates_examples_tooltips'),
-
 )
 
 urlpatterns += patterns('examples.views',
+
     url(r'^messages/$',
         view='messages_view',
         name='richtemplates_examples_messages'),
@@ -66,6 +66,14 @@ urlpatterns += patterns('examples.views',
     url(r'^tasks/(?P<task_id>\d+)/edit/$',
         view='task_edit',
         name='richtemplates_examples_task_edit'),
+)
+
+# jQuery UI
+
+urlpatterns += patterns('examples.views.jqueryui',
+    url(r'^jquery-ui/icons/$',
+        view='icons',
+        name='richtemplates_examples_jqueryui_icons'),
 )
 
 # Ajaxed

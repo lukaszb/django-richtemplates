@@ -7,10 +7,6 @@ class Http403Middleware(object):
     """
     def process_response(self, request, response):
         if isinstance(response, HttpResponseForbidden):
-            if request.POST:
-                print request.POST
-            if request.FILES:
-                print request.FILES
             return handle403(request)
         else:
             return response

@@ -5,7 +5,6 @@ from django.shortcuts import render_to_response
 from examples.models import Task
 
 def get_task_list_page(page=1):
-    print page
     try:
         page = int(page)
     except:

@@ -1,5 +1,5 @@
+Django==1.2
 Djalog==0.9.3
-http://www.djangoproject.com/download/1.2-beta-1/tarball/
 django-filter
 django-pagination==1.0.5
 django-registration==0.7

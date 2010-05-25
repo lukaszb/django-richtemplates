@@ -1,0 +1,30 @@
+{% extends "examples/base.html" %}
+
+{% load native %}
+{% load webdesign %}
+
+{% block col_main_title %}Icons{% endblock %}
+{% block col_main_content %}
+
+<table class="datatable">
+    <thead class="datatable-thead">
+        <tr class="datatable-thead-subheader">
+            <th>Icon</th>
+            <th>Icon from richuibutton</th>
+            <th>CSS Class</th>
+        </tr>
+    </thead>
+    <tbody class="datatable-tbody">
+        {% for icon in icon_list %}
+        <tr class="{% cycle "odd" "even" %} hoverable centered">
+            <td><a class="richuiicon ui-state-default ui-corner-all"><span class="ui-icon {{ icon }}"</span></a></td>
+            <td class="centered">{% richuiicon "icon" %}</td>
+            <td><pre>{{ icon }}</pre></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}
+
+

@@ -1,5 +1,6 @@
-from django.db import models
 from django.shortcuts import _get_queryset
+from django.utils import simplejson
+from django.http import HttpResponse
 
 def get_first_or_None(klass, *args, **kwargs):
     """
@@ -12,4 +13,12 @@ def get_first_or_None(klass, *args, **kwargs):
         return queryset[0]
     except IndexError:
         return None
-    
+
+def get_json_response(data=''):
+    """
+    Returns instance of HttpResponse with json mimetype and serialized data.
+    """
+    json_data = simplejson.dumps(data)
+    response = HttpResponse(content=json_data, mimetype='application/json')
+    return response
+
