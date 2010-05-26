@@ -303,6 +303,40 @@ ul.messages li.message, .message p {
     background: #f9c9c9 url("../img/icons/error.png") 5px 5px no-repeat;
 }
 
+div.note {
+    margin: 5px 0 5px 0;
+    border: 1px solid;
+	border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px;
+    color: #005898;
+    border-color: #9fd1f5;
+    background: #c3e6ff url("../img/icons/info.png") 4px 5px no-repeat;    
+}
+
+div.note p.first {
+    font-weight: bold;
+    font-size: 1.4em;
+    padding-left: 30px;
+    border-bottom: 1px dotted #9fd1f5;
+    margin-top: 0px;
+}
+
+div.warning {
+    margin: 5px 0 5px 0;
+    border: 1px solid;
+	border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px;
+    color: #6c6600;
+    border-color: #d7e059;
+    background: #f3f7aa url("../img/icons/warning.png") 4px 5px no-repeat;    
+}
+
+div.warning p.first {
+    font-weight: bold;
+    font-size: 1.4em;
+    padding-left: 30px;
+    border-bottom: 1px dotted #d7e059;
+    margin-top: 0px;
+}
+
 ul.errorlist { list-style: none; color: #b51818; float: left; padding: 0;}
 ul.errorlist li { float: left; padding: 7px 5px 5px 25px; margin: 0; }
 .invalid { color: #b51818; }

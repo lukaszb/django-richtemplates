@@ -38,7 +38,7 @@ setup(
     scripts = [],
     requires = ['Djalog'],
     install_requires = [
-        'Django==1.2',
+        'Django>=1.2',
         'djalog',
         'django-annoying',
         'django-pagination>=1.0.7',
