@@ -62,8 +62,6 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.webdesign',
 
-    'dajaxice',
-    'dajax',
     'djalog',
     'django_sorting',
     'pagination',
@@ -159,14 +157,5 @@ AUTH_PROFILE_MODULE = 'examples.MyUserProfile'
 NATIVE_TAGS = (
     'richtemplates.templatetags.pygmentize',
     'richtemplates.templatetags.native',
-)
-
-# ======================= #
-# DAJAX/DAJAXICE SETTINGS #
-# ======================= #
-
-DAJAXICE_MEDIA_PREFIX = 'dajaxice'
-DAJAXICE_FUNCTIONS = (
-    'examples.ajax.task_list_paginator',
 )
 

@@ -4,12 +4,11 @@ import logging
 from django.contrib.auth.models import User
 from django.db.models import Count
 
-from annoying.decorators import signals
+from django.db.models import signals
 from richtemplates import models as richtemplates_app
 from richtemplates.utils import get_user_profile_model
 
-@signals.post_syncdb(sender=richtemplates_app)
-def richtemplates_syncdb(**kwargs):
+def put_missing_userprofiles(sender, **kwargs):
     """
     If user profile model is defined at ``settings.AUTH_PROFILE_MODULE``
     richtemplates would try to find out if there are missing profiles
@@ -40,6 +39,9 @@ def richtemplates_syncdb(**kwargs):
                         .filter(profile_count=0)
                     for user in users_without_profile:
                         UserProfile.objects.create(user=user)
-                        if kwargs['verbosity'] == 2:
+                        if kwargs['verbosity'] >= 1:
                             print "[INFO] Created profile for user %s" % user
+
+signals.post_syncdb.connect(put_missing_userprofiles, sender=richtemplates_app,
+    dispatch_uid="richtemplates.management.put_missing_userprofiles")
 

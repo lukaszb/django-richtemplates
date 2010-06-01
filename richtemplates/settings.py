@@ -33,8 +33,6 @@ SKINS = {
     'ruby': {'name': 'Ruby'},
 }
 
-USE_DAJAX = getattr(settings, 'RICHTEMPLATES_USE_DAJAX', False)
-
 DEFAULT_CODE_STYLE = getattr(settings,
     'RICHTEMPLATES_DEFAULT_CODE_STYLE', 'native')
 PROFILE_CODE_STYLE_FIELD = getattr(settings,
@@ -92,7 +90,7 @@ register_rst_directives(RESTRUCTUREDTEXT_DIRECTIVES.items())
 def register_pygments_style(pygment_styles):
     """
     Registers Pygments style classes. Pygments currently has plugin support at
-    pkg_resources level whitch is not always straightforword. This method allows
+    pkg_resources level which is not always straightforword. This method allows
     to register pygments styles easier and on the fly.
 
     Expects a dict with alias keys and classes/paths to classes values. Default

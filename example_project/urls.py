@@ -20,11 +20,6 @@ urlpatterns = patterns('',
     (r'^', include('examples.urls')),
 )
 
-if settings.RICHTEMPLATES_USE_DAJAX:
-    urlpatterns += patterns('',
-        (r'^%s/' % settings.DAJAXICE_MEDIA_PREFIX, include('dajaxice.urls')),
-    )
-
 if settings.DEBUG:
     urlpatterns += patterns('',
         (r'^%s/(?P<path>.*)$' % settings.MEDIA_URL.strip('/'),

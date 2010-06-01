@@ -4,8 +4,6 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.utils.translation import ugettext_lazy as _
 
-from annoying.decorators import signals
-from richtemplates import settings as richtemplates_settings
 from richtemplates import models as richtemplates_app
 from richtemplates.forms import RichSkinChoiceField
 
@@ -69,7 +67,7 @@ class Status(models.Model):
     is_resolved = models.BooleanField(default=False)
 
     def __unicode__(self):
-        return self.name    
+        return self.name
 
     class Meta:
         verbose_name_plural = 'Statuses'

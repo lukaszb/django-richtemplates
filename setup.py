@@ -40,7 +40,6 @@ setup(
     install_requires = [
         'Django>=1.2',
         'djalog',
-        'django-annoying',
         'django-pagination>=1.0.7',
         'django-filter',
         'django-registration>=0.7',

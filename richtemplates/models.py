@@ -3,8 +3,6 @@ from django.conf import settings
 from django.contrib.auth.models import User
 from django.utils.translation import ugettext_lazy as _
 
-from annoying.decorators import signals
-from richtemplates.utils import get_user_profile_model
 from richtemplates import settings as richtemplates_settings
 
 class UserProfile(models.Model):
@@ -25,12 +23,4 @@ class UserProfile(models.Model):
     class Meta:
         abstract = getattr(settings, 'AUTH_PROFILE_MODULE',
              '') != 'richtemplates.UserProfile'
-
-@signals.post_save(sender=User)
-def new_richtemplates_profile(instance, **kwargs):
-    if kwargs['created'] is True:
-        _ProfileModel = get_user_profile_model()
-        _ProfileModel is not None and _ProfileModel.objects.create(
-            user = instance,
-        )
 
