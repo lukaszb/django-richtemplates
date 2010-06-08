@@ -1,13 +1,23 @@
-{% extends "base.html" %}
+{% extends "base_1col.html" %}
 
-{% block title %}
-registration_form.html | {{ block.super }}
+{% load i18n %}
+
+{% block col_single_title %}
+{% trans "Activation" %}
 {% endblock %}
 
-{% block header %}
-<h1>activate.html</h1>
+{% block col_single_content %}
+
+<ul class="messages">
+    <li class="message message-success">
+        {% trans "You are now activated" %}
+    </li>
+</ul>
+{% if not request.user.is_authenticated %}
+<p>
+    {% trans "Please" %} <a href="{% url auth_login %}">{% trans "click here" %}</a>
+    {% trans "in order to log in" %}.
+</p>
+{% endif %}
 {% endblock %}
 
-{% block content %}
-You are now activated. 
-{% endblock %}
