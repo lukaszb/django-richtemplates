@@ -20,17 +20,22 @@ ADMIN_MEDIA_PREFIX = '/admin-media/'
 # DATABASE #
 # ======== #
 
-DATABASE_ENGINE = 'sqlite3'
-DATABASE_NAME = '.hidden.db'
-DATABASE_USER = ''
-DATABASE_PASSWORD = ''
-DATABASE_HOST = ''
-DATABASE_PORT = ''
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'HOST': '',
+        'PORT': '',
+        'NAME': '.hidden.db',
+        'USER': '',
+        'PASSWORD': '',
+    }
+}
 
 # If enine is set to sqlite3 and name for db is not given
 # as absolute path, it should be relative to environment
-if DATABASE_ENGINE == 'sqlite3' and not DATABASE_NAME.startswith(':'):
-    DATABASE_NAME = getpath(PROJECT_ROOT, DATABASE_NAME)
+for db, conf in DATABASES.items():
+    if conf['ENGINE'] == 'sqlite3' and not conf['NAME'].startswith(':'):
+        conf['NAME'] = getpath(PROJECT_ROOT, conf['NAME'])
 
 # ============== #
 # BASIC SETTINGS #
