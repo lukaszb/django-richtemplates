@@ -1,9 +1,9 @@
 {% spaceless %}
 {% for breadcrumb in breadcrumbs %}
-	{% if forloop.last %}
-		{{ breadcrumb.name }}
+	{% if not forloop.last %}
+		<a href="{{ breadcrumb.url }}">{{ breadcrumb.name }}</a>{{ separator }}
 	{% else %}
-		<a href="{{ breadcrumb.url|escape }}">{{ breadcrumb.name }}</a>{{ separator }}
+		{{ breadcrumb.name|escape }}
 	{% endif %}
 {% endfor %}
 {% endspaceless %}

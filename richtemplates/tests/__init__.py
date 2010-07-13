@@ -1,4 +1,5 @@
 from test_skins import RichSkinTests
 from test_profile import UserProfileTests, GetUserProfileModelTests
 from test_fields import ModelByNameFieldTest
+from test_breadcrumber import BreadCrumberTest
 
