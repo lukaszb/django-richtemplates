@@ -793,3 +793,8 @@ div.diffblock .code-body{
     padding:0;
     margin:0;
 }
+
+.richtemplates-panel h5 {
+    text-shadow: #333 -1px -1px 0px;
+}
+
