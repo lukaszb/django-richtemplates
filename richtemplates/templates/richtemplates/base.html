@@ -34,10 +34,10 @@
 
 <body{% block body_attrs %}{% endblock %}>
 {% block body %}
-    <div id="top">
-        {% block top %}
-        {% endblock %}
-    </div>
+    {% block top %}
+        <div id="top">
+        </div>
+    {% endblock %}
     {% block menu_top %}
         {% include "richtemplates/layout/menu_top.html" %}
     {% endblock %}
@@ -91,15 +91,17 @@
 		
     </div>
     {# Footer #}
-    {% block footer_wrapper %}
-    <div id="footer">
-        {% block footer %}
-        <p>{% now "Y" %} &copy; <a href="http://bitbucket.org/lukaszb/django-richtemplates/"
-                                   class="show-tipsy"
-                                   title="Go to richtemplates homepage">django-richtemplates</a></p>
-        {% endblock %}
+    <div id="footer-wrapper">
+        {% block footer_wrapper %}
+        <div id="footer">
+            {% block footer %}
+            <p>{% now "Y" %} &copy; <a href="http://bitbucket.org/lukaszb/django-richtemplates/"
+                                       class="show-tipsy"
+                                       title="Go to richtemplates homepage">django-richtemplates</a></p>
+            {% endblock %}
+        </div>
+        {% endblock footer_wrapper %}
     </div>
-    {% endblock footer_wrapper %}
 {% endblock body %}
 
 {% block extra_body %}{% endblock %}
