@@ -68,8 +68,18 @@ class RichCheckboxSelectMultiple(forms.SelectMultiple):
                       u'<th>%s</th>' % _("On/Off"),
                   u'</tr>',
                   u'</thead>',
-                  u'<tbody class="datatable-tbody">',
                   ]
+        if self.extra:
+            output.append(
+                u'<tfoot>'
+                u'<tr><td colspan="3">'
+                u'<a class="richbutton select-all">Select all</a>'
+                u'<a class="richbutton deselect-all">Deselect all</a>'
+                u'<a class="richbutton change-all">Reverse all</a>'
+                u'</td></tr>'
+                u'</tfoot>')
+
+        output.append(u'<tbody class="datatable-tbody">')
         # Normalize to strings
         str_values = set([force_unicode(v) for v in value])
         for i, (option_value, option_label) in enumerate(chain(self.choices, choices)):
@@ -90,24 +100,14 @@ class RichCheckboxSelectMultiple(forms.SelectMultiple):
             else:
                 src = richicon_src("icon-no.gif")
             tr_class = i % 2 and "even" or "odd"
-            img_tag = u'<img src="%s" />' % src
+            img_tag = u'<img src="%s" alt="%s" />' % (src, src)
             output.append(u'<tr class="%s">'
                           u'<td class="centered">%s</td>'
                           u'<td><label%s>%s</label></td>'
                           u'<td>%s</td>'
-                          u'</tr></tbody>' % (tr_class, img_tag, label_for,
+                          u'</tr>' % (tr_class, img_tag, label_for,
                               option_label, rendered_cb))
-        if self.extra:
-            output.append(
-                u'<tfoot>'
-                u'<tr><td colspan="3">'
-                u'<a class="richbutton select-all">Select all</a>'
-                u'<a class="richbutton deselect-all">Deselect all</a>'
-                u'<a class="richbutton change-all">Reverse all</a>'
-                u'</td></tr>'
-                u'</tfoot>')
-
-        output.append(u'</table>')
+        output.append(u'</tbody></table>')
         return mark_safe(u'\n'.join(output))
 
     def id_for_label(self, id_):
