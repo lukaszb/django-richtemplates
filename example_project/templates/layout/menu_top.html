@@ -2,12 +2,12 @@
 
 {% load i18n %}
 
-{% block menu_top_left %}
+{% block menu-top-left %}
 <li><a href="{% url richtemplates_examples_home %}">Home</a></li>
 <li><a href="{% url richtemplates_examples_project_list %}">Project management</a></li>
 {% endblock %}
 
-{% block menu_top_right %}
+{% block menu-top-right %}
 <li><a href="{{ user.get_absolute_url }}" class="show-tipsy-bottom" title="{% trans "Show profile" %}">User: {{ user }}</a></li>
     <li>
         {% if user.is_authenticated %}

@@ -3,13 +3,13 @@
 {% load markup %}
 {% load i18n %}
 
-{% block extra_head %}{{ block.super }}
+{% block extra-head %}{{ block.super }}
 <link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}richtemplates/css/pygments.css" />
 {% endblock %}
 
-{% block col_main_title %}{{ project.name }}{% endblock %}
+{% block col-main-title %}{{ project.name }}{% endblock %}
 
-{% block col_main %}
+{% block col-main %}
 <div class="richtemplates-panel">
     <h5>{{ task.summary }}</h5>
     <div class="richtemplates-panel-content">
@@ -23,7 +23,7 @@
     </div>
 </div>
 
-{% block col_main_extra %}
+{% block col-main-extra %}
 <div class="richtemplates-panel">    
     <h5>{% trans "Project details" %}</h5>
     <div class="richtemplates-panel-content">
@@ -71,8 +71,8 @@
         </div>
     </div>
 </div>
-    {% endblock col_main_extra %}
+    {% endblock col-main-extra %}
 
-{% endblock col_main %}
+{% endblock col-main %}
 
 

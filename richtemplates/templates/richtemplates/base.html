@@ -6,7 +6,7 @@
     <title>{% block title %}{% endblock %}</title>
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
     
-    {% block head_css %}
+    {% block head-css %}
     <link rel="stylesheet" type="text/css" href="{{ RICHTEMPLATES_MEDIA_URL }}css/style.css" />
     {# set 'skin' context variable #}
     {% get_richskin %}
@@ -27,18 +27,18 @@
     <style type="text/css">
         {% highlight_style "code-highlight" style=style %}
     </style>
-    {% block extra_head %}{% endblock %}
+    {% block extra-head %}{% endblock %}
     {% endblock %}
 </head>
 
 
-<body{% block body_attrs %}{% endblock %}>
+<body{% block body-attrs %}{% endblock %}>
 {% block body %}
     {% block top %}
         <div id="top">
         </div>
     {% endblock %}
-    {% block menu_top %}
+    {% block menu-top %}
         {% include "richtemplates/layout/menu_top.html" %}
     {% endblock %}
     {% block breadcrumbs %}{% endblock %}
@@ -46,7 +46,7 @@
         
         {# Message Box #}
         {# For new message framework, available since Django 1.2 #}
-        {% block messages_block %}
+        {% block messages-block %}
         {% if messages %}
         <ul id="global-messages" class="messages">
             {% for message in messages %}
@@ -54,37 +54,37 @@
             {% endfor %}
         </ul>
         {% endif %}
-        {% endblock messages_block %}
+        {% endblock messages-block %}
 
         {% block content %}
         
 		    <!-- Column Left -->
 	        <div id="col_left">
-	        {% block col_left %}
+	        {% block col-left %}
 				<div class="richtemplates-panel">
-                    <h5>{% block col_left_title %}Left panel title{% endblock %}</h5>
+                    <h5>{% block col-left-title %}Left panel title{% endblock %}</h5>
 		            <div class="richtemplates-panel-content">
-		                {% block col_left_content %}{% endblock %}
+		                {% block col-left-content %}{% endblock %}
 		            </div>
 		        </div>
 				<!-- Add extra things if needed -->
-		        {% block col_left_extra %}{% endblock %}
-		    {% endblock col_left %}
+		        {% block col-left-extra %}{% endblock %}
+		    {% endblock col-left %}
 	        </div>
 	        
 			<!-- Column Main -->
 			<div id="col_main">
-			{% block col_main %}
+			{% block col-main %}
 		        <div class="richtemplates-panel">
-		            <h5>{% block col_main_title %}Left panel title{% endblock %}</h5>
+		            <h5>{% block col-main-title %}Left panel title{% endblock %}</h5>
 		            <div class="richtemplates-panel-content">
-		                {% block col_main_content %}{% endblock %}
+		                {% block col-main-content %}{% endblock %}
 		            </div>
 		        
 				</div>
 				<!-- Add extra things if needed -->
-                {% block col_main_extra %}{% endblock %}
-			{% endblock col_main %}
+                {% block col-main-extra %}{% endblock %}
+			{% endblock col-main %}
 			</div>
         
         {% endblock content %}
@@ -92,7 +92,7 @@
     </div>
     {# Footer #}
     <div id="footer-wrapper">
-        {% block footer_wrapper %}
+        {% block footer-wrapper %}
         <div id="footer">
             {% block footer %}
             <p>{% now "Y" %} &copy; <a href="http://bitbucket.org/lukaszb/django-richtemplates/"
@@ -100,11 +100,11 @@
                                        title="Go to richtemplates homepage">django-richtemplates</a></p>
             {% endblock %}
         </div>
-        {% endblock footer_wrapper %}
+        {% endblock footer-wrapper %}
     </div>
 {% endblock body %}
 
-{% block extra_body %}{% endblock %}
-{% block end_body %}{% endblock %}
+{% block extra-body %}{% endblock %}
+{% block end-body %}{% endblock %}
 </body>
 </html>

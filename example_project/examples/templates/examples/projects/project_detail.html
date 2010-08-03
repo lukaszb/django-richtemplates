@@ -3,9 +3,9 @@
 {% load markup %}
 {% load i18n %}
 
-{% block col_main_title %}{{ project.name }}{% endblock %}
+{% block col-main-title %}{{ project.name }}{% endblock %}
 
-{% block col_main %}
+{% block col-main %}
 <div class="richtemplates-panel">
     <h5>{{ project.name }}</h5>
     <div class="richtemplates-panel-content">
@@ -18,7 +18,7 @@
     </div>
 </div>
 
-{% block col_main_extra %}
+{% block col-main-extra %}
 <div class="richtemplates-panel">    
     <h5>{% trans "Project details" %}</h5>
     <div class="richtemplates-panel-content">
@@ -44,8 +44,8 @@
         </div>
     </div>
 </div>
-    {% endblock col_main_extra %}
+    {% endblock col-main-extra %}
 
-{% endblock col_main %}
+{% endblock col-main %}
 
 

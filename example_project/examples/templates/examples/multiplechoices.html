@@ -2,13 +2,13 @@
 
 {% load native %}
 
-{% block extra_head %}{{ block.super }}
+{% block extra-head %}{{ block.super }}
 {{ form.media }}
 
 {% endblock %}
 
-{% block col_main_title %}Multiple choices form{% endblock %}
-{% block col_main_content %}
+{% block col-main-title %}Multiple choices form{% endblock %}
+{% block col-main-content %}
 
 <form id="multiplechoices-form" action="." method="post">
     {% csrf_token %}
@@ -24,11 +24,11 @@
 
 <div id="html-code" class="hidden codeblock">
 {% highlight_block html+django cssclass="code-highlight" linenos=true %}
-{% templatetag openblock %} block extra_head {% templatetag closeblock %}
+{% templatetag openblock %} block extra-head {% templatetag closeblock %}
     {% templatetag openvariable %} form.media {% templatetag closevariable %}
 {% templatetag openblock %} endblock {% templatetag closeblock %}
 
-{% templatetag openblock %} block col_main_content {% templatetag closeblock %}
+{% templatetag openblock %} block col-main-content {% templatetag closeblock %}
 <form id="multiplechoices-form" action="." method="post">
     {% templatetag openblock %} csrf_token {% templatetag closeblock %}
     <table class="form-table">

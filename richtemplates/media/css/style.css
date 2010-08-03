@@ -287,9 +287,12 @@ ul.messages {
     padding: 0;
 }
 ul.messages li.message, .message p {
-    padding: 6px 10px 8px 10px;
-    padding-left: 25px;
+    padding: 6px 10px 8px 25px;
     -webkit-box-shadow: #AAA 0px 0px 10px;    
+}
+ul.messages li div.message p {
+    -webkit-box-shadow: none;
+    margin-top: 5px;
 }
 .message {
     margin: 5px 0 5px 0;
