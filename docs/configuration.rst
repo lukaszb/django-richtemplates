@@ -65,26 +65,32 @@ Following configuration settings may be overriden:
 * `RICHTEMPLATES_SKINS`_
 * `RICHTEMPLATES_RESTRUCTUREDTEXT_DIRECTIVES`_
 
-.. _`RICHTEMPLATES_MEDIA_URL`:
+.. _RICHTEMPLATES_MEDIA_URL:
 
 ``RICHTEMPLATES_MEDIA_URL``
+---------------------------
+
     *Default*: same as ``django.conf.settings.MEDIA_URL + 'richtemplates/'``
 
     Used by *context processor* and provides ``RICHTEMPLATES_MEDIA_URL``
     context variable in templates.
 
-.. _`RICHTEMPLATES_SESSION_SKIN_NAME`:
+.. _RICHTEMPLATES_SESSION_SKIN_NAME:
 
 ``RICHTEMPLATES_SESSION_SKIN_NAME``
+-----------------------------------
+
     *Default*: ``'skin'``
 
     Used as key for skin field in sessions.
     
     See :ref:`skins` documentation.
 
-.. _`RICHTEMPLATES_PROFILE_SKIN_FIELD`:
+.. _RICHTEMPLATES_PROFILE_SKIN_FIELD:
 
 ``RICHTEMPLATES_PROFILE_SKIN_FIELD``
+------------------------------------
+
     *Default*: ``'skin'``
 
     If you want to make users able to save information about their chosen
@@ -93,9 +99,11 @@ Following configuration settings may be overriden:
     
     See :ref:`skins` documentation.
 
-.. _`RICHTEMPLATES_DEFAULT_SKIN`:
+.. _RICHTEMPLATES_DEFAULT_SKIN:
 
 ``RICHTEMPLATES_DEFAULT_SKIN``
+------------------------------
+
     *Default*: ``'aqua'``
 
     This is default skin alias for users who haven't already choose a skin
@@ -103,9 +111,11 @@ Following configuration settings may be overriden:
     
     See :ref:`skins` documentation.
 
-.. _`RICHTEMPLATES_SKINS`:
+.. _RICHTEMPLATES_SKINS:
 
 ``RICHTEMPLATES_SKINS``
+-----------------------
+
     *Default*:
 
     .. code-block:: python
@@ -119,9 +129,11 @@ Following configuration settings may be overriden:
     If you want to extend exising skins with your own you would need to
     specify proper dictionary. You should see :ref:`skins` documentation.
 
-.. _`RICHTEMPLATES_RESTRUCTUREDTEXT_DIRECTIVES`:
+.. _RICHTEMPLATES_RESTRUCTUREDTEXT_DIRECTIVES:
 
 ``RICHTEMPLATES_RESTRUCTUREDTEXT_DIRECTIVES``
+---------------------------------------------
+
     *Default*: ``{}``
 
     ``richtemplates`` comes with some support for restructuredText. It is still
