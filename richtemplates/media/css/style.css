@@ -290,7 +290,7 @@ ul.messages li.message, .message p {
     padding: 6px 10px 8px 25px;
     -webkit-box-shadow: #AAA 0px 0px 10px;    
 }
-ul.messages li div.message p {
+div.message p {
     -webkit-box-shadow: none;
     margin-top: 5px;
 }
