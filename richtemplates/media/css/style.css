@@ -73,7 +73,6 @@ input[type='submit']:hover,input[type='button']:hover {
     cursor: pointer;
     border-color: #153E7E;
     border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px;
-    text-shadow: #333 -1px -1px 0px;
 }
 
 input.disabled { background: #E8E8E8; }
@@ -289,11 +288,17 @@ ul.messages {
 }
 ul.messages li.message, .message p {
     padding: 6px 10px 8px 25px;
+}
+ul.messages li.message {
     -webkit-box-shadow: #AAA 0px 0px 10px;    
 }
 div.message p {
+    margin-top: 0;
+    margin-bottom: 2px;
+}
+
+ul.messages li div.message p {
     -webkit-box-shadow: none;
-    margin-top: 5px;
 }
 .message {
     margin: 5px 0 5px 0;
