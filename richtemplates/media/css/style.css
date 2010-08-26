@@ -87,7 +87,7 @@ input.disabled { background: #E8E8E8; }
 
 /* BODY-LAYOUT */
 
-#body-content { width: 1160px; margin: 10px auto; }
+#body-content { width: 1160px; margin: 10px auto; min-height: 400px; }
 
 #message_box {width: 400px; margin-bottom: 20px;}
 
@@ -153,17 +153,20 @@ ul.menu-top-right li { float: right; padding: 0; margin: 0 10px 0 0; }
 
 /* FOOTER */
 #footer-wrapper {
-    width: 1160px;
+    /*width: 1160px;*/
 }
 #footer {
-    width: 400px;
+    width: 100%;
+    min-width: 1160px;
+    background-color: #EFE;
 	clear: both;
 	text-align: center;
 	font-size: 9px;
-	padding: 10px 5px 5px 5px;
     border-top: 1px solid #666;
-	color: #666;
-	margin: 20px auto 50px;
+    border-bottom: 1px solid #666;
+	color: #333;
+	padding: 0px;
+    margin: 0px;
 }
 
 
