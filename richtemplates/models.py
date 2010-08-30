@@ -24,3 +24,6 @@ class UserProfile(models.Model):
         abstract = getattr(settings, 'AUTH_PROFILE_MODULE',
              '') != 'richtemplates.UserProfile'
 
+from richtemplates.listeners import start_listening
+start_listening()
+
