@@ -72,7 +72,6 @@ INSTALLED_APPS = (
     'pagination',
     'registration',
     'native_tags',
-    'devserver',
 
     'richtemplates',
     'examples',
