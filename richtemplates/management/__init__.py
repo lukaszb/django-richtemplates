@@ -2,11 +2,15 @@ import sys
 import logging
 
 from django.contrib.auth.models import User
+from django.core.exceptions import ImproperlyConfigured
 from django.db.models import Count
-
 from django.db.models import signals
-from richtemplates import models as richtemplates_app
+from django.db.models.loading import get_app
+
 from richtemplates.utils import get_user_profile_model
+
+
+PROFILE_APP = None
 
 def put_missing_userprofiles(sender, **kwargs):
     """
@@ -16,6 +20,11 @@ def put_missing_userprofiles(sender, **kwargs):
     """
     UserProfile = get_user_profile_model()
     if UserProfile:
+        try:
+            global PROFILE_APP
+            PROFILE_APP = get_app(UserProfile._meta.app_label)
+        except ImproperlyConfigured:
+            pass
         users_count = User.objects.count()
         profiles_count = UserProfile.objects.count()
         if users_count > profiles_count:
@@ -42,6 +51,9 @@ def put_missing_userprofiles(sender, **kwargs):
                         if kwargs['verbosity'] >= 1:
                             print "[INFO] Created profile for user %s" % user
 
-signals.post_syncdb.connect(put_missing_userprofiles, sender=richtemplates_app,
-    dispatch_uid="richtemplates.management.put_missing_userprofiles")
+
+# Connect signal only if we could find an app
+if PROFILE_APP:
+    signals.post_syncdb.connect(put_missing_userprofiles, sender=PROFILE_APP,
+        dispatch_uid="richtemplates.management.put_missing_userprofiles")
 

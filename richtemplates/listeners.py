@@ -8,10 +8,12 @@ from richtemplates.utils import get_user_profile_model
 
 def new_richtemplates_profile(instance, **kwargs):
     if kwargs['created'] is True:
-        _ProfileModel = get_user_profile_model()
-        if _ProfileModel is not None:
+        UserProfile = get_user_profile_model()
+        if UserProfile is not None:
             try:
-                _ProfileModel.objects.create(
+                # We run get_or_create instead of create as there may be other
+                # handlers which would automaticaly create profiles
+                UserProfile.objects.get_or_create(
                     user = instance,
                 )
                 logging.debug("New profile created for user %s" % instance)
