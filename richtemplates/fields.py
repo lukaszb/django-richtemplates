@@ -8,12 +8,13 @@ class RestructuredTextAreaField(forms.CharField):
 
     widget = forms.Textarea(attrs={'cols': '80', 'rows': '10', 'wrap': 'off'})
 
-class UserByNameField(forms.CharField):
+class UserByNameField(forms.RegexField):
     """
     Allows to choose user by simple typing his or her
     name instead of picking up from <select> tag.
     """
     def __init__(self, queryset=User.objects.all(), *args, **kwargs):
+        kwargs.setdefault('regex', r'^[\w.@+-]+$')
         super(UserByNameField, self).__init__(*args, **kwargs)
         if callable(queryset):
             self.queryset = queryset
