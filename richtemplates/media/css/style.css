@@ -469,7 +469,7 @@ table.richblock-properties th {
     margin-right: 10px;
 }
 table.richblock-properties td, table.richblock-properties th {
-    height: 1.5em;
+    height: 1.7em;
     vertical-align: top;
 }
 
@@ -830,3 +830,4 @@ div.diffblock .code-body{
     text-shadow: #333 -1px -1px 0px;
 }
 
+td img {vertical-align: middle; }
