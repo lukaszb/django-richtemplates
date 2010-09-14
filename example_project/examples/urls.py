@@ -76,6 +76,17 @@ urlpatterns += patterns('examples.views.jqueryui',
         name='richtemplates_examples_jqueryui_icons'),
 )
 
+# Open Flash Charts
+chartsurlpatterns = patterns('examples.views.charts',
+    url(r'^bars/$',
+        view='bars',
+        name='richtemplates_examples_charts_bars'),
+    url(r'^bars-data/$',
+        view='bars_data',
+        name='richtemplates_examples_charts_bars_data'),
+)
+
 urlpatterns += patterns('',
     url(r'^richtemplates/', include('richtemplates.urls')),
+    url(r'^charts/', include(chartsurlpatterns)),
 )

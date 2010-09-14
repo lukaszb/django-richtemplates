@@ -830,4 +830,9 @@ div.diffblock .code-body{
     text-shadow: #333 -1px -1px 0px;
 }
 
-td img {vertical-align: middle; }
+td img { vertical-align: middle; }
+
+.float-left { float: left }
+.float-right { float: right }
+.clearboth { clear: both; }
+
