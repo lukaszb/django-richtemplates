@@ -76,5 +76,5 @@ def bars_data(request):
     x.labels.labels = labels
     chart.x_axis = x
     chart.y_axis = y
-    return HttpResponse(chart.render())
+    return HttpResponse(chart.render(), mimetype='application/json')
 
