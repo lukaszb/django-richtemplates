@@ -99,7 +99,42 @@ jQuery.fn.slugify = function(obj) {
         var slug = jQuery(this).val().replace(/\s+/g,'-').replace(/[^a-zA-Z0-9\-]/g,'').toLowerCase();
         obj.val(slug);
     });
+};
+
+
+// jQuery jqplot extras
+// extra function for bar plots until jqplot fully support bar charts' tooltips
+
+function make_richplot(plot){
+        console.log(plot);
+
+        $('div.jqplot-point-label', plot).each(function(){
+            var elem = $(this);
+            var text = elem.text();
+            elem.attr('title', text);
+            var width = elem.width();
+            elem.text('');
+            elem.width(width);
+            elem.tipsy({gravity: 's', trigger: 'manual'});
+        });
+
+        plot.bind('jqplotDataHighlight', 
+            function (ev, seriesIndex, pointIndex, data) {
+                var pointLabel = $('div.jqplot-point-label.jqplot-series-' + seriesIndex + '.jqplot-point-' + pointIndex, plot);
+                pointLabel.tipsy("show");
+                pointLabel.hide();
+
+            }
+        );
+
+        plot.bind('jqplotDataUnhighlight', 
+            function (ev, seriesIndex, pointIndex, data) {
+                var pointLabel = $('div.jqplot-point-label', plot);
+                $('div.jqplot-point-label', plot).each(function(){
+                    $(this).tipsy("hide");
+                    $(this).show();
+                });
+            }
+        );
 }
-
-
 

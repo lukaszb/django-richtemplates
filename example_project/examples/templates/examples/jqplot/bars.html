@@ -1,0 +1,58 @@
+{% extends "examples/base.html" %}
+
+{% load native %}
+
+{% block extra-head %}{{ block.super }}
+<!--[if IE]><script language="javascript" type="text/javascript" src="{{ RICHTEMPLATES_MEDIA_URL }}js/excanvas.js"></script><![endif]-->
+<script language="javascript" type="text/javascript" src="{{ RICHTEMPLATES_MEDIA_URL }}js/jqplot/jquery.jqplot.js"></script>
+<script language="javascript" type="text/javascript" src="{{ RICHTEMPLATES_MEDIA_URL }}js/jqplot/plugins/jqplot.dateAxisRenderer.js"></script>
+<script language="javascript" type="text/javascript" src="{{ RICHTEMPLATES_MEDIA_URL }}js/jqplot/plugins/jqplot.canvasTextRenderer.js"></script>
+<script language="javascript" type="text/javascript" src="{{ RICHTEMPLATES_MEDIA_URL }}js/jqplot/plugins/jqplot.canvasAxisTickRenderer.js"></script>
+<script language="javascript" type="text/javascript" src="{{ RICHTEMPLATES_MEDIA_URL }}js/jqplot/plugins/jqplot.barRenderer.js"></script>
+<script language="javascript" type="text/javascript" src="{{ RICHTEMPLATES_MEDIA_URL }}js/jqplot/plugins/jqplot.pieRenderer.js"></script>
+<script language="javascript" type="text/javascript" src="{{ RICHTEMPLATES_MEDIA_URL }}js/jqplot/plugins/jqplot.categoryAxisRenderer.js"></script>
+<script language="javascript" type="text/javascript" src="{{ RICHTEMPLATES_MEDIA_URL }}js/jqplot/plugins/jqplot.highlighter.js"></script>
+<script language="javascript" type="text/javascript" src="{{ RICHTEMPLATES_MEDIA_URL }}js/jqplot/plugins/jqplot.pointLabels.js"></script>
+<link rel="stylesheet" type="text/css" href="{{ RICHTEMPLATES_MEDIA_URL }}js/jqplot/jquery.jqplot.css" />
+
+<script language="javascript" type="text/javascript">
+
+$(document).ready(function(){
+    lines = {{ data|safe }};
+    alerts = {{ data2|safe }};
+    plot = $.jqplot('chart', [lines, alerts], {
+        title:'Some data with date horizontal axis',
+        legend: {show: true, location: 'ne'},
+        axes: {
+            xaxis: {
+                renderer: $.jqplot.DateAxisRenderer,
+                rendererOptions:{tickRenderer:$.jqplot.CanvasAxisTickRenderer}
+            }
+        },
+        seriesDefaults: {
+            renderer: $.jqplot.BarRenderer, 
+            rendererOptions: {barPadding: 8, barMargin: 20, barWidth: 20},
+            pointLabels: { show: true }
+        },
+        series: [
+            {label: 'Some data'},
+            {label: 'Alerts', color: '#c20f0f'}
+        ],
+    });
+    make_richplot($('#chart'));
+});
+
+</script>
+
+{% endblock %}
+
+{% block col-main-title %}{{ title }}{% endblock %}
+{% block col-main-content %}
+
+<p>Using <a id="jqplot-url" href="http://www.jqplot.com" title="http://www.jqplot.com">jqplot</a></p>
+
+<div id="chart" class="richplot" style="height:400px; width:700px; margin: 20px;"></div> 
+
+{% endblock %}
+
+

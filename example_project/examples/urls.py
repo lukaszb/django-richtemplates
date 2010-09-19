@@ -76,6 +76,14 @@ urlpatterns += patterns('examples.views.jqueryui',
         name='richtemplates_examples_jqueryui_icons'),
 )
 
+# jQuery jqplot
+
+urlpatterns += patterns('examples.views.jqplot',
+    url(r'^jqplot/bars/$',
+        view='bars',
+        name='richtemplates_examples_jqplot_bars'),
+)
+
 # Open Flash Charts
 chartsurlpatterns = patterns('examples.views.charts',
     url(r'^bars/$',
