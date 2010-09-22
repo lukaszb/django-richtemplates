@@ -10,6 +10,8 @@ RICHTEMPLATES_RESTRUCTUREDTEXT_DIRECTIVES = {
 
 """
 from docutils import nodes
+from docutils.parsers.rst import Directive, directives
+
 from django.core.exceptions import ImproperlyConfigured
 
 try:
@@ -19,19 +21,30 @@ try:
 except ImportError:
     raise ImproperlyConfigured("Install pygments first")
 
-def pygments_directive(name, arguments, options, content, lineno,
-        content_offset, block_text, state, state_machine):
-    try:
-        lexer = get_lexer_by_name(arguments[0])
-    except ValueError:
-        # default lexer
-        lexer = TextLexer()
-    formatter = HtmlFormatter(linenos=True, cssclass="code-highlight",
-        lineanchors='line', anchorlinenos=True)
-    parsed = highlight(u'\n'.join(content), lexer, formatter)
-    parsed = '<div class="codeblock">%s</div>' % parsed
-    return [nodes.raw('', parsed, format='html')]
+class CodeBlock(Directive):
+    """
+    Directive for a code block with pygments support.  Took from Sphinx,
+    excellent documentation generator http://sphinx.pocoo.org/
+    """
 
-pygments_directive.arguments = (1, 0, 1)
-pygments_directive.content = 1
+    has_content = True
+    required_arguments = 1
+    optional_arguments = 0
+    final_argument_whitespace = False
+    option_spec = {
+        'linenos': directives.flag,
+    }
+
+    def run(self):
+        try:
+            lexer = get_lexer_by_name(self.arguments[0])
+        except ValueError:
+            # default lexer
+            lexer = TextLexer()
+        linenos = 'linenos' in self.options
+        formatter = HtmlFormatter(linenos=linenos, cssclass="code-highlight",
+            lineanchors='line', anchorlinenos=True)
+        parsed = highlight(u'\n'.join(self.content), lexer, formatter)
+        parsed = '<div class="codeblock">%s</div>' % parsed
+        return [nodes.raw('', parsed, format='html')]
 

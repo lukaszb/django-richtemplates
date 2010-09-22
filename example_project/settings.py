@@ -138,7 +138,7 @@ if DJALOG_SQL:
 # ====================== #
 
 RICHTEMPLATES_RESTRUCTUREDTEXT_DIRECTIVES = {
-    'code-block': 'richtemplates.rstdirectives.pygments_directive',
+    'code-block': 'richtemplates.rstdirectives.CodeBlock',
 }
 
 RICHTEMPLATES_DEFAULT_SKIN = 'ruby'
