@@ -348,7 +348,7 @@ div.note p.first {
     font-size: 1.4em;
     padding-left: 30px;
     border-bottom: 1px dotted #9fd1f5;
-    margin-top: 0px;
+    margin-top: 5px;
 }
 
 div.warning {
@@ -852,4 +852,24 @@ td img { vertical-align: middle; }
 .float-left { float: left }
 .float-right { float: right }
 .clearboth { clear: both; }
+
+
+/* ReStructuredText block */
+.richtemplates-rst { }
+.richtemplates-rst ol, .richtemplates-rst ul { padding-left: 15px; }
+.richtemplates-rst div.system-message {
+    margin: 5px 0 5px 0;
+    border: 1px solid;
+	border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px;
+    color: #8d0d0d;
+    border-color: #f3abab;
+    background: #f9c9c9 url("../img/icons/error.png") 4px 5px no-repeat;
+}
+.richtemplates-rst div.system-message p.system-message-title {
+    font-weight: bold;
+    font-size: 1.4em;
+    padding-left: 30px;
+    border-bottom: 1px solid #8d0d0d;
+    margin-top: 5px;
+}
 
