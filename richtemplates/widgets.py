@@ -160,8 +160,8 @@ class RestructuredTextareaWidget(forms.Textarea):
         output = [
             '<h3 id="${preview_title_id}" class="markItUp-preview" '
                 'style="display:none;">Preview</h3>',
-            '<div id="${preview_id}" class="richtemplates-rst" '
-                'style="display:none;"></div>',
+            '<div id="${preview_id}" class="richtemplates-rst-preview '
+                'richtemplates-rst" style="display:none;"></div>',
             '<script type="text/javascript">',
             '(function($) {',
             '  $(document).ready(function(){',

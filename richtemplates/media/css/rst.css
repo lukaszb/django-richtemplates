@@ -54,3 +54,23 @@
 }
 .richtemplates-rst table.docutils tbody tr.ui-selected td { background: #ffc; }
 
+.richtemplates-rst-preview {
+    clear: both;
+    border: 1px solid #3C769D;
+    min-height: 20px;
+    margin-left: 20px;
+    padding: 5px;
+}
+div.ReST {
+    margin-left: 20px;
+}
+div.markItUp {
+    border: 0;
+}
+.markItUpContainer textarea {
+    float: none !important;
+    max-width: none !important;
+    padding-bottom: 5px;
+    margin-left: 0 !important;
+}
+
