@@ -79,3 +79,10 @@ input[type="submit"]:hover, input[type="button"]:hover  {
 .pagination .current {border-color: #900; background-color:#F23C56; color:#fff;}
 .pagination .disabled {border-color: #ccc; background-color:white; color: #ccc;}
 
+.richtemplates-rst table.docutils caption { color: #900; }
+.richtemplates-rst table.docutils thead th.head { background-color: #FFBDC3; }
+.richtemplates-rst table.docutils a:active,
+    .richtemplates-rst table.docutils a:link,
+    .richtemplates-rst table.docutils a:visited { color: #E00; }
+.richtemplates-rst table.docutils a:hover: { color: #A00; }
+

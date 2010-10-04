@@ -2,7 +2,10 @@
 Richtemplates provides some widgets helping to use it's styles and other
 goodies.
 """
+import string
+
 from django import forms
+from django.core.urlresolvers import reverse
 from django.utils.encoding import force_unicode
 from django.utils.html import conditional_escape
 from django.utils.safestring import mark_safe
@@ -116,4 +119,83 @@ class RichCheckboxSelectMultiple(forms.SelectMultiple):
             id_ += '_0'
         return id_
     id_for_label = classmethod(id_for_label)
+
+
+class RestructuredTextareaWidget(forms.Textarea):
+    """
+    Widget adding some extras from markItUp. Not using django-markitup as we
+    needed only restructuredtext markup and by requiring to set that specific
+    *filter* wouldn't allow one to use django-markitup with other renderer type.
+    Ajax preview is nicer but it consumes more resources as it is called each
+    time user hits keyboard - so use it on own risk.
+    """
+
+    def __init__(self, attrs=None, preview=True, preview_url=None):
+        self.preview = preview
+        self.preview_url = preview_url
+        super(RestructuredTextareaWidget, self).__init__(attrs)
+
+    class Media:
+        js = (
+            richtemplates_settings.MEDIA_URL + 'markitup/jquery.markitup.js',
+            richtemplates_settings.MEDIA_URL +
+                'markitup/sets/restructuredtext/set.js',
+        )
+        css = {
+            'screen': (
+                richtemplates_settings.MEDIA_URL +
+                    'markitup/sets/restructuredtext/style.css',
+                richtemplates_settings.MEDIA_URL +
+                    'markitup/skins/richtemplates/style.css',
+            ),
+        }
+
+    def render(self, name, value, attrs=None):
+        html = super(RestructuredTextareaWidget, self).render(name, value, attrs)
+
+        field_id = attrs['id']
+        preview_id = field_id + '_preview'
+        preview_title_id = preview_id + '_title'
+
+        output = [
+            '<h3 id="${preview_title_id}" class="markItUp-preview" '
+                'style="display:none;">Preview</h3>',
+            '<div id="${preview_id}" class="richtemplates-rst" '
+                'style="display:none;"></div>',
+            '<script type="text/javascript">',
+            '(function($) {',
+            '  $(document).ready(function(){',
+            '    $("#${preview_id}").show();',
+            '    $("#${preview_title_id}").show();',
+            '    var field = $("#${field_id}");',
+            '    field.markItUp(mySettings);',
+            '    field.live("keyup", function(){',
+            '      $.ajax({',
+            '        url: "${preview_url}",',
+            '        type: "POST",',
+            '        data: {data: field.val()},',
+            '        success: function(data){',
+            '          $("#${preview_id}").html(data);',
+            '        }',
+            '      });',
+            '    });',
+            '  });',
+            '})(jQuery);',
+            '</script>',
+        ]
+        html = html + string.Template('\n'.join(output)).safe_substitute(
+            field_id=field_id,
+            preview_id=preview_id,
+            preview_title_id=preview_title_id,
+            preview_url=self.get_preview_url(),
+        )
+        return mark_safe(html)
+
+    def get_preview_url(self):
+        """
+        Returns default url for rst preview processing view.
+        """
+        if self.preview_url is None:
+            return reverse('richtemplates_rst_preview')
+        return self.preview_url
 

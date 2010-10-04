@@ -5,6 +5,7 @@ from django.contrib.auth.models import Group
 
 from richtemplates.forms import LimitingModelForm, UserByNameField
 from richtemplates.widgets import RichCheckboxSelectMultiple
+from richtemplates.widgets import RestructuredTextareaWidget
 from richtemplates import settings as richtemplates_settings
 from examples.models import Task
 
@@ -16,7 +17,7 @@ class ContactForm(forms.Form):
     """
     username = UserByNameField(min_length=2, max_length=16)
     content = forms.CharField(min_length=10, max_length=3000,
-        widget=forms.Textarea,
+        widget=RestructuredTextareaWidget(preview=False),
         help_text="Lorem ipsum dolor sit amet. " * 10)
     rating = forms.ChoiceField(choices=RATING, initial=1)
     email = forms.EmailField(required=False)

@@ -1,0 +1,56 @@
+/* ReStructuredText block */
+.richtemplates-rst ol, .richtemplates-rst ul {
+    list-style: circle !important;
+}
+.richtemplates-rst ol li, .richtemplates-rst ul li {
+    margin-left: 15px;
+    padding-left: 15px;
+}
+.richtemplates-rst div.system-message {
+    margin: 5px 0 5px 0;
+    border: 1px solid;
+	border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px;
+    color: #8d0d0d;
+    border-color: #f3abab;
+    background: #f9c9c9 url("../img/icons/error.png") 4px 5px no-repeat;
+}
+.richtemplates-rst div.system-message p.system-message-title {
+    font-weight: bold;
+    font-size: 1.4em;
+    padding-left: 30px;
+    border-bottom: 1px solid #8d0d0d;
+    margin-top: 5px;
+}
+/* RST Table */
+.richtemplates-rst table.docutils {
+    float: none;
+}
+.richtemplates-rst table.docutils {
+    border: 1px solid #999;
+}
+.richtemplates-rst table.docutils caption {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #0D5798
+}
+.richtemplates-rst table.docutils a:active,
+.richtemplates-rst table.docutils a:link,
+.richtemplates-rst table.docutils a:visited { color: #002b6e; }
+.richtemplates-rst table.docutils a:hover { color: #0d5798; }
+.richtemplates-rst table.docutils th,
+.richtemplates-rst table.docutils td {
+    border: 1px solid #999;
+    padding: 3px 5px;
+}
+
+.richtemplates-rst table.docutils thead th.head { background-color: #C2EBEE; }
+.richtemplates-rst table.docutils tbody tr:hover {
+    color: #000;
+    background: #ffc !important;
+}
+.richtemplates-rst table.docutils tbody tr:hover td {
+    color: #000;
+    background: #ffc !important;
+}
+.richtemplates-rst table.docutils tbody tr.ui-selected td { background: #ffc; }
+

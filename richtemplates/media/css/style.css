@@ -1,4 +1,5 @@
 @import url(skins/redmond/jquery-ui-1.8.custom.css);
+@import url(rst.css);
 
 /* BASIC */
 body, div, span, dd, dt, dl, img, ul, ol, li, p,h0, h1, h2, h3, h4, legend, form, hr, fieldset {
@@ -258,7 +259,7 @@ table.filterform-table select { float: left; margin-left: 20px; max-width: 100px
 table.filterform-table textarea { float: left; margin-left: 20px; max-width: 100px; min-width: 100px; }
 
 table.datatable { border: 1px solid #999; width: 100%; white-space: nowrap; }
-table.datatable caption { font-size: 1.5em; font-weight: bold; color: #0D5798 }
+table.datatable caption { font-size: 1.2em; font-weight: bold; color: #0D5798 }
 table.datatable a:active, table.datatable a:link, table.datatable a:visited { color: #002b6e; }
 table.datatable a:hover { color: #0d5798; }
 table.datatable input { float: left; margin-left: 20px; max-width: 75px; min-width: 75px; }
@@ -852,24 +853,4 @@ td img { vertical-align: middle; }
 .float-left { float: left }
 .float-right { float: right }
 .clearboth { clear: both; }
-
-
-/* ReStructuredText block */
-.richtemplates-rst { }
-.richtemplates-rst ol, .richtemplates-rst ul { padding-left: 15px; }
-.richtemplates-rst div.system-message {
-    margin: 5px 0 5px 0;
-    border: 1px solid;
-	border-radius: 5px; -webkit-border-radius: 5px; -moz-border-radius: 5px;
-    color: #8d0d0d;
-    border-color: #f3abab;
-    background: #f9c9c9 url("../img/icons/error.png") 4px 5px no-repeat;
-}
-.richtemplates-rst div.system-message p.system-message-title {
-    font-weight: bold;
-    font-size: 1.4em;
-    padding-left: 30px;
-    border-bottom: 1px solid #8d0d0d;
-    margin-top: 5px;
-}
 

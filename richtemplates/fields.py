@@ -3,10 +3,12 @@ from django.utils.translation import ugettext as _
 from django.contrib.auth.models import User
 
 from richtemplates.utils import LazyProperty
+from richtemplates.widgets import RestructuredTextareaWidget
 
 class RestructuredTextAreaField(forms.CharField):
 
-    widget = forms.Textarea(attrs={'cols': '80', 'rows': '10', 'wrap': 'off'})
+    widget = RestructuredTextareaWidget(
+        attrs={'cols': '80', 'rows': '10', 'wrap': 'off'})
 
 class UserByNameField(forms.RegexField):
     """

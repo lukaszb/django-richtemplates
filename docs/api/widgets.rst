@@ -11,3 +11,9 @@ RichCheckboxSelectMultiple
 .. autoclass:: richtemplates.widgets.RichCheckboxSelectMultiple
    :members:
 
+RestructuredTextareaWidget
+--------------------------
+
+.. autoclass:: richtemplates.widgets.RestructuredTextareaWidget
+   :members:
+

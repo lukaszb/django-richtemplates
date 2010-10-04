@@ -82,4 +82,10 @@ input[type="submit"]:hover, input[type="button"]:hover  {
 .pagination .current {border-color: #092e20; background-color:#487858; color:#fff;}
 .pagination .disabled {border-color: #ccc; background-color:white; color: #ccc;}
 
+.richtemplates-rst table.docutils caption { color: #092e20; }
+.richtemplates-rst table.docutils thead th.head { background-color: #92cc47; }
+.richtemplates-rst table.docutils a:active,
+    .richtemplates-rst table.docutils a:link,
+    .richtemplates-rst table.docutils a:visited { color: #092e20; }
+.richtemplates-rst table.docutils a:hover: { color: #000; }
 
