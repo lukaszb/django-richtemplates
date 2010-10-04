@@ -854,4 +854,14 @@ td img { vertical-align: middle; }
 .float-right { float: right }
 .clearboth { clear: both; }
 
+.strong-border {
+    border-color: #000;
+    border: 10px solid rgba(0, 0, 0, 0.95);
+    display: inline;
+    padding: 3px;
+    background-color: #fff;
+    -moz-border-radius: 15px;
+    -webkit-border-radius: 15px;
+    margin-bottom: 6px;
+}
 
