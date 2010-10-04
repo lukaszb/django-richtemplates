@@ -40,11 +40,49 @@ mySettings = {
 		{name:'Link', key:"L", openWith:'`', closeWith:'`_ \n\n.. _`Link Name`: [![Url:!:http://]!]', placeHolder:'Link Name' },
 		{name:'Quotes', openWith:'    '},
 		//{name:'Code', openWith:'\n:: \n\n	 '},
-		{name:'Code', openWith:'\n.. code-block:: python \n\n    '},
-        {name:'Indent', className:'indent', replaceWith: function(markItUp) { return miu.indentText(markItUp); } },
-        {name:'Dedent', className:'dedent', replaceWith: function(markItUp) { return miu.dedentText(markItUp); } }
+		//{name:'Code', openWith:'\n.. code-block:: python \n\n    '},
+        {name:'Code', replaceWith: function(markItUp) { return miu.codeBlock(markItUp); } },
+        {name:'Indent', className:'indent',
+            replaceWith: function(markItUp) { return miu.indentText(markItUp); } },
+        {name:'Dedent', className:'dedent',
+            replaceWith: function(markItUp) { return miu.dedentText(markItUp); } }
 	]
 };
+
+function indentText(markItUp){
+    var splitted = markItUp['selection'].split('\n');
+    var new_val = '';
+    for (i=0; i<splitted.length; i++) {
+        new_val += INDENT + splitted[i];
+        if (i < splitted.length-1) new_val += '\n';
+    }
+    return new_val;
+}
+function dedentText(markItUp){
+    var splitted = markItUp['selection'].split('\n');
+    var new_val = '';
+    var can_dedent = true;
+    for (i=0; i<splitted.length; i++){
+        var line = splitted[i];
+        var firstpart = line.substring(0, INDENT.length);
+        if (line !== '' && firstpart !== INDENT){
+            console.log('line: ' + line);
+            console.log('subs: ' + firstpart);
+            can_dedent = false;
+        }
+        new_val += line.substring(INDENT.length, line.length);
+        if (i < splitted.length-1) new_val += '\n';
+    }
+    if (can_dedent)
+        return new_val;
+    else
+        return markItUp['selection'];
+}
+function codeBlock(markItUp){
+    var indented = indentText(markItUp);
+    indented = '.. code-block:: python\n\n' + indented;
+    return indented;
+}
 
 // mIu nameSpace to avoid conflict.
 miu = {
@@ -56,34 +94,8 @@ miu = {
 		}
 		return '\n'+heading;
 	},
-    indentText: function(markItUp) {
-        var splitted = markItUp['selection'].split('\n');
-        var new_val = '';
-        for (i=0; i<splitted.length; i++) {
-            new_val += INDENT + splitted[i];
-            if (i < splitted.length-1) new_val += '\n';
-        }
-        return new_val;
-    },
-    dedentText: function(markItUp) {
-        var splitted = markItUp['selection'].split('\n');
-        var new_val = '';
-        var can_dedent = true;
-        for (i=0; i<splitted.length; i++){
-            var line = splitted[i];
-            var firstpart = line.substring(0, INDENT.length);
-            if (line !== '' && firstpart !== INDENT){
-                console.log('line: ' + line);
-                console.log('subs: ' + firstpart);
-                can_dedent = false;
-            }
-            new_val += line.substring(INDENT.length, line.length);
-            if (i < splitted.length-1) new_val += '\n';
-        }
-        if (can_dedent)
-            return new_val;
-        else
-            return markItUp['selection'];
-    }
+    indentText: function(markItUp) { return indentText(markItUp); },
+    dedentText: function(markItUp) { return dedentText(markItUp); },
+    codeBlock: function(markItUp) { return codeBlock(markItUp); }
 };
 
