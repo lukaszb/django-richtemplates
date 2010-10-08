@@ -84,6 +84,18 @@ def richicon(icon, **opts):
     return tag
 richicon.function = True
 
+def boolicon(value=None, **opts):
+    """
+    Returns html's ``img`` tag with *yes* icon if value is ``True``,
+    **no** icon otherwise.
+    """
+    if value:
+        icon = 'icon-yes.gif'
+    else:
+        icon = 'icon-no.gif'
+    return richicon(icon, **opts)
+boolicon.function = True
+
 def richuiicon(icon, **opts):
     """
     Returns ``button`` + ``span`` tags representing jQuery ui icon for a given
