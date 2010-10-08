@@ -5,8 +5,13 @@ Richfaces library offers for J2EE developers - not outstanding but still nice
 looking and elegant.
 """
 
-__version__ = '0.3.9'
+VERSION = (0, 3, 9, 'dev')
+
+__version__ = '.'.join((str(each) for each in VERSION[:4]))
 
 def get_version():
-    return __version__
+    """
+    Returns shorter version (digit parts only) as string.
+    """
+    return '.'.join((str(each) for each in VERSION[:3]))
 
