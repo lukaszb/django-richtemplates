@@ -1,7 +1,11 @@
 from django.contrib.markup.templatetags.markup import restructuredtext
 from django.http import HttpResponse, Http404
 from django.views.generic.simple import direct_to_template
+from django.utils.safestring import mark_safe
 from django.utils.simplejson import dumps
+
+from docutils.utils import SystemMessage
+
 
 def handle403(request, template_name='403.html'):
     """
@@ -16,9 +20,28 @@ def rst_preview(request):
     """
     Returns rendered restructured text.
     """
+    def get_rst_error_as_html(message, title='Parser error occured'):
+        """
+        Returns restructured text error message as html. Manual marking as safe
+        is required for rendering.
+        """
+        html = '\n'.join((
+            '<div class="system-message">',
+            '<p class="system-message-title">%s</p>' % title,
+            message,
+            '</div>',
+        ))
+        return html
+
     if not request.is_ajax() or not request.method == 'POST':
         raise Http404()
     data = request.POST.get('data', '')
-    rendered = restructuredtext(data)
+    try:
+        rendered = restructuredtext(data)
+    except SystemMessage:
+        html = get_rst_error_as_html(
+            'Sorry but there are at severe errors in your text '
+            'and we cannot show it\'s preview.')
+        rendered = mark_safe(html)
     return HttpResponse(dumps(rendered), mimetype='application/json')
 
