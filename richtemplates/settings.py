@@ -82,6 +82,9 @@ RESTRUCTUREDTEXT_DIRECTIVES = getattr(settings,
 
 register_rst_directives(RESTRUCTUREDTEXT_DIRECTIVES.items())
 
+RESTRUCTUREDTEXT_PARSER_MAX_CHARS = getattr(settings,
+    'RICHTEMPLATES_RESTRUCTUREDTEXT_PARSER_MAX_CHARS', 5000)
+
 
 # ======================= #
 # Pygments styles helpers #

@@ -6,6 +6,8 @@ from django.utils.simplejson import dumps
 
 from docutils.utils import SystemMessage
 
+from richtemplates.settings import RESTRUCTUREDTEXT_PARSER_MAX_CHARS
+
 
 def handle403(request, template_name='403.html'):
     """
@@ -36,12 +38,16 @@ def rst_preview(request):
     if not request.is_ajax() or not request.method == 'POST':
         raise Http404()
     data = request.POST.get('data', '')
-    try:
-        rendered = restructuredtext(data)
-    except SystemMessage:
-        html = get_rst_error_as_html(
-            'Sorry but there are at severe errors in your text '
-            'and we cannot show it\'s preview.')
-        rendered = mark_safe(html)
+    if len(data) > RESTRUCTUREDTEXT_PARSER_MAX_CHARS:
+        html = get_rst_error_as_html('Text is too long (%s). Maximum is %s.' %
+            (len(data), RESTRUCTUREDTEXT_PARSER_MAX_CHARS))
+    else:
+        try:
+            html = restructuredtext(data)
+        except SystemMessage:
+            html = get_rst_error_as_html(
+                'Sorry but there are at severe errors in your text '
+                'and we cannot show it\'s preview.')
+    rendered = mark_safe(html)
     return HttpResponse(dumps(rendered), mimetype='application/json')
 
