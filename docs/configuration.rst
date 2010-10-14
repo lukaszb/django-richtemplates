@@ -64,6 +64,7 @@ Following configuration settings may be overriden:
 * `RICHTEMPLATES_DEFAULT_SKIN`_
 * `RICHTEMPLATES_SKINS`_
 * `RICHTEMPLATES_RESTRUCTUREDTEXT_DIRECTIVES`_
+* `RICHTEMPLATES_RESTRUCTUREDTEXT_PARSER_MAX_CHARS`_
 
 .. _RICHTEMPLATES_MEDIA_URL:
 
@@ -138,6 +139,17 @@ Following configuration settings may be overriden:
 
     ``richtemplates`` comes with some support for restructuredText. It is still
     undocumented.
+
+.. _RICHTEMPLATES_RESTRUCTUREDTEXT_PARSER_MAX_CHARS:
+
+``RICHTEMPLATES_RESTRUCTUREDTEXT_PARSER_MAX_CHARS``
+---------------------------------------------------
+
+    *Default*: ``5000``
+
+    Maximum number of text that would be parsed for restructured text preview.
+    If this number is exceeded, error message would returned as preview.
+
 
 .. _Django: http://www.djangoproject.com
 
