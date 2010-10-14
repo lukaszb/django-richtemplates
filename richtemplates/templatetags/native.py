@@ -52,7 +52,7 @@ def autocomplete_field(bfield, **opts):
 autocomplete_field.function = True
 
 def do_get_code_style(context):
-    user = context['user']
+    user = context.get('user', None)
     if user and user.is_authenticated():
         style = getattr(user.get_profile(),
             richtemplates_settings.PROFILE_CODE_STYLE_FIELD,
