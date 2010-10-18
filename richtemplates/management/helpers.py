@@ -59,7 +59,11 @@ def copytree(src, dst, symlinks=False, ignore=None, draw_pbar=False):
 
     os.makedirs(dst)
     errors = []
-    pbar = ProgressBar(color='GREEN', width=40)
+    try:
+        pbar = ProgressBar(color='GREEN', width=40)
+    except:
+        pbar = None
+        draw_pbar = False
     total = len(names)
 
     for i in xrange(total):
