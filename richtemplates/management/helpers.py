@@ -4,7 +4,7 @@ import inspect
 import logging
 
 from django.core.management.base import _make_writeable, CommandError
-from shutil import copy2, copystat, Error, WindowsError
+from shutil import copy2, copystat, Error
 from richtemplates.extras.progressbar import ProgressBar
 
 def copy_dir_helper(src, dst, force=False):
@@ -91,6 +91,11 @@ def copytree(src, dst, symlinks=False, ignore=None, draw_pbar=False):
     try:
         copystat(src, dst)
     except OSError, why:
+        try:
+            from shutil import WindowsError
+            WindowsError # For pylint
+        except ImportError:
+            WindowsError = None
         if WindowsError is not None and isinstance(why, WindowsError):
             # Copying file access times may fail on Windows
             pass
