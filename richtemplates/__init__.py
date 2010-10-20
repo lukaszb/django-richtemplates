@@ -5,7 +5,7 @@ Richfaces library offers for J2EE developers - not outstanding but still nice
 looking and elegant.
 """
 
-VERSION = (0, 3, 11, 'dev')
+VERSION = (0, 3, 12, 'dev')
 
 __version__ = '.'.join((str(each) for each in VERSION[:4]))
 
