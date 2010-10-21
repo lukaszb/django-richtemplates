@@ -21,6 +21,7 @@ try:
 except ImportError:
     raise ImproperlyConfigured("Install pygments first")
 
+
 class CodeBlock(Directive):
     """
     Directive for a code block with pygments support.  Took from Sphinx,

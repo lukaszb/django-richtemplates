@@ -61,8 +61,14 @@ def register_rst_directives(directives_items):
     """
     Registers restructuredText directives given as dictionary
     with keys being names and paths to directive function.
+    If directive_path is None then we would turn directive off.
     """
     for name, directive_path in directives_items:
+        if directive_path is None:
+            directives.register_directive(name, None)
+            msg = "Turned off '%s' directive" % name
+            logger.debug(msg)
+            continue
         try:
             splitted = directive_path.split('.')
             mod_path, method_name = '.'.join(splitted[:-1]), splitted[-1]
@@ -80,6 +86,18 @@ def register_rst_directives(directives_items):
 RESTRUCTUREDTEXT_DIRECTIVES = getattr(settings,
     'RICHTEMPLATES_RESTRUCTUREDTEXT_DIRECTIVES', {})
 
+
+RESTRUCTUREDTEXT_DISALLOWED_DIRECTIVES = getattr(settings,
+    'RICHTEMPLATES_RESTRUCTUREDTEXT_DISALLOWED_DIRECTIVES',
+    ['include', 'meta', 'raw'])
+
+# Turn off directives first - this allows to optionally turn them on
+# using RESTRUCTUREDTEXT_DIRECTIVES
+turned_off = dict([(alias, None) for alias in
+    RESTRUCTUREDTEXT_DISALLOWED_DIRECTIVES])
+register_rst_directives(turned_off.items())
+
+# Register directives
 register_rst_directives(RESTRUCTUREDTEXT_DIRECTIVES.items())
 
 RESTRUCTUREDTEXT_PARSER_MAX_CHARS = getattr(settings,
