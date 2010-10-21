@@ -130,6 +130,18 @@ Following configuration settings may be overriden:
     If you want to extend exising skins with your own you would need to
     specify proper dictionary. You should see :ref:`skins` documentation.
 
+
+.. _RICHTEMPLATES_RESTRUCTUREDTEXT_DISALLOWED_DIRECTIVES:
+
+``RICHTEMPLATES_RESTRUCTUREDTEXT_DISALLOWED_DIRECTIVES``
+--------------------------------------------------------
+
+    *Default*: ``['include', 'meta', 'raw']``
+
+    List of directives which would be registered with ``None`` object - this
+    turns those directives off.
+
+
 .. _RICHTEMPLATES_RESTRUCTUREDTEXT_DIRECTIVES:
 
 ``RICHTEMPLATES_RESTRUCTUREDTEXT_DIRECTIVES``
