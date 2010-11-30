@@ -13,7 +13,7 @@ except IOError, err:
 
 def find_package_data():
     import os
-    data_extensions = ['html', 'js', 'png', 'css', 'gif']
+    data_extensions = ['html', 'js', 'png', 'css', 'gif', 'swf']
     data = {'richtemplates': []}
     topdir = 'richtemplates'
     for dir, subdirs, files in os.walk(topdir):
