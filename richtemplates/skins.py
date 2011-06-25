@@ -1,17 +1,15 @@
 import logging
 import richtemplates.settings
-
 from django.template.defaultfilters import slugify
-from django.utils.translation import ugettext as _
-from django.contrib import messages
-from django.db import models
-
 from richtemplates.utils import get_user_profile_model
 from pprint import pformat
 
+
 class WrongSkinAlias(Exception): pass
 
+
 class SkinDoesNotExist(Exception): pass
+
 
 class RichSkin(object):
     def __init__(self, alias, name=None, url=None):
@@ -25,7 +23,7 @@ class RichSkin(object):
             self.name = name
         if url is None:
             self.url = '%scss/skins/%s.css' %\
-                (richtemplates.settings.MEDIA_URL, self.alias)
+                (richtemplates.settings.STATIC_URL, self.alias)
         else:
             self.url = url
 

@@ -16,9 +16,9 @@ if 'richtemplates.context_processors.media' \
             "'richtemplates.context_processors.media' to your "
             "TEMPLATE_CONTEXT_PROCESSORS")
 
-MEDIA_URL = getattr(settings, 'RICHTEMPLATES_MEDIA_URL',
-    settings.MEDIA_URL + 'richtemplates/')
-IMAGES_URL = MEDIA_URL + 'img/'
+STATIC_URL = getattr(settings, 'RICHTEMPLATES_STATIC_URL',
+    settings.STATIC_URL + 'richtemplates/')
+IMAGES_URL = STATIC_URL + 'img/'
 ICONS_URL = IMAGES_URL + 'icons/'
 
 BASE_SKINS = ('aqua',)

@@ -9,12 +9,12 @@
                 showButtonPanel: true,
                 showAnim: 'show',
                 showOn: 'button',
-                buttonImage: '{{ MEDIA_URL }}richtemplates/img/ruby-calendar.gif',
+                buttonImage: '{{ STATIC_URL }}richtemplates/img/ruby-calendar.gif',
                 buttonImageOnly: true
             });
         });
     </script>
-    <script type="text/javascript" src="{{ MEDIA_URL }}richtemplates/js/jsi18n.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}richtemplates/js/jsi18n.js"></script>
     {{ form.media }}
 {% endblock %}
 

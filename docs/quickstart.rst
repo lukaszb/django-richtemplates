@@ -22,8 +22,12 @@ Simply follow those steps in order to get ``example_project`` running:
 1. Go to the ``example_project`` directory
 2. Install project's requirements: ``pip install -r requirements.txt``
 3. Create sqlite database: ``python manage.py syncdb``
-4. Import ``richtemplates`` and ``django-admin-tools`` media folders:
+4.  Import ``richtemplates`` and ``django-admin-tools`` media folders:
    ``python manage.py import_media richtemplates admin_tools``
+
+   .. note::
+      Skip this point if you are using Django >= 1.3
+   
 5. Run development server ``python manage.py runserver``
 6. Visit ``http://127.0.0.1:8000``
 

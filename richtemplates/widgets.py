@@ -44,7 +44,7 @@ class RichCheckboxSelectMultiple(forms.SelectMultiple):
     """
 
     class Media:
-        js = (richtemplates_settings.MEDIA_URL +
+        js = (richtemplates_settings.STATIC_URL +
             'js/jquery-richcheckboxselectmultiple.js',)
 
     def __init__(self, extra=True, *args, **kwargs):
@@ -138,15 +138,15 @@ class RestructuredTextareaWidget(forms.Textarea):
 
     class Media:
         js = (
-            richtemplates_settings.MEDIA_URL + 'markitup/jquery.markitup.js',
-            richtemplates_settings.MEDIA_URL +
+            richtemplates_settings.STATIC_URL + 'markitup/jquery.markitup.js',
+            richtemplates_settings.STATIC_URL +
                 'markitup/sets/restructuredtext/set.js',
         )
         css = {
             'screen': (
-                richtemplates_settings.MEDIA_URL +
+                richtemplates_settings.STATIC_URL +
                     'markitup/sets/restructuredtext/style.css',
-                richtemplates_settings.MEDIA_URL +
+                richtemplates_settings.STATIC_URL +
                     'markitup/skins/richtemplates/style.css',
             ),
         }

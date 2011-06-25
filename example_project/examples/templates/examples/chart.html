@@ -3,11 +3,11 @@
 {% load native %}
 
 {% block extra-head %}{{ block.super }}
-<script type="text/javascript" src="{{ RICHTEMPLATES_MEDIA_URL }}/js/swfobject.js"></script>
+<script type="text/javascript" src="{{ RICHTEMPLATES_STATIC_URL }}/js/swfobject.js"></script>
 <script type="text/javascript">
     swfobject.embedSWF(
-      "{{ RICHTEMPLATES_MEDIA_URL }}swf/open-flash-chart.swf", "id_chart",
-      "700", "400", "9.0.0", "{{ RICHTEMPLATES_MEDIA_URL }}swf/expressInstall.swf",
+      "{{ RICHTEMPLATES_STATIC_URL }}swf/open-flash-chart.swf", "id_chart",
+      "700", "400", "9.0.0", "{{ RICHTEMPLATES_STATIC_URL }}swf/expressInstall.swf",
       {"data-file":"{% url examples.views.charts.bars_data %}"} );
 </script>
 {% endblock %}

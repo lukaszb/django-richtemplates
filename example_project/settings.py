@@ -1,7 +1,7 @@
 import os
 import sys
 
-def getpath(*paths):
+def abspath(*paths):
     return os.path.abspath(os.path.join(*paths))
 
 # ===== #
@@ -9,11 +9,32 @@ def getpath(*paths):
 # ===== #
 
 PROJECT_ROOT = os.path.dirname(__file__)
-RICHTEMPLATES_ROOT = getpath(PROJECT_ROOT, '..', 'richtemplates')
-sys.path.insert(0, getpath(RICHTEMPLATES_ROOT, '..'))
+RICHTEMPLATES_ROOT = abspath(PROJECT_ROOT, '..', 'richtemplates')
+sys.path.insert(0, abspath(RICHTEMPLATES_ROOT, '..'))
 
-MEDIA_ROOT = getpath(PROJECT_ROOT, 'media')
+MEDIA_ROOT = abspath(PROJECT_ROOT, '..', 'public', 'media')
 MEDIA_URL = '/media/'
+
+if not os.path.isdir(MEDIA_ROOT):
+    os.makedirs(MEDIA_ROOT)
+    print "Created media directory at %s" % MEDIA_ROOT
+
+STATIC_ROOT = abspath(PROJECT_ROOT, '..', 'public', 'static')
+STATIC_URL = '/static/'
+
+if not os.path.isdir(STATIC_ROOT):
+    os.makedirs(STATIC_ROOT)
+    print "Created static directory at %s" % STATIC_ROOT
+
+STATICFILES_DIRS = (
+)
+
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+#    'django.contrib.staticfiles.finders.DefaultStorageFinder',
+)
+
 ADMIN_MEDIA_PREFIX = '/admin-media/'
 
 # ======== #
@@ -35,7 +56,7 @@ DATABASES = {
 # as absolute path, it should be relative to environment
 for db, conf in DATABASES.items():
     if conf['ENGINE'] == 'sqlite3' and not conf['NAME'].startswith(':'):
-        conf['NAME'] = getpath(PROJECT_ROOT, conf['NAME'])
+        conf['NAME'] = abspath(PROJECT_ROOT, conf['NAME'])
 
 # ============== #
 # BASIC SETTINGS #
@@ -66,6 +87,7 @@ INSTALLED_APPS = (
     'django.contrib.markup',
     'django.contrib.messages',
     'django.contrib.webdesign',
+    'django.contrib.staticfiles',
 
     'djalog',
     'django_sorting',
@@ -110,7 +132,7 @@ TEMPLATE_LOADERS = (
 )
 
 TEMPLATE_DIRS = (
-    getpath(PROJECT_ROOT, 'templates'),
+    abspath(PROJECT_ROOT, 'templates'),
 )
 
 # =============== #

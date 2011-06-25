@@ -70,7 +70,7 @@ class TaskForm(LimitingModelForm):
         choices_limiting_fields = ['project']
 
     class Media:
-        css = {'all': [richtemplates_settings.MEDIA_URL + 'css/monoarea.css']}
+        css = {'all': [richtemplates_settings.STATIC_URL + 'css/monoarea.css']}
 
 def TaskFilter(data=None, queryset=Task.objects.all(), project=None):
     """

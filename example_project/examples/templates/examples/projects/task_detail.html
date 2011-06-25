@@ -4,7 +4,7 @@
 {% load i18n %}
 
 {% block extra-head %}{{ block.super }}
-<link rel="stylesheet" type="text/css" href="{{ MEDIA_URL }}richtemplates/css/pygments.css" />
+<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}richtemplates/css/pygments.css" />
 {% endblock %}
 
 {% block col-main-title %}{{ project.name }}{% endblock %}

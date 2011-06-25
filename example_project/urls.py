@@ -1,6 +1,8 @@
 from django.conf.urls.defaults import *
 from django.conf import settings
 from django.contrib import admin
+from django.views.generic import TemplateView
+
 
 admin.autodiscover()
 
@@ -18,12 +20,5 @@ urlpatterns = patterns('',
 
     # example app's urls
     (r'^', include('examples.urls')),
-)
-
-if settings.DEBUG:
-    urlpatterns += patterns('',
-        (r'^%s/(?P<path>.*)$' % settings.MEDIA_URL.strip('/'),
-            'django.views.static.serve',
-            {'document_root': settings.MEDIA_ROOT}),
 )
 
